@@ -1,4 +1,4 @@
-""" Contains all the information for the game
+""" Contains all the data for the game
 """
 
 from random import choices
