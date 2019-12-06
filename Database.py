@@ -2,8 +2,6 @@
 """
 
 from random import choices
-#from keyboard import add_hotkey
-import getch
 
 ### CONSTANTS ###
 
@@ -13,6 +11,15 @@ Commands = {
     "exit" : "Exit the program",
     "start" : "Start the game",
     }
+KeyBindings = {
+    b"w" : "Player .turn ('N')",
+    b"s" : "Player .turn ('S')",
+    b"a" : "Player .turn ('W')",
+    b"d" : "Player .turn ('E')",
+    b" " : "Player .move ()",
+    b"j" : "Player .collect ()",
+    b"k" : "Player .attack ()",
+    }
 Environments = ["Woodlands" , "Plains" , "Grasslands" , "Waterlands" , "Rockylands"]
 BiomeWeights = [60,20,5,1]
 
@@ -21,6 +28,7 @@ PrintSeparater = "print ('-----------------------------------------------')"
 EnvCleanupFactor = 50
 EnvInconsistency = 1.01
 EnvClusterSize = 5
+
 
 ### DEFINE CLASSES ###
 
@@ -122,6 +130,11 @@ class Character:
     
     def turn (self , NewOrientation):
         self .Orientation = NewOrientation
+
+    def collect (self):
+        print ("collect")
+    def attack (self):
+        print ("attack")
 
 ### CREATE INSTANCES ###
 
