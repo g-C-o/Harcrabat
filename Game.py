@@ -36,6 +36,8 @@ def load_map ():
 
     return Map
 
+def w_key():
+    print('Sorry. Keybindings for "W" are not yet available.')
 
 def run_game ():
     ## Wait for keypress:
@@ -46,8 +48,10 @@ def run_game ():
         KeyInput = msvcrt .getch ()
         
         ## Respond to keypress:
-        eval (KeyBindings [KeyInput])
-
+        keyStr = KeyBindings [KeyInput]
+        if keyStr == 'w':
+            w_key();
+        
 
 def update_game ():
     pass
