@@ -1,7 +1,7 @@
 """ Contains all the data for the game
 """
 
-from random import choices
+from random import choices , randint
 
 ### CONSTANTS ###
 
@@ -12,16 +12,18 @@ Commands = {
     "start" : "Start the game",
     }
 KeyBindings = {
-    b"w" : "Player .turn ('N')",
-    b"s" : "Player .turn ('S')",
-    b"a" : "Player .turn ('W')",
-    b"d" : "Player .turn ('E')",
+    b"w" : "Player .turn ('North')",
+    b"s" : "Player .turn ('South')",
+    b"a" : "Player .turn ('West')",
+    b"d" : "Player .turn ('East')",
     b" " : "Player .move ()",
     b"j" : "Player .collect ()",
     b"k" : "Player .attack ()",
+    b"q" : "Player .describe_surroundings ()",
+    b"e" : "Player .look ()"
     }
 Environments = ["Woodlands" , "Plains" , "Grasslands" , "Waterlands" , "Rockylands"]
-BiomeWeights = [60,20,5,1]
+BiomeWeights = [60 , 20 , 5 , 1]
 
 ## Values:
 PrintSeparater = "print ('-----------------------------------------------')"
@@ -55,7 +57,9 @@ class Environment:
         return EnvChoice
 
 class Biome:
-    def __init__ (self , Ground , PrimaryResource , SecondaryResource , TertiaryResource , PrimaryMob , SecondaryMob , TertiaryMob , Animal , PrimaryLoot , SecondaryLoot):
+    def __init__ (self , Name , Preposition , Ground , PrimaryResource , SecondaryResource , TertiaryResource , PrimaryMob , SecondaryMob , TertiaryMob , Animal , PrimaryLoot , SecondaryLoot):
+        self .Name = Name
+        self .Preposition = Preposition
         self .GroundR = Ground
         self .PriR = PrimaryResource
         self .SecR = SecondaryResource
@@ -98,9 +102,11 @@ class Armor:
         self .Durability = Durability
 
 class Character:
-    def __init__(self , Name , Score , Health , Energy , Inventory , HandItem , Armor , Location , Orientation):
+    def __init__(self , Name , Score , Map , BiomeMap ,  Health , Energy , Inventory , HandItem , Armor , Location , Orientation):
         self .Name = Name
         self .Score = Score
+        self .Map = Map
+        self .BiomeMap = BiomeMap
         self .Health = Health
         self .Energy = Energy
         self .Inventory = Inventory
@@ -108,7 +114,38 @@ class Character:
         self .Armor = Armor
         self .Location = Location
         self .Orientation = Orientation
+        
+    def look (self):
+        try:
+            if self .Orientation  == "North":
+                BiomeAhead = self .BiomeMap [self.Location[0]-2][self.Location[1]-1] .Name 
+            elif self .Orientation  == "South":
+                BiomeAhead = self .BiomeMap [self.Location[0]][self.Location[1]-1] .Name 
+            elif self .Orientation  == "West":
+                BiomeAhead = self .BiomeMap [self.Location[0]-1][self.Location[1]-2] .Name 
+            elif self .Orientation  == "East":
+                BiomeAhead = self .BiomeMap [self.Location[0]-1][self.Location[1]] .Name 
+            for Index , Coord in enumerate (self .Location):
+                if Coord < 0 or Coord > 50:
+                    raise IndexError
+            Article = eval (BiomeAhead) .Preposition [5:]
+            print ("You look %s and see %s %s." % (self.Orientation , Article , BiomeAhead))            
+        except IndexError:
+            print ("You see the edge of the world.")
+        
+    def describe_spawnpoint (self):
+        CurrentBiome = self .BiomeMap [26][26] .Name
+        AltPreposition = eval (CurrentBiome) .Preposition [:2] + eval (CurrentBiome) .Preposition [4:]
+        print ("You spawn %s %s. You are facing North." % (AltPreposition , CurrentBiome))
 
+    def describe_surroundings (self):
+        CurrentBiome = self .BiomeMap [self.Location[0]-1][self.Location[1]-1] .Name
+        CurrentEnv = self .Map [self.Location[0]-1][self.Location[1]-1]
+        print ("Current Location:")
+        print ("\tCoordinates: " + str(self.Location))
+        print ("\tEnvironment: " + CurrentEnv)
+        print ("\tBiome: " + CurrentBiome)
+    
     def set_name (self, NewName):
         self .Name = NewName
 
@@ -119,17 +156,29 @@ class Character:
         self .Armor = NewArmor
     
     def move (self):
-        if self .Orientation  == "N":
-            self .Location [0] -= 1
-        elif self .Orientation  == "S":
-            self .Location [0] += 1
-        elif self .Orientation  == "W":
-            self .Location [1] -= 1
-        elif self .Orientation  == "E":
-            self .Location [0] += 1
-    
+        try:
+            if self .Orientation  == "North":
+                self .Location [0] -= 1
+            elif self .Orientation  == "South":
+                self .Location [0] += 1
+            elif self .Orientation  == "West":
+                self .Location [1] -= 1
+            elif self .Orientation  == "East":
+                self .Location [1] += 1
+            for Index , Coord in enumerate (self .Location):
+                if Coord < 0:
+                    self .Location [Index] = 0
+                elif Coord > 50:
+                    self .Location [Index] = 50
+                else: continue
+                raise IndexError
+            CurrentBiome = self .BiomeMap [self.Location[0]-1][self.Location[1]-1] .Name
+            print ("You move %s %s %s." % (self.Orientation , eval(CurrentBiome).Preposition , CurrentBiome))            
+        except IndexError:
+            print ("You have reached the edge of the world.")
     def turn (self , NewOrientation):
         self .Orientation = NewOrientation
+        print ("You turn to the %s." % NewOrientation)
 
     def collect (self):
         print ("collect")
@@ -139,7 +188,7 @@ class Character:
 ### CREATE INSTANCES ###
 
 ## Player:
-Player = Character ("Player 1" , 0 , 100 , 100 , {} , None , None , [50,50] , "N")
+Player = Character ("Player 1" , 0 , [] , [] , 100 , 100 , {} , None , None , [26,26] , "North")
 
 ## Resources:
 Bark = Resource ()
@@ -203,30 +252,30 @@ Fish = Animal ()
 Sheep = Animal ()
 
 ## Biomes:
-Forest = Biome (Soil , Wood , Leaves , Bark , Fighter , Fighter , Fighter , Chicken , None , None)
-Jungle = Biome (Soil , Wood , Vines , Moss , Fighter , Fighter , Predator , Chicken , None , None)
-Grove = Biome (Soil , Wood , Fruit , Rocks , Fighter , Predator , Fighter , Chicken , None , None)
-Garden = Biome (Soil , Fruit , Gravel , Water , Fighter , Predator , Goblin , Chicken , HarvesterArmor , Protector)
-Desert = Biome (Sand , Rocks , Cacti , Iron , Destroyer , Destroyer , Destroyer , Rabbit , None , None)
-Tundra = Biome (Snow , Rocks , Iron , Wood , Destroyer , Destroyer , Annihilator , Rabbit , None , None)
-Badlands = Biome (Sand , Snow , Bones , Diamonds , Destroyer , Annihilator , Destroyer , Rabbit , None , None)
-Temple = Biome (Sand , Iron , Wood , Gold , Destroyer , Annihilator , Troll , Rabbit , Strawman , Coffin)
-Prarie = Biome (Soil , Gravel , Stone , Iron , Raider , Raider , Raider , Cow , None , None)
-Meadow = Biome (Soil , Flowers , Clay , Gold , Raider , Raider , Minion , Cow , None , None)
-Swamp = Biome (Mud , Water , Gold , Iron , Raider , Minion , Raider , Cow , None , None)
-Fort = Biome (Wood , Stone , Iron , Diamonds , Raider , Minion , Zombie , Cow , Ladder , MobRepellant)
-Lake = Biome (Water , Soil , Rocks , Emeralds , Defender , Defender , Defender , Fish , None , None)
-Beach = Biome (Water , Sand , Clay , Emeralds , Defender , Defender , Guardian , Fish , None , None)
-Island = Biome (Soil , Iron , Water , Quartz , Defender , Guardian , Defender , Fish , None , None)
-Shipwreck = Biome (Wood , Water , Gold , Quartz , Defender , Guardian , Skeleton , Fish , BottledWave , BottledWind)
-Mountain = Biome (Stone , Soil , Wood , Quartz , Hunter , Hunter , Hunter , Sheep , None , None)
-Canyon = Biome (Stone , Gravel , Leaves , Quartz , Hunter , Hunter , Assasin , Sheep , None , None)
-Cave = Biome (Stone , Iron , Wood , Quartz , Hunter , Assasin , Hunter , Sheep , None , None)
-Monument = Biome (Iron , Stone , Diamonds , Gravel , Hunter , Assasin , Ghoul , Sheep , Gliders , Binoculars)
+Forest = Biome ("Forest" , "into a" , Soil , Wood , Leaves , Bark , Fighter , Fighter , Fighter , Chicken , None , None)
+Jungle = Biome ("Jungle" , "into a" , Soil , Wood , Vines , Moss , Fighter , Fighter , Predator , Chicken , None , None)
+Grove = Biome ("Grove" , "into a" , Soil , Wood , Fruit , Rocks , Fighter , Predator , Fighter , Chicken , None , None)
+Garden = Biome ("Garden" , "into a" , Soil , Fruit , Gravel , Water , Fighter , Predator , Goblin , Chicken , HarvesterArmor , Protector)
+Desert = Biome ("Desert" , "into a" , Sand , Rocks , Cacti , Iron , Destroyer , Destroyer , Destroyer , Rabbit , None , None)
+Tundra = Biome ("Tundra" , "into a" , Snow , Rocks , Iron , Wood , Destroyer , Destroyer , Annihilator , Rabbit , None , None)
+Badland = Biome ("Badland" , "into a" , Sand , Snow , Bones , Diamonds , Destroyer , Annihilator , Destroyer , Rabbit , None , None)
+Temple = Biome ("Temple" , "into a" , Sand , Iron , Wood , Gold , Destroyer , Annihilator , Troll , Rabbit , Strawman , Coffin)
+Prairie = Biome ("Prairie" , "into a" , Soil , Gravel , Stone , Iron , Raider , Raider , Raider , Cow , None , None)
+Meadow = Biome ("Meadow" , "into a" , Soil , Flowers , Clay , Gold , Raider , Raider , Minion , Cow , None , None)
+Swamp = Biome  ("Swamp" , "into a" , Mud , Water , Gold , Iron , Raider , Minion , Raider , Cow , None , None)
+Fort = Biome ("Fort" , "into a" , Wood , Stone , Iron , Diamonds , Raider , Minion , Zombie , Cow , Ladder , MobRepellant)
+Lake = Biome ("Lake" , "into a" , Water , Soil , Rocks , Emeralds , Defender , Defender , Defender , Fish , None , None)
+Beach = Biome ("Beach" , "into a" , Water , Sand , Clay , Emeralds , Defender , Defender , Guardian , Fish , None , None)
+Island = Biome ("Island" , "onto an" , Soil , Iron , Water , Quartz , Defender , Guardian , Defender , Fish , None , None)
+Shipwreck = Biome ("Shipwreck" , "into a" , Wood , Water , Gold , Quartz , Defender , Guardian , Skeleton , Fish , BottledWave , BottledWind)
+Mountain = Biome ("Mountain" , "onto a" , Stone , Soil , Wood , Quartz , Hunter , Hunter , Hunter , Sheep , None , None)
+Canyon = Biome ("Canyon" , "into a" , Stone , Gravel , Leaves , Quartz , Hunter , Hunter , Assasin , Sheep , None , None)
+Cave = Biome ("Cave" , "into a" , Stone , Iron , Wood , Quartz , Hunter , Assasin , Hunter , Sheep , None , None)
+Monument = Biome ("Monument" , "into a" , Iron , Stone , Diamonds , Gravel , Hunter , Assasin , Ghoul , Sheep , Gliders , Binoculars)
 
 ## Environments:
 Woodlands = Environment (Forest , Jungle , Grove , Garden)
-Plains = Environment (Desert , Tundra , Badlands , Temple)
-Grasslands = Environment (Prarie , Meadow , Swamp , Fort)
+Plains = Environment (Desert , Tundra , Badland , Temple)
+Grasslands = Environment (Prairie , Meadow , Swamp , Fort)
 Waterlands = Environment (Lake , Beach , Island , Shipwreck)
 Rockylands = Environment (Mountain , Canyon , Cave , Monument)

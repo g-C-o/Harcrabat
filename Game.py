@@ -30,14 +30,15 @@ def load_map ():
 
     ## Choose Biomes:
     print ("\tGenerating Terrain")
-    Map = [[Biome .choose (Env)
+    BiomeMap = [[Biome .choose (Env)
         for Env in Row]
         for Row in Map]
+    
+    Player .Map = Map
+    Player .BiomeMap = BiomeMap
 
-    return Map
+    return Map , BiomeMap
 
-def w_key():
-    print('Sorry. Keybindings for "W" are not yet available.')
 
 def run_game ():
     ## Wait for keypress:
@@ -48,10 +49,8 @@ def run_game ():
         KeyInput = msvcrt .getch ()
         
         ## Respond to keypress:
-        keyStr = KeyBindings [KeyInput]
-        if keyStr == 'w':
-            w_key();
-        
+        if KeyInput in KeyBindings:
+            eval (KeyBindings [KeyInput])
 
 def update_game ():
     pass

@@ -30,7 +30,9 @@ def help ():
 
 def start ():
     create_player ()
-    Map = load_map ()
+    Map , BiomeMap = load_map ()
+    eval (PrintSeparater)
+    Player .describe_spawnpoint ()
     run_game ()
     
     #### Spawn function (set location and stats)
