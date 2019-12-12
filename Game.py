@@ -50,7 +50,7 @@ def run_game ():
         
         ## Respond to keypress:
         if KeyInput in KeyBindings:
-            eval (KeyBindings [KeyInput])
+            eval (KeyBindings [KeyInput][0])
 
 def update_game ():
     pass

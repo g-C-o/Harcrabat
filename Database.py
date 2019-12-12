@@ -2,6 +2,7 @@
 """
 
 from random import choices , randint
+from time import time
 
 ### CONSTANTS ###
 
@@ -10,17 +11,18 @@ Commands = {
     "help" : "View the command list",
     "exit" : "Exit the program",
     "start" : "Start the game",
+    "controls" : "View the controls"
     }
 KeyBindings = {
-    b"w" : "Player .turn ('North')",
-    b"s" : "Player .turn ('South')",
-    b"a" : "Player .turn ('West')",
-    b"d" : "Player .turn ('East')",
-    b" " : "Player .move ()",
-    b"j" : "Player .collect ()",
-    b"k" : "Player .attack ()",
-    b"q" : "Player .describe_surroundings ()",
-    b"e" : "Player .look ()"
+    b"w" : ("Player .turn ('North')" , "Turn to the north"),
+    b"s" : ("Player .turn ('South')" , "Turn to the south"),
+    b"a" : ("Player .turn ('West')" , "Turn to the west"),
+    b"d" : ("Player .turn ('East')" , "Turn to the east"),
+    b" " : ("Player .move ()" , "Move forward"),
+    b"j" : ("Player .collect ()" , "Collect resources"),
+    b"k" : ("Player .attack ()" , "Attack with current weapon"),
+    b"q" : ("Player .describe_surroundings ()" , "Give detailed location information"),
+    b"e" : ("Player .look ()" , "Reveal the square ahead"),
     }
 Environments = ["Woodlands" , "Plains" , "Grasslands" , "Waterlands" , "Rockylands"]
 BiomeWeights = [60 , 20 , 5 , 1]
@@ -30,6 +32,8 @@ PrintSeparater = "print ('-----------------------------------------------')"
 EnvCleanupFactor = 50
 EnvInconsistency = 1.01
 EnvClusterSize = 5
+CollectDelay = 60
+MoveDelay = 5
 
 
 ### DEFINE CLASSES ###
@@ -102,7 +106,7 @@ class Armor:
         self .Durability = Durability
 
 class Character:
-    def __init__(self , Name , Score , Map , BiomeMap ,  Health , Energy , Inventory , HandItem , Armor , Location , Orientation):
+    def __init__(self , Name , Score , Map , BiomeMap , CollectTimeMap ,  Health , Energy , Inventory , HandItem , Armor , Location , Orientation , LastMoveTime):
         self .Name = Name
         self .Score = Score
         self .Map = Map
@@ -114,6 +118,7 @@ class Character:
         self .Armor = Armor
         self .Location = Location
         self .Orientation = Orientation
+        self .LastMoveTime = LastMoveTime
         
     def look (self):
         try:
@@ -151,11 +156,12 @@ class Character:
 
     def switch_hand_item (self, NewItem):
         self .HandItem = NewItem
-
+        
     def switch_armor (self, NewArmor):
         self .Armor = NewArmor
     
     def move (self):
+        if time () - self .LastMoveTime < MoveDelay: return
         try:
             if self .Orientation  == "North":
                 self .Location [0] -= 1
@@ -173,6 +179,7 @@ class Character:
                 else: continue
                 raise IndexError
             CurrentBiome = self .BiomeMap [self.Location[0]-1][self.Location[1]-1] .Name
+            self .LastMoveTime = time ()
             print ("You move %s %s %s." % (self.Orientation , eval(CurrentBiome).Preposition , CurrentBiome))            
         except IndexError:
             print ("You have reached the edge of the world.")
@@ -188,7 +195,7 @@ class Character:
 ### CREATE INSTANCES ###
 
 ## Player:
-Player = Character ("Player 1" , 0 , [] , [] , 100 , 100 , {} , None , None , [26,26] , "North")
+Player = Character ("Player 1" , 0 , [] , [] , [[time() - CollectDelay for Square in Row] for Row in Map] , 100 , 100 , {} , None , None , [26,26] , "North" , time())
 
 ## Resources:
 Bark = Resource ()

@@ -34,6 +34,14 @@ def start ():
     eval (PrintSeparater)
     Player .describe_spawnpoint ()
     run_game ()
+
+def controls ():
+    for Key in KeyBindings:
+        if Key == b" ": Letter = "SPACE"
+        else: Letter = Key .decode ("utf-8")
+        print (Letter + ": " + KeyBindings [Key][1])
+        
+    [print (Command+ ": " + Commands[Command]) for Command in Commands]
     
     #### Spawn function (set location and stats)
     #### run_game () (will endlessly update game while waiting for input)
