@@ -1,6 +1,5 @@
-from Database import *
+from Library import *
 from random import choice
-
 
 ### GAME FUNCTIONS ###
 
@@ -79,14 +78,6 @@ def start ():
     eval (PrintSeparater)
     Player .describe_spawnpoint ()
     run_game ()
-
-
-def startdev ():
-    #### same as start
-    #### but somehow enable input
-    #### for developer testing options
-    #### developer password:
-    #### Hashing check
 
 
 def controls ():
