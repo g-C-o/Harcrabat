@@ -1,3 +1,4 @@
+from NewScript import command_input
 from time import time
 from random import choices
 import msvcrt
