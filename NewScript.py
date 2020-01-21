@@ -1,5 +1,7 @@
 from Library import *
 from random import choice
+from colorama import Fore , Back , init , Style
+
 
 ### GAME FUNCTIONS ###
 
@@ -84,9 +86,7 @@ def controls ():
     for Key in KeyBindings:
         if Key == b" ": Letter = "SPACE"
         else: Letter = Key .decode ("utf-8")
-        print (Letter + ": " + KeyBindings [Key][1])
-        
-    [print (Command+ ": " + Commands[Command]) for Command in Commands]        
+        print (Letter + ": " + KeyBindings [Key][1])        
 
 
 ### MANAGER FUNCTIONS ###
@@ -101,7 +101,8 @@ def command_input ():
 
     
 def startup ():
-    print ("NewScript Version 3")
+    init()
+    print ("NewScript version 0.4")
     print ("Type 'help' for the command list.")
     while True:
         command_input ()    

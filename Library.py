@@ -1,6 +1,7 @@
 from NewScript import command_input
 from time import time
 from random import choices
+from colorama import Fore , Back , init , Style
 import msvcrt
 
 
@@ -13,14 +14,13 @@ EnvInconsistency = 1.01
 EnvClusterSize = 5
 CollectDelay = 60
 MoveDelay = 0 #### 5
-Red = '\033[31m'
-Green = '\033[32m'
-Blue = '\033[34m'
-White = '\033[37m'
-Black = '\033[30m'
+HarvestSize = 4
+UncommonResourceThreshold = 75
+RareResourceThreshold = 16
 
 Environments = ["Woodlands" , "Plains" , "Grasslands" , "Waterlands" , "Rockylands"]
 BiomeWeights = [60 , 20 , 5 , 1]
+ResourceWeights = [40 , 40 , 16 , 4]
 
 Commands = {
     "help" : "View the command list",
@@ -38,8 +38,17 @@ KeyBindings = {
     b"k" : ("Player .attack ()" , "Attack with current weapon"),
     b"q" : ("Player .describe_surroundings ()" , "Give detailed location information"),
     b"e" : ("Player .look ()" , "Reveal the square ahead"),
+    b"h" : ("Player .list_inv ()" , "View your inventory"),
+    b"`" : ("command_input ()" , "View your inventory")
     }
-
+PrintColors = {
+    "Critical" : Fore.RED,
+    "Urgent" : Fore.YELLOW,
+    "Rare" : Fore.CYAN,
+    "Uncommon" : Fore.GREEN,
+    "Common" : "",
+    "Reset" : Style.RESET_ALL,
+    }
     
 ### CLASS DEFINITIONS ###   
     
@@ -50,6 +59,7 @@ class Character:
         self .Score = Score
         self .Map = Map
         self .BiomeMap = BiomeMap
+        self .CollectTimeMap = CollectTimeMap
         self .Health = Health
         self .Energy = Energy
         self .Inventory = Inventory
@@ -136,12 +146,34 @@ class Character:
 
 
     def collect (self):
-        print ("collect")
-
+        if time () - self .CollectTimeMap [self .Location [0]-1] [self .Location [1]-1] < CollectDelay: return
+        NewResources = self .BiomeMap [self.Location[0]-1][self.Location[1]-1] .gen_resources ()
+        self .CollectTimeMap [self .Location [0]-1] [self .Location [1]-1] = time ()
+        print ("You harvested new resources:")
+        DisplayedResources = []
+        for NewResource in NewResources:
+            try : Player .Inventory [NewResource] += 1
+            except KeyError : Player .Inventory [NewResource] = 1
+            if NewResource in DisplayedResources: continue
+            else:
+                DisplayedResources .append (NewResource)
+                if NewResources .count (NewResource) == 1:
+                    ResourceName = NewResource .Name
+                else: ResourceName = NewResource .Plural
+                print ("\t%i %s%s" % (NewResources.count(NewResource) , PrintColors [NewResource.Rarity] , ResourceName) + Style.RESET_ALL)
+        
 
     def attack (self):
         print ("attack")
 
+
+    def list_inv (self):
+        print ("Inventory:")
+        for Resource in self. Inventory:
+            if self .Inventory [Resource] == 1:
+                ResourceName = Resource .Name
+            else: ResourceName = Resource .Plural
+            print ("\t" + str(self.Inventory[Resource]) + " " + PrintColors[Resource.Rarity] + ResourceName + PrintColors["Reset"])
         
 class Environment:
     def __init__ (self , PrimaryBiome , SecondaryBiome , TertiaryBiome , AbandonedStructure):
@@ -182,17 +214,39 @@ class Biome:
         BiomeChoice = choices ([EnvClass.PriB , EnvClass.SecB , EnvClass.TerB , EnvClass.Structure] , weights=BiomeWeights) [0]
         return BiomeChoice
 
+
+    def gen_resources (self):
+        NewResources = choices ([self.GroundR , self.PriR , self.SecR , self.TerR] , weights=ResourceWeights , k = 5)
+        return NewResources
+        
         
 class Animal:
     pass
 
     
 class Item:
-    pass
+    def __init__ (self , Recipe):
+        #### self .Name = Name
+        self .Recipe = Recipe
+        #### Add Rarity calculation:
+        ####    Average Resource rarity
+        ####    divided by number of resources?
 
 
 class Resource:
-    pass
+    def __init__ (self , Name , Frequency , Plural):
+        self .Name = Name
+        self .Plural = Plural
+        
+        if Frequency <= 16 : self .Rarity = "Rare"
+        elif Frequency <= 80 : self .Rarity = "Uncommon"
+        else : self .Rarity = "Common"
+        
+        if Name [-1] in ["s","x","z"] or Name [-2:] in ["ss","sh","ch"]:
+               self .Plural = Name + "es"
+        elif Name [-1] == "y": self .Plural = Name [:-1] + "ies"
+        else:
+               self .Plural = Name + "s"
     
 
 class Mob:
@@ -206,41 +260,46 @@ class Mob:
 Player = Character ("Player 1" , 0 , [] , [] , [[time() - CollectDelay for Square in range (50)] for Row in range (50)] , 100 , 100 , {} , None , None , [26,26] , "North" , time())
 
 ## Resources:
-Bark = Resource ()
-Soil = Resource ()
-Wood = Resource ()
-Leaves = Resource ()
-Vines = Resource ()
-Moss = Resource ()
-Fruit = Resource ()
-Rocks = Resource ()
-Gravel = Resource ()
-Water = Resource ()
-Sand = Resource ()
-Cacti = Resource ()
-Iron = Resource ()
-Snow = Resource ()
-Bones = Resource ()
-Diamonds = Resource ()
-Stone = Resource ()
-Flowers = Resource ()
-Clay = Resource ()
-Gold = Resource ()
-Mud = Resource ()
-Emeralds = Resource ()
-Quartz = Resource ()
+#### Plurals: Change to plural algorithm.
+####    Pass in Plural Type and have class
+####    produce actual plural
+####    ... One single Plural type calculates -s vs -es?
+####    or separate types?
+Bark = Resource ("Bark Strip" , 4 , "Bark Strips")
+Soil = Resource ("Soil Pile" , 360 , "Soil Piles")
+Wood = Resource ("Wood Block" , 252 , "Wood Blocks")
+Leaves = Resource ("Leaf Pile" , 32 , "Leaf Piles")
+Vines = Resource ("Vine" , 16 , "Vines")
+Moss = Resource ("Moss Piece" , 4 , "Moss Pieces")
+Fruit = Resource ("Fruit" , 56 , "Fruits")
+Rocks = Resource ("Rock" , 100 , "Rocks")
+Gravel = Resource ("Gravel Pile" , 100 , "Gravel Piles")
+Water = Resource ("Water Supply" , 180 , "Water Supplies")
+Sand = Resource ("Sand Pile" , 160 , "Sand Piles")
+Cacti = Resource ("Cacti Block" , 16 , "Cacti Blocks")
+Iron = Resource ("Iron Nugget" , 124 , "Iron Nuggets")
+Snow = Resource ("Snow Pile" , 80 , "Snow Piles")
+Bones = Resource ("Bone" , 16 , "Bones")
+Diamonds = Resource ("Diamond" , 8 , "Diamonds")
+Stone = Resource ("Stone" , 216 , "Stone Blocks")
+Flowers = Resource ("Flower Bundle" , 40 , "Flower Bundles")
+Clay = Resource ("Clay Pile" , 32 , "Clay Piles")
+Gold = Resource ("Gold Nugget" , 40 , "Gold Nuggets")
+Mud = Resource ("Mud Pile" , 40 , "Mud Piles")
+Emeralds = Resource ("Emerald" , 8 , "Emeralds")
+Quartz = Resource ("Quartz Shard" , 20 , "Quartz Shards")
 
 ## Items:
-HarvesterArmor = Item ()
-Protector = Item ()
-Strawman = Item ()
-Coffin = Item ()
-Ladder = Item ()
-MobRepellant = Item ()
-BottledWave = Item ()
-BottledWind = Item ()
-Gliders = Item ()
-Binoculars = Item ()
+HarvesterArmor = Item (None)
+Protector = Item (None)
+Strawman = Item (None)
+Coffin = Item (None)
+Ladder = Item (None)
+MobRepellant = Item (None)
+BottledWave = Item (None)
+BottledWind = Item (None)
+Gliders = Item (None)
+Binoculars = Item (None)
 
 ## Mobs:
 Fighter = Mob ()
