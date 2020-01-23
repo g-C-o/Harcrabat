@@ -5,4 +5,4 @@ NewScript
 
 
 class Mob:
-    pass
+	pass
