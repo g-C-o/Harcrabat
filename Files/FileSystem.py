@@ -46,5 +46,5 @@ class FileSystem:
             print(text, file=f)
 
 if __name__ == "__main__":
-    filesystem = FileSystem(".\\Savefiles\\")
+    filesystem = FileSystem("..\\Savefiles\\")
     print(filesystem.load())
