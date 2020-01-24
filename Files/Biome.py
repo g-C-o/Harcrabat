@@ -3,15 +3,14 @@ Biome.py
 NewScript
 """
 
-from Database import BIOME_WEIGHTS, RESOURCE_WEIGHTS
+from Database import BIOME_WEIGHTS, RESOURCE_WEIGHTS, HARVEST_SIZE
 from random import choices 
 
 		
 class Biome:
-	def __init__(self, name, preposition, ground, primary_resource, secondary_resource, tertiary_resource, primary_mob, secondary_mob, tertiary_mob, animal, primary_loot, secondary_loot):
+	def __init__(self, name, preposition, primary_resource, secondary_resource, tertiary_resource, primary_mob, secondary_mob, tertiary_mob, animal, primary_loot, secondary_loot):
 		self.name = name
 		self.preposition = preposition
-		self.ground_R = ground
 		self.pri_R = primary_resource
 		self.sec_R = secondary_resource
 		self.ter_R = tertiary_resource
@@ -30,5 +29,5 @@ class Biome:
 
 
 	def gen_resources(self):
-		new_resources = choices([self.ground_R, self.pri_R, self.sec_R, self.ter_R], weights=RESOURCE_WEIGHTS, k = 5)
+		new_resources = choices([self.pri_R, self.sec_R, self.ter_R], weights=RESOURCE_WEIGHTS, k = HARVEST_SIZE)
 		return new_resources

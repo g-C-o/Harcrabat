@@ -24,7 +24,35 @@ class Character:
 		self.orientation = orientation
 		self.last_move_time = last_move_time
 		
-
+	
+	def craft(self, game):
+		## Check for item:
+		desired_item = input("Craft: ")
+		try: desired_item_recipe = eval ("game." + desired_item + ".recipe")
+		except AttributeError:
+			print ("That item does not exist")
+			return
+		can_craft_item = True
+		
+		## Check for ingredients:
+		for item in desired_item_recipe:
+			item_obj = eval("game." + item)
+			amount = desired_item_recipe[item]
+			if item_obj not in self.inventory or self.inventory[item_obj] < amount:
+				print ("You cannot craft this item")
+				return
+			else: self.inventory [item_obj] -= amount
+		
+		## Craft item:
+		desired_item_obj = eval("game." + desired_item)
+		try: self.inventory [desired_item_obj] += 1
+		except KeyError: self.inventory [desired_item_obj] = 1
+		print ("You crafted 1", desired_item_obj.name)
+			
+			
+		
+	
+	
 	def look(self, game):
 		try:
 			if self.orientation  == "North":

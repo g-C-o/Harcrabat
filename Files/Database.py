@@ -14,7 +14,7 @@ from colorama import Fore, Back, init, Style
 ENV_CLEANUP_FACTOR = 50
 ENV_INCONSISTENCY = 1.01
 ENV_CLUSTER_SIZE = 5
-COLLECT_DELAY = 60
+COLLECT_DELAY = 0 #### 60
 MOVE_DELAY = 0 #### 5
 HARVEST_SIZE = 4
 UNCOMMON_RESOURCE_THRESHOLD = 75
@@ -27,7 +27,7 @@ PRINT_SEPARATER = "print('-----------------------------------------------')"
 
 ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"]
 BIOME_WEIGHTS = [60, 20, 5, 1]
-RESOURCE_WEIGHTS = [40, 40, 16, 4]
+RESOURCE_WEIGHTS = [60, 35, 5]
 
 
 ### DICTS ###
@@ -50,7 +50,8 @@ KEY_BINDINGS = {
 	b"q": ("self.Player.describe_surroundings()", "Give detailed location information"),
 	b"e": ("self.Player.look(self)", "Reveal the square ahead"),
 	b"h": ("self.Player.list_inv()", "View your inventory"),
-	b"`": ("self.command_input()", "Pause game")
+	b"`": ("self.command_input()", "Pause game"),
+	b"l": ("self.Player.craft(self)", "Craft an item")
 	}
 PRINT_COLORS = {
 	"Critical": Fore.RED,
