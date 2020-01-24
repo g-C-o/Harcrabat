@@ -17,6 +17,7 @@ from random import choices
 from colorama import Fore, Back, init, Style
 from time import time
 import msvcrt
+from FileSystem import FileSystem
 
 
 ### START CODE ###
@@ -26,7 +27,8 @@ class Game:
 
 	
 	def __init__(self):
-		
+		# FileSystem
+		self.filesystem = FileSystem(".\\Savefiles\\")
 		## Sub-classes:
 		self.Character = Character
 		self.Resource = Resource
@@ -68,6 +70,7 @@ class Game:
 		self.Mud = self.Resource("Mud Pile", 40, "Mud Piles")
 		self.Emeralds = self.Resource("Emerald", 8, "Emeralds")
 		self.Quartz = self.Resource("Quartz Shard", 20, "Quartz Shards")
+		self.Rec_Ref = {"Snow Pile": self.snow, "Snow Piles": self.snow}
 
 		## Items:
 		self.HarvesterArmor = self.Item(None)
@@ -219,6 +222,8 @@ class Game:
 	def exit(self):
 		quit ()
 
+	def save(self):
+		self.filesystem.save({"inventory":self.Player.inventory})
 
 	def controls(self):
 		for key in KEY_BINDINGS:
@@ -241,6 +246,8 @@ class Game:
 	def startup(self):
 		init()
 		print("NewScript version 0.6")
+		print("Loading save data...")
+		print(self.filesystem.load())
 		print("Type 'help' for the command list.")
 		while True:
 			self.command_input()
