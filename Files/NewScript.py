@@ -47,31 +47,31 @@ class Game:
 		####	produce actual plural
 		#### ... One single Plural type calculates -s vs -es?
 		####	or separate types?
-		self.Bark = self.Resource("Bark Strip", 4, "Bark Strips")
-		self.Soil = self.Resource("Soil Pile", 360, "Soil Piles")
-		self.Wood = self.Resource("Wood Block", 252, "Wood Blocks")
-		self.Leaves = self.Resource("Leaf Pile", 32, "Leaf Piles")
-		self.Vines = self.Resource("Vine", 16, "Vines")
-		self.Moss = self.Resource("Moss Piece", 4, "Moss Pieces")
-		self.Fruit = self.Resource("Fruit", 56, "Fruits")
-		self.Rocks = self.Resource("Rock", 100, "Rocks")
-		self.Gravel = self.Resource("Gravel Pile", 100, "Gravel Piles")
-		self.Water = self.Resource("Water Supply", 180, "Water Supplies")
-		self.Sand = self.Resource("Sand Pile", 160, "Sand Piles")
-		self.Cacti = self.Resource("Cacti Block", 16, "Cacti Blocks")
-		self.Iron = self.Resource("Iron Nugget", 124, "Iron Nuggets")
-		self.Snow = self.Resource("Snow Pile", 80, "Snow Piles")
-		self.Bones = self.Resource("Bone", 16, "Bones")
-		self.Diamonds = self.Resource("Diamond", 8, "Diamonds")
-		self.Stone = self.Resource("Stone", 216, "Stone Blocks")
-		self.Flowers = self.Resource("Flower Bundle", 40, "Flower Bundles")
-		self.Clay = self.Resource("Clay Pile", 32, "Clay Piles")
-		self.Gold = self.Resource("Gold Nugget", 40, "Gold Nuggets")
-		self.Mud = self.Resource("Mud Pile", 40, "Mud Piles")
-		self.Emeralds = self.Resource("Emerald", 8, "Emeralds")
-		self.Quartz = self.Resource("Quartz Shard", 20, "Quartz Shards")
-		self.Rec_Ref = {"Snow Pile": self.snow, "Snow Piles": self.snow}
-
+		self.Rec_Ref = {}
+		self.Bark = self.Resource("Bark Strip", 4, "Bark Strips", self.Rec_Ref)
+		self.Soil = self.Resource("Soil Pile", 360, "Soil Piles", self.Rec_Ref)
+		self.Wood = self.Resource("Wood Block", 252, "Wood Blocks", self.Rec_Ref)
+		self.Leaves = self.Resource("Leaf Pile", 32, "Leaf Piles", self.Rec_Ref)
+		self.Vines = self.Resource("Vine", 16, "Vines", self.Rec_Ref)
+		self.Moss = self.Resource("Moss Piece", 4, "Moss Pieces", self.Rec_Ref)
+		self.Fruit = self.Resource("Fruit", 56, "Fruits", self.Rec_Ref)
+		self.Rocks = self.Resource("Rock", 100, "Rocks", self.Rec_Ref)
+		self.Gravel = self.Resource("Gravel Pile", 100, "Gravel Piles", self.Rec_Ref)
+		self.Water = self.Resource("Water Supply", 180, "Water Supplies", self.Rec_Ref)
+		self.Sand = self.Resource("Sand Pile", 160, "Sand Piles", self.Rec_Ref)
+		self.Cacti = self.Resource("Cacti Block", 16, "Cacti Blocks", self.Rec_Ref)
+		self.Iron = self.Resource("Iron Nugget", 124, "Iron Nuggets", self.Rec_Ref)
+		self.Snow = self.Resource("Snow Pile", 80, "Snow Piles", self.Rec_Ref)
+		self.Bones = self.Resource("Bone", 16, "Bones", self.Rec_Ref)
+		self.Diamonds = self.Resource("Diamond", 8, "Diamonds", self.Rec_Ref)
+		self.Stone = self.Resource("Stone", 216, "Stone Blocks", self.Rec_Ref)
+		self.Flowers = self.Resource("Flower Bundle", 40, "Flower Bundles", self.Rec_Ref)
+		self.Clay = self.Resource("Clay Pile", 32, "Clay Piles", self.Rec_Ref)
+		self.Gold = self.Resource("Gold Nugget", 40, "Gold Nuggets", self.Rec_Ref)
+		self.Mud = self.Resource("Mud Pile", 40, "Mud Piles", self.Rec_Ref)
+		self.Emeralds = self.Resource("Emerald", 8, "Emeralds", self.Rec_Ref)
+		self.Quartz = self.Resource("Quartz Shard", 20, "Quartz Shards", self.Rec_Ref)
+		
 		## Items:
 		self.HarvesterArmor = self.Item(None)
 		self.Protector = self.Item(None)
@@ -144,9 +144,11 @@ class Game:
 	
 
 	def create_player(self):
-		desired_name = input("Enter your name:\n| ")
+		if self.Player.name == "Player 1":
+			desired_name = input("Enter your name:\n| ")
+			self.Player.set_name(desired_name)
+		else: print("Welcome back,", self.Player.name + "!")
 		eval(PRINT_SEPARATER)
-		self.Player.set_name(desired_name)
 
 	
 	def load_map(self):
@@ -223,7 +225,7 @@ class Game:
 		quit ()
 
 	def save(self):
-		self.filesystem.save({"inventory":self.Player.inventory})
+		self.filesystem.save({"inventory":self.Player.inventory, "plyrinfo":{"name":self.Player.name}})
 
 	def controls(self):
 		for key in KEY_BINDINGS:
@@ -247,7 +249,14 @@ class Game:
 		init()
 		print("NewScript version 0.6")
 		print("Loading save data...")
-		print(self.filesystem.load())
+		data = self.filesystem.load()
+		for item, amount in data["inventory"]:
+			itemID = self.Rec_Ref[item]
+			self.Player.inventory[itemID] = int(amount)
+		if "plyrinfo" in data.keys():
+			if "name" in data["plyrinfo"].keys():
+				self.Player.set_name(data["plyrinfo"]["name"])
+
 		print("Type 'help' for the command list.")
 		while True:
 			self.command_input()

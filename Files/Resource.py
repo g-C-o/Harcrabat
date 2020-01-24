@@ -4,10 +4,11 @@ NewScript
 """
 
 class Resource:
-	def __init__(self, name, frequency, plural):
+	def __init__(self, name, frequency, plural, reference):
 		self.name = name
 		self.plural = plural
-		
+		reference[self.name] = self
+		reference[self.plural] = self
 		if frequency <= 16: self.rarity = "Rare"
 		elif frequency <= 80: self.rarity = "Uncommon"
 		else: self.rarity = "Common"
