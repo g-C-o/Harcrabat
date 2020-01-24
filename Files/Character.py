@@ -64,6 +64,7 @@ class Character:
 
 	def switch_hand_item(self, new_item):
 		self.hand_item = new_item
+		print("Weapon switched to", new_item.name)
 
 		
 	def switch_armor(self, new_armor):

@@ -10,7 +10,7 @@ from Animal import Animal
 from Biome import Biome
 from Character import Character
 from Environment import Environment
-from Item import Item
+from Item import Item, Weapon
 from Mob import Mob
 from Resource import Resource
 from random import choices
@@ -38,6 +38,7 @@ class Game:
 		self.Animal = Animal
 		self.Biome = Biome
 		self.Environment = Environment
+		self.Weapon = Weapon
 		
 		## Player:	
 		self.Player = self.Character("Player 1", 0, [], [], [[time() - COLLECT_DELAY for square in range(50)] for row in range(50)], 100, 100, {}, None, None, [26,26], "North", time())
@@ -84,6 +85,10 @@ class Game:
 		self.BottledWind = self.Item(None)
 		self.Gliders = self.Item(None)
 		self.Binoculars = self.Item(None)
+
+		## Weapons
+		self.Sword = self.Weapon("Sword", None, 5, 5, None)
+                        
 
 		## Mobs:
 		self.Fighter = self.Mob()
