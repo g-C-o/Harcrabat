@@ -29,7 +29,7 @@ class Game:
 	
 	def __init__(self):
 		# FileSystem
-		self.filesystem = FileSystem(".\\Savefiles\\")
+		self.filesystem = FileSystem("..\\Savefiles\\")
 		## Sub-classes:
 		self.Character = Character
 		self.Resource = Resource
