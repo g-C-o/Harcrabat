@@ -39,7 +39,7 @@ class Game:
         self.Weapon = Weapon
 
         # Player:
-        self.Player = self.Character("Player 1", 0, [], [], [[time() - COLLECT_DELAY for square in range(50)]
+        self.Player = self.Character(None, 0, [], [], [[time() - COLLECT_DELAY for square in range(50)]
                                                              for row in range(50)], 100, 100, {}, [], None, 0, None, [26, 26], "North", time())
 
         # Resources:
@@ -181,7 +181,7 @@ class Game:
     ### GAME FUNCTIONS ###
 
     def create_player(self):
-        if self.Player.name == "Player 1":
+        if self.Player.name == None:
             desired_name = input("Enter your name:\n| ")
             self.Player.set_name(desired_name)
         else:
