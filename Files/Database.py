@@ -52,7 +52,7 @@ KEY_BINDINGS = {
 	b"e": ("self.Player.look(self)", "Reveal the square ahead"),
 	b"h": ("self.Player.list_inv()", "View your inventory"),
 	b"`": ("self.command_input()", "Pause game"),
-        b"1": ("self.Player.switch_hand_item(self.Sword)", "Switch to sword")
+    b"1": ("self.Player.switch_hand_item(self.Sword)", "Switch to item 1")
 	}
 PRINT_COLORS = {
 	"Critical": Fore.RED,

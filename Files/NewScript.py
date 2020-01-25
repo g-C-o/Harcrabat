@@ -75,16 +75,16 @@ class Game:
 		self.Quartz = self.Resource("Quartz Shard", 20, "Quartz Shards", self.Rec_Ref)
 		
 		## Items:
-		self.HarvesterArmor = self.Item(None)
-		self.Protector = self.Item(None)
-		self.Strawman = self.Item(None)
-		self.Coffin = self.Item(None)
-		self.Ladder = self.Item(None)
-		self.MobRepellant = self.Item(None)
-		self.BottledWave = self.Item(None)
-		self.BottledWind = self.Item(None)
-		self.Gliders = self.Item(None)
-		self.Binoculars = self.Item(None)
+		self.HarvesterArmor = self.Item("Harvester Armor", None)
+		self.Protector = self.Item("Protector", None)
+		self.Strawman = self.Item("Strawman", None)
+		self.Coffin = self.Item("Coffin", None)
+		self.Ladder = self.Item("Ladder", None)
+		self.MobRepellant = self.Item("Mob Repellant", None)
+		self.BottledWave = self.Item("Bottled Wave", None)
+		self.BottledWind = self.Item("Bottled Wind", None)
+		self.Gliders = self.Item("Gliders", None)
+		self.Binoculars = self.Item("Binoculars", None)
 
 		## Weapons
 		self.Sword = self.Weapon("Sword", None, 5, 5, None)
