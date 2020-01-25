@@ -88,6 +88,7 @@ class Game:
 
 		## Weapons
 		self.Sword = self.Weapon("Sword", None, 5, 5, None)
+		self.Bow = self.Weapon("Bow", None, 3, 5, 10)
                         
 
 		## Mobs:
