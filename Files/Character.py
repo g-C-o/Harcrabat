@@ -6,6 +6,7 @@ NewScript
 from Database import MOVE_DELAY, COLLECT_DELAY, PRINT_COLORS
 from time import time
 from colorama import Style
+from ColPrint import colprint
 
 
 class Character:
@@ -26,7 +27,7 @@ class Character:
 		self.orientation = orientation
 		self.last_move_time = last_move_time
 		self.reference = reference
-		
+
 		while len(self.items) <= 9:
 			self.items.append(None)
 
@@ -34,14 +35,15 @@ class Character:
 		# Check for item:
 		desired_item = input("Craft: ")
 		try:
-			desired_item_recipe = self.reference[desired_item].recipe#eval("game." + desired_item + ".recipe")
+			# eval("game." + desired_item + ".recipe")
+			desired_item_recipe = self.reference[desired_item].recipe
 		except KeyError:
 			print("That item does not exist")
 			return
 		can_craft_item = True
 
 		# Check for ingredients:
-		#print(desired_item_recipe)
+		# print(desired_item_recipe)
 		for item in desired_item_recipe:
 			item_obj = eval("game." + item)
 			amount = desired_item_recipe[item]
@@ -61,36 +63,42 @@ class Character:
 
 	def look(self, game):
 		try:
-			if self.orientation  == "North":
-				biome_ahead = self.biome_map [self.location[0]-1][self.location[1]].name 
-			elif self.orientation  == "South":
-				biome_ahead = self.biome_map [self.location[0]-1][self.location[1]-1].name 
-			elif self.orientation  == "West":
-				biome_ahead = self.biome_map [self.location[0]][self.location[1]-1].name 
-			elif self.orientation  == "East":
-				biome_ahead = self.biome_map [self.location[0]][self.location[1]-1].name 
+			if self.orientation == "North":
+				biome_ahead = self.biome_map[self.location[0] -
+											 1][self.location[1]].name
+			elif self.orientation == "South":
+				biome_ahead = self.biome_map[self.location[0] -
+											 1][self.location[1]-1].name
+			elif self.orientation == "West":
+				biome_ahead = self.biome_map[self.location[0]
+											 ][self.location[1]-1].name
+			elif self.orientation == "East":
+				biome_ahead = self.biome_map[self.location[0]
+											 ][self.location[1]-1].name
 			for Index, Coord in enumerate(self.location):
 				if Coord < 0 or Coord > 50:
 					raise IndexError
 			article = eval("game." + biome_ahead).preposition[5:]
-			print("You look %s and see %s %s." %(self.orientation, article, biome_ahead))			
+			print("You look %s and see %s %s." %
+				  (self.orientation, article, biome_ahead))
 		except IndexError:
 			print("You see the edge of the world.")
 
-		
 	def describe_spawnpoint(self, game):
 		current_biome = self.biome_map[26][26].name
-		alt_preposition = eval("game." + current_biome).preposition[:2] + eval("game." + current_biome).preposition[4:]
-		print("You spawn %s %s%s%s. You are facing North." % (alt_preposition, PRINT_COLORS[eval("game." + current_biome).rarity], current_biome, PRINT_COLORS["Reset"]))
-
+		alt_preposition = eval(
+			"game." + current_biome).preposition[:2] + eval("game." + current_biome).preposition[4:]
+		print("You spawn %s %s%s%s. You are facing North." % (alt_preposition, PRINT_COLORS[eval(
+			"game." + current_biome).rarity], current_biome, PRINT_COLORS["Reset"]))
 
 	def describe_surroundings(self, game):
-		current_biome = self.biome_map [self.location[0]][self.location[1]].name
-		current_env = self.map [self.location[0]][self.location[1]]
+		current_biome = self.biome_map[self.location[0]][self.location[1]].name
+		current_env = self.map[self.location[0]][self.location[1]]
 		print("Current Location:")
 		print("\tCoordinates: " + str(self.location))
 		print("\tEnvironment: " + current_env)
-		print("\tBiome: " + PRINT_COLORS[eval("game." + current_biome).rarity] + current_biome + PRINT_COLORS["Reset"])
+		print("\tBiome: " + PRINT_COLORS[eval(
+			"game." + current_biome).rarity] + current_biome + PRINT_COLORS["Reset"])
 
 	def set_name(self, new_name):
 		self.name = new_name
@@ -108,27 +116,32 @@ class Character:
 		self.armor = new_armor
 
 	def move(self, game):
-		if time() - self.last_move_time < MOVE_DELAY: return
+		if time() - self.last_move_time < MOVE_DELAY:
+			return
 		try:
-			if self.orientation  == "North":
-				self.location [0] -= 1
-			elif self.orientation  == "South":
-				self.location [0] += 1
-			elif self.orientation  == "West":
-				self.location [1] -= 1
-			elif self.orientation  == "East":
-				self.location [1] += 1
+			if self.orientation == "North":
+				self.location[0] -= 1
+			elif self.orientation == "South":
+				self.location[0] += 1
+			elif self.orientation == "West":
+				self.location[1] -= 1
+			elif self.orientation == "East":
+				self.location[1] += 1
 			for index, coord in enumerate(self.location):
 				if coord < 0:
-					self.location [index] = 0
+					self.location[index] = 0
 				elif coord > 50:
-					self.location [index] = 50
-				else: continue
+					self.location[index] = 50
+				else:
+					continue
 				raise IndexError
-			current_biome = self.biome_map [self.location[0]][self.location[1]].name
+			current_biome = self.biome_map[self.location[0]
+										   ][self.location[1]].name
 			self.last_move_time = time()
-			print("You move %s %s" %(self.orientation, eval("game." + current_biome).preposition), end=" ")
-			print (PRINT_COLORS[eval("game." + current_biome).rarity] + current_biome + PRINT_COLORS["Reset"], end=".\n")
+			print("You move %s %s" % (self.orientation, eval(
+				"game." + current_biome).preposition), end=" ")
+			print(PRINT_COLORS[eval("game." + current_biome).rarity] +
+				  current_biome + PRINT_COLORS["Reset"], end=".\n")
 		except IndexError:
 			print("You have reached the edge of the world.")
 
@@ -136,23 +149,29 @@ class Character:
 		self.orientation = new_orientation
 		print("You turn to the %s." % new_orientation)
 
-
 	def collect(self):
-		if time() - self.collect_time_map [self.location [0]] [self.location [1]] < COLLECT_DELAY: return
-		NewResources = self.biome_map [self.location[0]][self.location[1]].gen_resources()
-		self.collect_time_map [self.location [0]] [self.location [1]] = time()
+		if time() - self.collect_time_map[self.location[0]][self.location[1]] < COLLECT_DELAY:
+			return
+		NewResources = self.biome_map[self.location[0]
+									  ][self.location[1]].gen_resources()
+		self.collect_time_map[self.location[0]][self.location[1]] = time()
 		print("You harvested new resources:")
 		displayed_resources = []
 		for NewResource in NewResources:
-			try: self.inventory [NewResource] += 1
-			except KeyError: self.inventory [NewResource] = 1
-			if NewResource in displayed_resources: continue
+			try:
+				self.inventory[NewResource] += 1
+			except KeyError:
+				self.inventory[NewResource] = 1
+			if NewResource in displayed_resources:
+				continue
 			else:
 				displayed_resources.append(NewResource)
 				if NewResources.count(NewResource) == 1:
 					resource_name = NewResource.name
-				else: resource_name = NewResource.plural
-				print("\t%i %s%s" %(NewResources.count(NewResource), PRINT_COLORS[NewResource.rarity], resource_name) + Style.RESET_ALL)
+				else:
+					resource_name = NewResource.plural
+				print("\t%i %s%s" % (NewResources.count(
+					NewResource), PRINT_COLORS[NewResource.rarity], resource_name) + Style.RESET_ALL)
 
 	def attack(self):
 		if self.hand_item == None:
@@ -164,10 +183,11 @@ class Character:
 			if self.hand_item.expendable:
 				self.hand_item = None
 				self.items[hand_item_slot] = None
-			
+
 	def moveItem(self):
 		while True:
-			tof = input("Would you like to move an item to your hotbar or from your hotbar?\nPlease input to (t) or from (f): ")
+			tof = input(
+				"Would you like to move an item to your hotbar or from your hotbar?\nPlease input to (t) or from (f): ")
 			if tof == "from" or "f" in tof:
 				toHotbar = False
 				break
@@ -193,9 +213,9 @@ class Character:
 							break
 					except:
 						pass
-					
+
 					print("Sorry. Please input a valid slot between 0 and 9.")
-				
+
 				if self.items[slotNum] != None:
 					if self.items[slotNum] in self.inventory.keys():
 						self.inventory[self.items[slotNum]] += 1
@@ -205,56 +225,62 @@ class Character:
 				self.inventory[item_object] -= 1
 				self.items[slotNum] = item_object
 				print("1", item_to_move, "moved to hotbar")
-				
-					
-				
+
 			else:
 				print("Sorry. That item is not in your inventory.")
-				
+
 		else:
 			if item_object in self.items:
-				itemIndex = self.items.index(item_object)		 
+				itemIndex = self.items.index(item_object)
 				self.items[itemIndex] = None
 				print("1", item_to_move, "added to inventory.")
 				if self.hand_item_slot == itemIndex:
 					self.switch_hand_item(None)
 				if item_object in self.inventory.keys():
-						self.inventory[item_object] += 1
+					self.inventory[item_object] += 1
 				else:
 					self.inventory[item_object] = 1
 
-				
 			else:
 				print("Sorry. That item is not in your hotbar.")
 
 	def list_inv(self):
-		print("Inventory:")
+		"""print("Inventory:")
 		for Resource in self.inventory:
+						if self.inventory[Resource] == 1:
+										resource_name = Resource.name
+						else:
+										resource_name = Resource.plural
+						print("\t" + str(self.inventory[Resource]) + " " +
+										  PRINT_COLORS[Resource.rarity] + resource_name + PRINT_COLORS["Reset"])
+
+		print("\nHotbar:")
+		for slot, item in enumerate(self.items):
+						if item != None:
+										resource_name = item.name
+										print("\t" + " " + str(slot) + " " +
+														PRINT_COLORS[item.rarity] + resource_name + PRINT_COLORS["Reset"])
+						else:
+										print("\t" + " " + str(slot))"""
+
+		# New Print Style
+		invList = []
+		for Resource in self.inventory.keys():
 			if self.inventory[Resource] == 1:
 				resource_name = Resource.name
 			else:
 				resource_name = Resource.plural
-			print("\t" + str(self.inventory[Resource]) + " " +
-				  PRINT_COLORS[Resource.rarity] + resource_name + PRINT_COLORS["Reset"])
-			
-		print("\nHotbar:")
+			invList.append(str(self.inventory[Resource]) + " " +
+						   PRINT_COLORS[Resource.rarity] + resource_name + PRINT_COLORS["Reset"])
+		if len(invList) == 0:
+			invList.append("")
+		itemList = []
 		for slot, item in enumerate(self.items):
 			if item != None:
 				resource_name = item.name
-				print("\t" + " " + str(slot) + " " +
-					PRINT_COLORS[item.rarity] + resource_name + PRINT_COLORS["Reset"])
+				itemList.append(str(slot) + " " +
+								PRINT_COLORS[item.rarity] + resource_name + PRINT_COLORS["Reset"])
 			else:
-				print("\t" + " " + str(slot))
+				itemList.append(str(slot))
 
-		"""for inv, slotItem in zip(["Inventory:"] + list(self.inventory.keys()), ["\t\t\tItems:"] + [(index, item) for index, item in enumerate(self.items)]):
-			if type(inv) == str:
-				print(inv, slotItem)
-				continue
-			if slotItem[1] != None:
-				print("\t", inv.name, "\t\t\t", slotItem[0], slotItem[1].name)
-			else:
-				print("\t", inv.name, "\t\t\t", slotItem[0])"""
-
-
-
-			
+		colprint(["Inventory:", "Hotbar:"], invList, itemList)

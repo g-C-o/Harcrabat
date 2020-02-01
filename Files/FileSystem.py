@@ -67,6 +67,7 @@ class FileSystem:
             except FileNotFoundError:
                 os.system("cd " + self.path + "../")
                 os.system("mkdir Savefiles")
+                os.system("cd " + self.path + "../Files")
                 with open(self.path + "output.log", "w") as f:
                     ts = calendar.timegm(time.gmtime())
                     readable = datetime.datetime.fromtimestamp(ts).isoformat()
