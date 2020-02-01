@@ -5,4 +5,4 @@ NewScript
 
 
 class Animal:
-	pass
+    pass

@@ -7,7 +7,13 @@ import calendar
 import time
 import datetime
 from os import path
+import os
 
+class SC_ERRORS:
+    bug = 0
+    glitch = 1
+    failure = 2
+    test = -1
 
 class FileSystem:
     def __init__(self, myPath):
@@ -29,26 +35,78 @@ class FileSystem:
         return myData
 
     def save(self, data):
-        with open(self.path + "inventory.nsd", "w") as f:
-            for item in data["inventory"]:
-                amount = data["inventory"][item]
-                print(item.name + "-" + str(amount), file=f)
-
-        with open(self.path + "plyrinfo.nsd", "w") as f:
-            if data["plyrinfo"]["name"] != "Player 1":
-                print("name" + "-" + data["plyrinfo"]["name"], file=f)
+        if "inventory" in data.keys():
+            with open(self.path + "inventory.nsd", "w") as f:
+                for item in data["inventory"]:
+                    amount = data["inventory"][item]
+                    print(item.name + "-" + str(amount), file=f)
+                    
+        if "plyrinfo" in data.keys():
+            with open(self.path + "plyrinfo.nsd", "w") as f:
+                if "name" in data["plyrinfo"].keys():
+                    print("name" + "-" + data["plyrinfo"]["name"], file=f)
 
         self.log("Data saved to file.")
 
     def log(self, text):
-        with open(self.path + "output.log", "a") as f:
-            ts = calendar.timegm(time.gmtime())
-            readable = datetime.datetime.fromtimestamp(ts).isoformat()
-            print("", file=f)
-            print(readable, file=f)
-            print(text, file=f)
+        try:
+            with open(self.path + "output.log", "a") as f:
+                ts = calendar.timegm(time.gmtime())
+                readable = datetime.datetime.fromtimestamp(ts).isoformat()
+                print("", file=f)
+                print(readable, file=f)
+                print(text, file=f)
+        except FileNotFoundError:
+            try:
+                with open(self.path + "output.log", "w") as f:
+                    ts = calendar.timegm(time.gmtime())
+                    readable = datetime.datetime.fromtimestamp(ts).isoformat()
+                    print("", file=f)
+                    print(readable, file=f)
+                    print(text, file=f)
+            except FileNotFoundError:
+                os.system("cd " + self.path + "../")
+                os.system("mkdir Savefiles")
+                with open(self.path + "output.log", "w") as f:
+                    ts = calendar.timegm(time.gmtime())
+                    readable = datetime.datetime.fromtimestamp(ts).isoformat()
+                    print("", file=f)
+                    print(readable, file=f)
+                    print(text, file=f)
 
-
-if __name__ == "__main__":
-    filesystem = FileSystem("..\\Savefiles\\")
-    print(filesystem.load())
+    def error(self, etype, tb, info=None):
+        self.log("Error code " + str(etype))
+        if etype == 0:
+            textType = "bug"
+        elif etype == 1:
+            textType = "glitch"
+        elif etype == 2:
+            textType = "failure"
+        elif etype == -1:
+            textType = "test"
+        else:
+            textType = "unknown"
+        try:
+            with open(self.path + "errors.log", "a") as f:
+                ts = calendar.timegm(time.gmtime())
+                readable = datetime.datetime.fromtimestamp(ts).isoformat()
+                print("", file=f)
+                print(readable, file=f)
+                print("Error of type " + textType + ".", file=f)
+                print("Traceback:\n" + tb, file=f)
+                if info:
+                    print("Additional info:\n" + info, file=f)
+        except FileNotFoundError:
+            with open(self.path + "errors.log", "w") as f:
+                ts = calendar.timegm(time.gmtime())
+                readable = datetime.datetime.fromtimestamp(ts).isoformat()
+                print("", file=f)
+                print(readable, file=f)
+                print("Error of type " + textType +  ".", file=f)
+                print("Traceback:\n" + tb, file=f)
+                if info:
+                    print("Additional info:\n" + info, file=f)
+                
+#if __name__ == "__main__":
+#    filesystem = FileSystem("..\Savefiles\\")
+#    print(filesystem.load())
