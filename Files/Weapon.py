@@ -6,8 +6,8 @@ NewScript
 from Item import Item
 
 class Weapon(Item):
-    def __init__(self, name, recipe, type, speed, accuracy, damage, range, has_scope, rarity, action_word, action_word_pt, reference, expendable=False):
-        super().__init__(name, recipe, rarity, reference, expendable)
+    def __init__(self, name, recipe, type, speed, accuracy, damage, range, has_scope, rarity, action_word, action_word_pt, reference, *args, expendable=False):
+        super().__init__(name, recipe, rarity, reference, *args)
         self.type = type
         self.speed = speed
         self.accuracy = accuracy

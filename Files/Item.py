@@ -5,12 +5,14 @@ NewScript
 
 
 class Item:
-    def __init__(self, name, recipe, rarity, reference, expendable=False):
+    def __init__(self, name, recipe, rarity, reference, craft_log, expendable=False):
         self.name = name
         self.recipe = recipe
         self.rarity = rarity
         self.expendable = expendable
         self.is_weapon = False
+
+        craft_log[self] = self.recipe
 
         # Plural:
         if name[-1] in ["s", "x", "z"] or name[-2:] in ["ss", "sh", "ch"]:

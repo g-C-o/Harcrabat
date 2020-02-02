@@ -41,141 +41,142 @@ class Game:
 		self.Weapon = Weapon
 		self.Projectile = Projectile
 		self.started = False
-
+		self.craft_log = {}
+		
 		# Resources:
 		if True:
 			self.Rec_Ref = {}
-			self.Soil = self.Resource("Soil Pile", "Common", self.Rec_Ref)
-			self.Wood = self.Resource("Wood Block", "Common", self.Rec_Ref)
-			self.Vine = self.Resource("Vine", "Common", self.Rec_Ref)
-			self.Fruit = self.Resource("Fruit", "Common", self.Rec_Ref)
-			self.Rock = self.Resource("Rock", "Common", self.Rec_Ref)
-			self.Water = self.Resource("Water Supply", "Common", self.Rec_Ref)
-			self.Sand = self.Resource("Sand Pile", "Common", self.Rec_Ref)
-			self.Cacti = self.Resource("Cacti Block", "Common", self.Rec_Ref)
-			self.Iron = self.Resource("Iron Nugget", "Uncommon", self.Rec_Ref)
-			self.Bone = self.Resource("Bone", "Common", self.Rec_Ref)
-			self.Diamond = self.Resource("Diamond", "Uncommon", self.Rec_Ref)
-			self.Stone = self.Resource("Stone", "Common", self.Rec_Ref)
-			self.Gold = self.Resource("Gold Nugget", "Uncommon", self.Rec_Ref)
-			self.Emerald = self.Resource("Emerald", "Uncommon", self.Rec_Ref)
-			self.Quartz = self.Resource("Quartz Shard", "Uncommon", self.Rec_Ref)
-			self.Explosive = self.Resource("Explosive", "Common", self.Rec_Ref)
+			self.Soil = self.Resource("Soil Pile", "Common", self.Rec_Ref, self.craft_log)
+			self.Wood = self.Resource("Wood Block", "Common", self.Rec_Ref, self.craft_log)
+			self.Vine = self.Resource("Vine", "Common", self.Rec_Ref, self.craft_log)
+			self.Fruit = self.Resource("Fruit", "Common", self.Rec_Ref, self.craft_log)
+			self.Rock = self.Resource("Rock", "Common", self.Rec_Ref, self.craft_log)
+			self.Water = self.Resource("Water Supply", "Common", self.Rec_Ref, self.craft_log)
+			self.Sand = self.Resource("Sand Pile", "Common", self.Rec_Ref, self.craft_log)
+			self.Cacti = self.Resource("Cacti Block", "Common", self.Rec_Ref, self.craft_log)
+			self.Iron = self.Resource("Iron Ingot", "Uncommon", self.Rec_Ref, self.craft_log)
+			self.Bone = self.Resource("Bone", "Common", self.Rec_Ref, self.craft_log)
+			self.Diamond = self.Resource("Diamond", "Uncommon", self.Rec_Ref, self.craft_log)
+			self.Stone = self.Resource("Stone", "Common", self.Rec_Ref, self.craft_log)
+			self.Gold = self.Resource("Gold Nugget", "Uncommon", self.Rec_Ref, self.craft_log)
+			self.Emerald = self.Resource("Emerald", "Uncommon", self.Rec_Ref, self.craft_log)
+			self.Quartz = self.Resource("Quartz Shard", "Uncommon", self.Rec_Ref, self.craft_log)
+			self.Explosive = self.Resource("Explosive", "Common", self.Rec_Ref, self.craft_log)
 
 		# Items:
 		if True:
-			self.HarvesterArmor = self.Item("Harvester's Armor", None, "Rare", self.Rec_Ref)
-			self.Protector = self.Item("Protector", None, "Legendary", self.Rec_Ref)
-			self.Strawman = self.Item("Strawman", None, "Rare", self.Rec_Ref)
-			self.Coffin = self.Item("Coffin", None, "Legendary", self.Rec_Ref)
-			self.Ladder = self.Item("Ladder", None, "Rare", self.Rec_Ref)
-			self.MobRepellant = self.Item("Mob Repellent", None, "Legendary", self.Rec_Ref)
-			self.BottledWave = self.Item("Bottled Wave", None, "Rare", self.Rec_Ref)
-			self.BottledWind = self.Item("Bottled Wind", None, "Legendary", self.Rec_Ref)
-			self.Glider = self.Item("Glider", None, "Rare", self.Rec_Ref)
-			self.Binoculars = self.Item("Binoculars", None, "Legendary", self.Rec_Ref)
+			self.HarvesterArmor = self.Item("Harvester's Armor", None, "Rare", self.Rec_Ref, self.craft_log)
+			self.Protector = self.Item("Protector", None, "Legendary", self.Rec_Ref, self.craft_log)
+			self.Strawman = self.Item("Strawman", None, "Rare", self.Rec_Ref, self.craft_log)
+			self.Coffin = self.Item("Coffin", None, "Legendary", self.Rec_Ref, self.craft_log)
+			self.Ladder = self.Item("Ladder", None, "Rare", self.Rec_Ref, self.craft_log)
+			self.MobRepellant = self.Item("Mob Repellent", None, "Legendary", self.Rec_Ref, self.craft_log)
+			self.BottledWave = self.Item("Bottled Wave", None, "Rare", self.Rec_Ref, self.craft_log)
+			self.BottledWind = self.Item("Bottled Wind", None, "Legendary", self.Rec_Ref, self.craft_log)
+			self.Glider = self.Item("Glider", None, "Rare", self.Rec_Ref, self.craft_log)
+			self.Binoculars = self.Item("Binoculars", None, "Legendary", self.Rec_Ref, self.craft_log)
 
 		# Projectiles:
 		if True:
 			self.WoodenBall = self.Projectile(
-				"Wooden Ball", {"Wood": 5}, ["Arm"], 13, "Common", self.Rec_Ref)
+				"Wooden Ball", {"Wood": 5}, ["Arm"], 13, "Common", self.Rec_Ref, self.craft_log)
 			self.StoneBall = self.Projectile(
-				"Stone Ball", {"Wood": 5, "Stone": 2}, ["Arm"], 15, "Common", self.Rec_Ref)
+				"Stone Ball", {"Wood": 5, "Stone": 2}, ["Arm"], 15, "Common", self.Rec_Ref, self.craft_log)
 			self.IronBall = self.Projectile(
-				"Iron Ball", {"Wood": 5, "IronIngot": 2}, ["Arm"], 17, "Common", self.Rec_Ref)
+				"Iron Ball", {"Wood": 5, "Iron Ingot": 2}, ["Arm"], 17, "Common", self.Rec_Ref, self.craft_log)
 			self.DiamondBall = self.Projectile(
-				"Diamond Ball", {"Wood": 5, "Diamond": 2}, ["Arm"], 25, "Uncommon", self.Rec_Ref)
+				"Diamond Ball", {"Wood": 5, "Diamond": 2}, ["Arm"], 25, "Uncommon", self.Rec_Ref, self.craft_log)
 			self.WoodenArrow = self.Projectile("Wooden Arrow", {"Wood": 3}, [
-											"Bow", "CrossBow"], 17, "Common", self.Rec_Ref)
+											"Bow", "CrossBow"], 17, "Common", self.Rec_Ref, self.craft_log)
 			self.StoneArrow = self.Projectile("Stone Arrow", {"Stone": 2, "Wood": 3}, [
-											"Bow", "CrossBow"], 20, "Common", self.Rec_Ref)
-			self.IronArrow = self.Projectile("Iron Arrow", {"IronIngot": 1, "Wood": 3}, [
-											"Bow", "CrossBow"], 23, "Common", self.Rec_Ref)
+											"Bow", "CrossBow"], 20, "Common", self.Rec_Ref, self.craft_log)
+			self.IronArrow = self.Projectile("Iron Arrow", {"Iron Ingot": 1, "Wood": 3}, [
+											"Bow", "CrossBow"], 23, "Common", self.Rec_Ref, self.craft_log)
 			self.DiamondArrow = self.Projectile("Diamond Arrow", {"Diamond": 1, "Wood": 3}, [
-												"Bow", "CrossBow"], 26, "Uncommon", self.Rec_Ref)
+												"Bow", "CrossBow"], 26, "Uncommon", self.Rec_Ref, self.craft_log)
 			self.SoilClump = self.Projectile("Soil Clump", {"Soil": 4}, [
-											"CombatBucket"], 38, "Common", self.Rec_Ref)
+											"CombatBucket"], 38, "Common", self.Rec_Ref, self.craft_log)
 			self.SandClump = self.Projectile("Sand Clump", {"Sand": 4}, [
-											"CombatBucket"], 38, "Common", self.Rec_Ref)
+											"CombatBucket"], 38, "Common", self.Rec_Ref, self.craft_log)
 			self.CactusClump = self.Projectile("Cactus Clump", {"Cacti": 2}, [
-											"CombatBucket"], 55, "Common", self.Rec_Ref)
+											"CombatBucket"], 55, "Common", self.Rec_Ref, self.craft_log)
 			self.WoodSpike = self.Projectile("Wood Spike", {"Wood": 2}, [
-											"Slingshot"], 17, "Common", self.Rec_Ref)
+											"Slingshot"], 17, "Common", self.Rec_Ref, self.craft_log)
 			self.StoneSpike = self.Projectile("Stone Spike", {"Stone": 3}, [
-											"Slingshot"], 19, "Common", self.Rec_Ref)
-			self.IronSpike = self.Projectile("Iron Spike", {"IronIngot": 1, "Wood": 1}, [
-											"Slingshot"], 21, "Common", self.Rec_Ref)
+											"Slingshot"], 19, "Common", self.Rec_Ref, self.craft_log)
+			self.IronSpike = self.Projectile("Iron Spike", {"Iron Ingot": 1, "Wood": 1}, [
+											"Slingshot"], 21, "Common", self.Rec_Ref, self.craft_log)
 			self.DiamondSpike = self.Projectile(
-				"Diamond Spike", {"Diamond": 1, "Wood": 1}, ["Slingshot"], 26, "Uncommon", self.Rec_Ref)
+				"Diamond Spike", {"Diamond": 1, "Wood": 1}, ["Slingshot"], 26, "Uncommon", self.Rec_Ref, self.craft_log)
 			self.CannonBall = self.Projectile(
-				"Cannon Ball", {"Wood": 10, "Stone": 15}, ["Cannon"], 125, "Common", self.Rec_Ref)
-			self.Rocket = self.Projectile("Rocket", {"Iron": 15, "Explosive": 5}, [
-										"RocketLauncher"], 150, "Rare", self.Rec_Ref)
-			self.Missile = self.Projectile("Missile", {"Iron": 15, "Explosive": 10}, [
-										"MissileLauncher"], 200, "Rare", self.Rec_Ref)
+				"Cannon Ball", {"Wood": 10, "Stone": 15}, ["Cannon"], 125, "Common", self.Rec_Ref, self.craft_log)
+			self.Rocket = self.Projectile("Rocket", {"Iron Ingot": 15, "Explosive": 5}, [
+										"RocketLauncher"], 150, "Rare", self.Rec_Ref, self.craft_log)
+			self.Missile = self.Projectile("Missile", {"Iron Ingot": 15, "Explosive": 10}, [
+										"MissileLauncher"], 200, "Rare", self.Rec_Ref, self.craft_log)
 
 		# Weapons:
 		if True:
 			self.Arm = self.Weapon("Arm", None, "Range", 1,
-								90, None, 2, False, "Common", "swing", "swung", self.Rec_Ref)
+								90, None, 2, False, "Common", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.Bow = self.Weapon(
-				"Bow", {"Wood": 8, "Vine": 1}, "Range", 1.25, 60, None, 3, False, "Common", "shoot", "shot", self.Rec_Ref)
+				"Bow", {"Wood": 8, "Vine": 1}, "Range", 1.25, 60, None, 3, False, "Common", "shoot", "shot", self.Rec_Ref, self.craft_log)
 			self.Crossbow = self.Weapon(
-				"Crossbow", {"Wood": 10, "Vine": 2}, "Range", 1.25, 60, None, 3, True, "Common", "fire", "fires", self.Rec_Ref)
+				"Crossbow", {"Wood": 10, "Vine": 2}, "Range", 1.25, 60, None, 3, True, "Common", "fire", "fires", self.Rec_Ref, self.craft_log)
 			self.CombatBucket = self.Weapon("Combat Bucket", {
-											"IronIngot: 12"}, "Range", 1.75, 100, None, 0, False, "Uncommon", "swing", "swung", self.Rec_Ref)
+											"Iron Ingot": 12}, "Range", 1.75, 100, None, 0, False, "Uncommon", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.Slingshot = self.Weapon(
-				"Slingshot", {"Wood": 8, "Vine": 1}, "Range", 0.75, 90, None, 1, False, "Common", "fire", "fired", self.Rec_Ref)
+				"Slingshot", {"Wood": 8, "Vine": 1}, "Range", 0.75, 90, None, 1, False, "Common", "fire", "fired", self.Rec_Ref, self.craft_log)
 			self.Cannon = self.Weapon("Cannon", {
-									"Iron": 1, "Wood": 200, "Explosive": 2}, "Range", 10, 100, None, 1, False, "Uncommon", "fire", "fired", self.Rec_Ref)
+									"Iron Ingot": 1, "Wood": 200, "Explosive": 2}, "Range", 10, 100, None, 1, False, "Uncommon", "fire", "fired", self.Rec_Ref, self.craft_log)
 			self.RocketLauncher = self.Weapon("Rocket Launcher", {
-											"Iron": 20, "Stone": 185, "Wood": 15, "Explosive": 6}, "Range", 25, 100, None, 6, True, "Rare", "fire", "fired", self.Rec_Ref)
+											"Iron Ingot": 20, "Stone": 185, "Wood": 15, "Explosive": 6}, "Range", 25, 100, None, 6, True, "Rare", "fire", "fired", self.Rec_Ref, self.craft_log)
 			self.MissileLauncher = self.Weapon("Missile Launcher", {
-											"Iron": 50, "Stone": 200, "Wood": 50, "Explosive": 8}, "Range", 40, 100, None, 8, True, "Legendary", "fire", "fired", self.Rec_Ref)
+											"Iron Ingot": 50, "Stone": 200, "Wood": 50, "Explosive": 8}, "Range", 40, 100, None, 8, True, "Legendary", "fire", "fired", self.Rec_Ref, self.craft_log)
 			self.Fists = self.Weapon("Fists", None, "Melee", 0.5,
-									100, 5, 0, None, "Common", "punch", "punched", self.Rec_Ref)
+									100, 5, 0, None, "Common", "punch", "punched", self.Rec_Ref, self.craft_log)
 			self.BoneBlade = self.Weapon(
-				"Bone Blade", {"Bone": 3}, "Melee", 1.25, 90, 10, 0, None, "Common", "swing", "swung", self.Rec_Ref)
+				"Bone Blade", {"Bone": 3}, "Melee", 1.25, 90, 10, 0, None, "Common", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.BoneStriker = self.Weapon(
-				"Bone Striker", {"Bone": 8}, "Melee", 1.25, 90, 25, 0, None, "Uncommon", "strike", "struck", self.Rec_Ref)
+				"Bone Striker", {"Bone": 8}, "Melee", 1.25, 90, 25, 0, None, "Uncommon", "strike", "struck", self.Rec_Ref, self.craft_log)
 			self.WoodenSword = self.Weapon(
-				"Wooden Sword", {"Wood": 8}, "Melee", 1, 80, 17, 0, None, "Common", "swing", "swung", self.Rec_Ref)
+				"Wooden Sword", {"Wood": 8}, "Melee", 1, 80, 17, 0, None, "Common", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.StoneSword = self.Weapon(
-				"Stone Sword", {"Stone": 10, "Wood": 3}, "Melee", 1, 80, 20, 0, None, "Common", "swing", "swung", self.Rec_Ref)
+				"Stone Sword", {"Stone": 10, "Wood": 3}, "Melee", 1, 80, 20, 0, None, "Common", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.IronSword = self.Weapon("Iron Sword", {
-										"IronIngot": 10, "Wood": 3}, "Melee", 1, 80, 23, 0, None, "Uncommon", "swing", "swung", self.Rec_Ref)
+										"Iron Ingot": 10, "Wood": 3}, "Melee", 1, 80, 23, 0, None, "Uncommon", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.DiamondSword = self.Weapon(
-				"Diamond Sword", {"Diamond": 10, "Wood": 3}, "Melee", 1, 80, 26, 0, None, "Rare", "swing", "swung", self.Rec_Ref)
+				"Diamond Sword", {"Diamond": 10, "Wood": 3}, "Melee", 1, 80, 26, 0, None, "Rare", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.WoodenAxe = self.Weapon(
-				"Wooden Axe", {"Wood": 9}, "Melee", 1.5, 70, 26, 0, None, "Common", "swing", "swung", self.Rec_Ref)
+				"Wooden Axe", {"Wood": 9}, "Melee", 1.5, 70, 26, 0, None, "Common", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.StoneAxe = self.Weapon(
-				"Stone Axe", {"Stone": 10, "Wood": 4}, "Melee", 1.5, 70, 30, 0, None, "Common", "swing", "swung", self.Rec_Ref)
+				"Stone Axe", {"Stone": 10, "Wood": 4}, "Melee", 1.5, 70, 30, 0, None, "Common", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.IronAxe = self.Weapon("Iron Axe", {
-									"IronIngot": 10, "Wood": 4}, "Melee", 1.5, 70, 34, 0, None, "Uncommon", "swing", "swung", self.Rec_Ref)
+									"Iron Ingot": 10, "Wood": 4}, "Melee", 1.5, 70, 34, 0, None, "Uncommon", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.DiamondAxe = self.Weapon(
-				"Diamond Axe", {"Diamond": 10, "Wood": 4}, "Melee", 1.5, 70, 38, 0, None, "Rare", "swing", "swung", self.Rec_Ref)
+				"Diamond Axe", {"Diamond": 10, "Wood": 4}, "Melee", 1.5, 70, 38, 0, None, "Rare", "swing", "swung", self.Rec_Ref, self.craft_log)
 			self.WoodenSpear = self.Weapon(
-				"Wooden Spear", {"Wood": 10}, "Melee", 1.75, 60, 30, 1, None, "Common", "throw", "threw", self.Rec_Ref)
+				"Wooden Spear", {"Wood": 10}, "Melee", 1.75, 60, 30, 1, None, "Common", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.StoneSpear = self.Weapon(
-				"Stone Spear", {"Stone": 10, "Wood": 5}, "Melee", 1.75, 60, 35, 1, None, "Common", "throw", "threw", self.Rec_Ref)
+				"Stone Spear", {"Stone": 10, "Wood": 5}, "Melee", 1.75, 60, 35, 1, None, "Common", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.IronSpear = self.Weapon("Iron Spear", {
-										"IronIngot": 10, "Wood": 5}, "Melee", 1.75, 60, 40, 1, None, "Uncommon", "throw", "threw", self.Rec_Ref)
+										"Iron Ingot": 10, "Wood": 5}, "Melee", 1.75, 60, 40, 1, None, "Uncommon", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.DiamondSpear = self.Weapon("Diamond Spear", {
-											"Diamond": 10, "Wood": 5}, "Melee", 1.75, 60, 45, 1, None, "Rare", "throw", "threw", self.Rec_Ref)
+											"Diamond": 10, "Wood": 5}, "Melee", 1.75, 60, 45, 1, None, "Rare", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.WoodenBoomerang = self.Weapon(
-				"Wooden Boomerang", {"Wood": 12}, "Melee", 3, 90, 40, 2, None, "Common", "throw", "threw", self.Rec_Ref)
+				"Wooden Boomerang", {"Wood": 12}, "Melee", 3, 90, 40, 2, None, "Common", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.StoneBoomerang = self.Weapon("Stone Boomerang", {
-											"Stone": 10, "Wood": 6}, "Melee", 3, 90, 50, 2, None, "Common", "throw", "threw", self.Rec_Ref)
+											"Stone": 10, "Wood": 6}, "Melee", 3, 90, 50, 2, None, "Common", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.IronBoomerang = self.Weapon("Iron Boomerang", {
-											"IronIngot": 10, "Wood": 6}, "Melee", 3, 90, 60, 2, None, "Uncommon", "throw", "threw", self.Rec_Ref)
+											"Iron Ingot": 10, "Wood": 6}, "Melee", 3, 90, 60, 2, None, "Uncommon", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.DiamondBoomerang = self.Weapon("Diamond Boomerang", {
-												"Diamond": 10, "Wood": 6}, "Melee", 3, 90, 70, 2, None, "Rare", "throw", "threw", self.Rec_Ref)
+												"Diamond": 10, "Wood": 6}, "Melee", 3, 90, 70, 2, None, "Rare", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.Bomb = self.Weapon("Bomb", {
-									"Stone": 25, "Wood": 25, "Explosive": 5}, "Melee", 15, 100, 100, 0, None, "Common", "explode", "exploded", self.Rec_Ref, expendable=True)
+									"Stone": 25, "Wood": 25, "Explosive": 5}, "Melee", 15, 100, 100, 0, None, "Common", "explode", "exploded", self.Rec_Ref, self.craft_log, expendable=True)
 			self.Grenade = self.Weapon("Grenade", {
-									"Stone": 4, "Wood": 4, "Explosive": 2}, "Melee", 8, 100, 75, 0, None, "Common", "throw", "threw", self.Rec_Ref)
+									"Stone": 4, "Wood": 4, "Explosive": 2}, "Melee", 8, 100, 75, 0, None, "Common", "throw", "threw", self.Rec_Ref, self.craft_log)
 			self.Dynamite = self.Weapon(
-				"Dynamite", {"Explosive": 1}, "Melee", 1, 100, 50, None, False, "Common", "throw", "threw", self.Rec_Ref)
+				"Dynamite", {"Explosive": 1}, "Melee", 1, 100, 50, None, False, "Common", "throw", "threw", self.Rec_Ref, self.craft_log)
 
 		# Player:
 		self.Player = self.Character(None, 0, [], [], [[time() - COLLECT_DELAY for square in range(51)]
@@ -276,12 +277,6 @@ class Game:
 			print("Welcome back,", self.Player.name + "!")
 		eval(PRINT_SEPARATER)
 
-	def save(self):
-		if self.Player.name == None:
-			self.filesystem.save({"inventory": self.Player.inventory})
-		else:
-			self.filesystem.save({"inventory": self.Player.inventory, "plyrinfo": {"name": self.Player.name}})
-
 	def load_map(self):
 		print("Loading map")
 
@@ -347,6 +342,13 @@ class Game:
 		# Spawn stuff
 		pass
 
+	def catalog(self):
+		for citem in self.craft_log.keys():
+			if self.craft_log[citem] != None:
+				print(citem.name + ":")
+				for req in self.craft_log[citem].keys():
+					print(" ", req, "-", self.craft_log[citem][req])
+
 	### COMMAND FUNCTIONS ###
 
 	def help(self):
@@ -369,7 +371,7 @@ class Game:
 				self.Player.describe_spawnpoint(self)
 				self.run_game()
 
-	def resume():
+	def resume(self):
 		print("Game resumed.")
 		self.run_game()
 
@@ -436,6 +438,12 @@ class Game:
 
 		print("Type 'help' for the command list.")
 		self.command_input()
+	
+	def save(self):
+		if self.Player.name == None:
+			self.filesystem.save({"inventory": self.Player.inventory})
+		else:
+			self.filesystem.save({"inventory": self.Player.inventory, "plyrinfo": {"name": self.Player.name}})
 
 
 if __name__ == "__main__":

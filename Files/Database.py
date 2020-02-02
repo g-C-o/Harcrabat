@@ -39,7 +39,8 @@ COMMANDS = {
     "exit": "Exit the program",
     "start": "Start the game",
     "controls": "View the controls",
-    "save": "Save the game"
+    "save": "Save the game",
+    "catalog": "View craft catalog"
 }
 
 COMMANDS_IN_GAME = {
@@ -48,7 +49,8 @@ COMMANDS_IN_GAME = {
     "start": "Start the game",
     "controls": "View the controls",
     "save": "Save the game",
-    "resume": "Resume the game"
+    "resume": "Resume the game",
+    "catalog": "View craft catalog"
 }
 
 KEY_BINDINGS = {
