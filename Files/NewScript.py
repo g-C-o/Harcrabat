@@ -353,14 +353,15 @@ class Game:
 		[print(command + ": " + COMMANDS[command]) for command in COMMANDS]
 
 	def start(self):
-		if !self.started:
+		if not self.started:
 			self.create_player()
 			myMap, biome_map = self.load_map()
 			eval(PRINT_SEPARATER)
 			self.Player.describe_spawnpoint(self)
+			self.started = True
 			self.run_game()
 		else:
-			cont = input("Are you sure you want to continue? This will override your previous map. (yes, no)")
+			cont = input("Are you sure you want to continue? This will override your previous map. (yes, no): ")
 			if "y" in cont.lower():
 				self.create_player()
 				myMap, biome_map = self.load_map()
@@ -389,7 +390,7 @@ class Game:
 
 	def command_input(self):
 		while True:
-			if !self.started:
+			if not self.started:
 				eval(PRINT_SEPARATER)
 				command = (input("| ")).lower()
 				eval(PRINT_SEPARATER)
@@ -414,8 +415,6 @@ class Game:
 
 	def startup(self):
 		init()
-
-		self.started = True
   
 		# Import player save data
 		print("Loading save data...")

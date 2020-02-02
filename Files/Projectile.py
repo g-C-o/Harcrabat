@@ -3,23 +3,9 @@ Projectile.py
 NewScript
 """
 
+from Weapon import Weapon
 
-class Projectile:
+class Projectile(Weapon):
     def __init__(self, name, recipe, launcher, damage, rarity, reference):
-        self.name = name
-        self.recipe = recipe
-        self.damage = damage
+        super().__init__(name, recipe, "Projectile", None, None, damage, None, False, rarity, "fire", "fired", reference, expendable=True)
         self.launcher = launcher
-        self.rarity = rarity
-        self.is_weapon = False
-
-        # Plural:
-        if name[-1] in ["s", "x", "z"] or name[-2:] in ["ss", "sh", "ch"]:
-            self.plural = name + "es"
-        elif name[-1] == "y":
-            self.plural = name[:-1] + "ies"
-        else:
-            self.plural = name + "s"
-
-        reference[self.name] = self
-        reference[self.plural] = self

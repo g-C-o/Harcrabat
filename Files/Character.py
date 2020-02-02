@@ -45,6 +45,10 @@ class Character:
 
 		# Check for ingredients:
 		# print(desired_item_recipe)
+		if desired_item_recipe == None:
+			print("You cannot craft this item.")
+			return
+			
 		for item in desired_item_recipe:
 			item_obj = eval("game." + item)
 			amount = desired_item_recipe[item]
