@@ -52,7 +52,7 @@ KEY_BINDINGS = {
     b"q": ("self.Player.describe_surroundings()", "Give detailed location information"),
     b"e": ("self.Player.look(self)", "Reveal the square ahead"),
     b"h": ("self.Player.list_inv()", "View your inventory"),
-    b"`": ("self.command_input()", "Pause game"),
+    b"`": ("self.command_input_in_game()", "Pause game"),
     b"l": ("self.Player.craft(self)", "Craft an item"),
     b"m": ("self.Player.moveItem()", "Move an item between your inventory and hotbar.")
 }

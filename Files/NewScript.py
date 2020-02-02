@@ -40,6 +40,7 @@ class Game:
 		self.Environment = Environment
 		self.Weapon = Weapon
 		self.Projectile = Projectile
+		self.started = False
 
 		# Resources:
 		if True:
@@ -334,8 +335,11 @@ class Game:
 			key_input = msvcrt.getch()
 
 			# Respond to keypress:
-			if key_input in KEY_BINDINGS:
-				eval(KEY_BINDINGS[key_input][0])
+			try:
+				if key_input in KEY_BINDINGS:
+					eval(KEY_BINDINGS[key_input][0])
+			except Exception:
+				return
 
 	def update_game(self):
 		# Update health and energy
@@ -364,21 +368,32 @@ class Game:
 				letter = "SPACE"
 			else:
 				letter = key.decode("utf-8")
-			print(letter + ": " + KEY_BINDINGS[key][1])
+			if letter not in [str(_) for _ in range(10)]:
+				print(letter + ": " + KEY_BINDINGS[key][1])
+		print("1-9: Switch hotbar slots")
 
 	### MANAGER FUNCTIONS ###
 
 	def command_input(self):
-		eval(PRINT_SEPARATER)
-		command = (input("| ")).lower()
-		eval(PRINT_SEPARATER)
-		if command in COMMANDS:
-			eval("self." + command + "()")
-		else:
-			print("Invalid Command")
+		while True:
+			eval(PRINT_SEPARATER)
+			command = (input("| ")).lower()
+			eval(PRINT_SEPARATER)
+			if command in COMMANDS:
+				eval("self." + command + "()")
+			else:
+				print("Invalid Command")
+
+	def command_input_in_game(self):
+		try:
+			raise Exception
+		except Exception:
+			raise
 
 	def startup(self):
 		init()
+
+		self.started = True
   
 		# Import player save data
 		print("Loading save data...")
@@ -399,8 +414,7 @@ class Game:
 				self.Player.set_name(data["plyrinfo"]["name"])
 
 		print("Type 'help' for the command list.")
-		while True:
-			self.command_input()
+		self.command_input()
 
 
 if __name__ == "__main__":
