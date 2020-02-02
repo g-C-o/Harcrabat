@@ -7,6 +7,7 @@ from Database import MOVE_DELAY, COLLECT_DELAY, PRINT_COLORS
 from time import time
 from colorama import Style
 from ColPrint import colprint
+import operator
 
 
 class Character:
@@ -264,6 +265,8 @@ class Character:
 										print("\t" + " " + str(slot))"""
 
 		# New Print Style
+		self.inventory = dict(sorted(self.inventory.items(), key=operator.itemgetter(1),reverse=True))
+
 		invList = []
 		for Resource in self.inventory.keys():
 			if self.inventory[Resource] == 1:
