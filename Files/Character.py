@@ -182,7 +182,7 @@ class Character:
 			self.hand_item.attack(None)
 			if self.hand_item.expendable:
 				self.hand_item = None
-				self.items[hand_item_slot] = None
+				self.items[self.hand_item_slot] = None
 
 	def moveItem(self):
 		while True:
