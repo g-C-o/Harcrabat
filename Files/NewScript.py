@@ -287,7 +287,7 @@ class Game:
 
 		## Preload map:
 		print("\tCreating Seed")
-		map = [[None 
+		myMap = [[None 
 				if col_index in [0,52]
 				or row_index in [0,52]
 				else choices(("Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"))[0]
@@ -297,24 +297,24 @@ class Game:
 		## Choose Environments:
 		print("\tGenerating Chunks")
 		for rep in range(ENV_CLEANUP_FACTOR):
-			map = [[None
+			myMap = [[None
 					if col_index in [0,52]
 					or row_index in [0,52]
-					else Environment.choose([map[row_index-1][col_index-1], map[row_index-1][col_index], map[row_index-1][col_index+1], map[row_index][col_index-1], map[row_index][col_index+1], map[row_index+1][col_index-1], map[row_index+1][col_index], map[row_index+1][col_index+1]])
-				for col_index in range(len(map[row_index]))]
-				for row_index in range(len(map))]
-		map = [[Env for Env in row[1:-1]] for row in map[1:-1]]
+					else Environment.choose([myMap[row_index-1][col_index-1], myMap[row_index-1][col_index], myMap[row_index-1][col_index+1], myMap[row_index][col_index-1], myMap[row_index][col_index+1], myMap[row_index+1][col_index-1], myMap[row_index+1][col_index], myMap[row_index+1][col_index+1]])
+				for col_index in range(len(myMap[row_index]))]
+				for row_index in range(len(myMap))]
+		myMap = [[Env for Env in row[1:-1]] for row in myMap[1:-1]]
 
 		## Choose Biomes:
 		print("\tGenerating Terrain")
 		biome_map = [[self.Biome.choose(self, Env)
 			for Env in row]
-			for row in map]
+			for row in myMap]
 		
-		self.Player.map = map
+		self.Player.map = myMap
 		self.Player.biome_map = biome_map
 
-		return map, biome_map
+		return myMap, biome_map
 
 	def switch_item(self, item_number):
 		if self.Player.hand_item_slot != item_number:
@@ -353,10 +353,23 @@ class Game:
 		[print(command + ": " + COMMANDS[command]) for command in COMMANDS]
 
 	def start(self):
-		self.create_player()
-		map, biome_map = self.load_map()
-		eval(PRINT_SEPARATER)
-		self.Player.describe_spawnpoint(self)
+		if !self.started:
+			self.create_player()
+			myMap, biome_map = self.load_map()
+			eval(PRINT_SEPARATER)
+			self.Player.describe_spawnpoint(self)
+			self.run_game()
+		else:
+			cont = input("Are you sure you want to continue? This will override your previous map. (yes, no)")
+			if "y" in cont.lower():
+				self.create_player()
+				myMap, biome_map = self.load_map()
+				eval(PRINT_SEPARATER)
+				self.Player.describe_spawnpoint(self)
+				self.run_game()
+
+	def resume():
+		print("Game resumed.")
 		self.run_game()
 
 	def exit(self):
@@ -376,13 +389,22 @@ class Game:
 
 	def command_input(self):
 		while True:
-			eval(PRINT_SEPARATER)
-			command = (input("| ")).lower()
-			eval(PRINT_SEPARATER)
-			if command in COMMANDS:
-				eval("self." + command + "()")
+			if !self.started:
+				eval(PRINT_SEPARATER)
+				command = (input("| ")).lower()
+				eval(PRINT_SEPARATER)
+				if command in COMMANDS:
+					eval("self." + command + "()")
+				else:
+					print("Invalid Command")
 			else:
-				print("Invalid Command")
+				eval(PRINT_SEPARATER)
+				command = (input("| ")).lower()
+				eval(PRINT_SEPARATER)
+				if command in COMMANDS_IN_GAME:
+					eval("self." + command + "()")
+				else:
+					print("Invalid Command")
 
 	def command_input_in_game(self):
 		try:

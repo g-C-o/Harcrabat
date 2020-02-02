@@ -41,6 +41,16 @@ COMMANDS = {
     "controls": "View the controls",
     "save": "Save the game"
 }
+
+COMMANDS_IN_GAME = {
+    "help": "View the command list",
+    "exit": "Exit the program",
+    "start": "Start the game",
+    "controls": "View the controls",
+    "save": "Save the game",
+    "resume": "Resume the game"
+}
+
 KEY_BINDINGS = {
     b"w": ("self.Player.turn('North')", "Turn to the north"),
     b"s": ("self.Player.turn('South')", "Turn to the south"),
