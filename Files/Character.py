@@ -270,6 +270,7 @@ class Character:
 				resource_name = Resource.name
 			else:
 				resource_name = Resource.plural
+			#print(len(PRINT_COLORS["Reset"]))
 			invList.append(str(self.inventory[Resource]) + " " +
 						   PRINT_COLORS[Resource.rarity] + resource_name + PRINT_COLORS["Reset"])
 		if len(invList) == 0:
