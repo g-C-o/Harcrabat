@@ -11,7 +11,7 @@ from Biome import Biome
 from Character import Character
 from Environment import Environment
 from Item import Item
-from Mob import Mob
+from Mob import *
 from Resource import Resource
 from Weapon import Weapon
 from Projectile import Projectile
@@ -182,8 +182,8 @@ class Game:
 		self.Player = self.Character(None, 0, [], [], [[time() - COLLECT_DELAY for square in range(51)]
 													   for row in range(50)], 100, 100, {}, [self.Fists], None, 0, None, [26, 26], "North", time(), self.Rec_Ref)
   
-		# Mobs:
-		if True:
+		# Mobs (Definitions have been moved to Mob.py):
+		"""if True:
 			self.Fighter = self.Mob()
 			self.Predator = self.Mob()
 			self.Goblin = self.Mob()
@@ -198,7 +198,7 @@ class Game:
 			self.Skeleton = self.Mob()
 			self.Hunter = self.Mob()
 			self.Assasin = self.Mob()
-			self.Ghoul = self.Mob()
+			self.Ghoul = self.Mob()"""
 
 		# Animals:
 		if True:
