@@ -6,7 +6,7 @@ Optimized for python 3.6 & 3.7
 """
 
 from Database import *
-from Animal import Animal
+from Animal import *
 from Biome import Biome
 from Character import Character
 from Environment import Environment
@@ -183,7 +183,7 @@ class Game:
 													   for row in range(50)], 100, 100, {}, [self.Fists], None, 0, None, [26, 26], "North", time(), self.Rec_Ref)
   
 		# Mobs (Definitions have been moved to Mob.py):
-		"""if True:
+		if False:
 			self.Fighter = self.Mob()
 			self.Predator = self.Mob()
 			self.Goblin = self.Mob()
@@ -198,10 +198,10 @@ class Game:
 			self.Skeleton = self.Mob()
 			self.Hunter = self.Mob()
 			self.Assasin = self.Mob()
-			self.Ghoul = self.Mob()"""
+			self.Ghoul = self.Mob()
 
-		# Animals:
-		if True:
+		# Animals (Definitions have been moved to Animal.py):
+		if False:
 			self.Chicken = self.Animal()
 			self.Rabbit = self.Animal()
 			self.Cow = self.Animal()
