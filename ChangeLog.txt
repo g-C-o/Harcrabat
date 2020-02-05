@@ -4,3 +4,4 @@ v0.2 - Code organized and combined
 v0.3 - Command input menu and operation structure created
 v0.4 - Basic gameplay functionality added
 v0.5 - Full code reorganization and reformatting
+v0.6 - Extensive additional reorganization

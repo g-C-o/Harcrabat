@@ -9,10 +9,10 @@ from colorama import Style
 
 
 class Character:
-	def __init__(self, name, score, map, biome_map, collect_time_map,  health, energy, inventory, hand_item, armor, location, orientation, last_move_time):
+	def __init__(self, name, score, game_map, biome_map, collect_time_map, health, energy, inventory, hand_item, armor, location, orientation, last_move_time):
 		self.name = name
 		self.score = score
-		self.map = map
+		self.game_map = game_map
 		self.biome_map = biome_map
 		self.collect_time_map = collect_time_map
 		self.health = health
@@ -25,26 +25,30 @@ class Character:
 		self.last_move_time = last_move_time
 		
 	
-	def craft(self, game):
+	def craft(self, items):
 		## Check for item:
 		desired_item = input("Craft: ")
-		try: desired_item_recipe = eval ("game." + desired_item + ".recipe")
-		except AttributeError:
+		for item in items:
+			if item.name == desired_item:
+				desired_item_recipe = item.recipe
+				desired_item_obj = item
+		try: desired_item_recipe
+		except NameError:
 			print ("That item does not exist")
-			return
-		can_craft_item = True
+			return #### return print function?
 		
 		## Check for ingredients:
-		for item in desired_item_recipe:
-			item_obj = eval("game." + item)
-			amount = desired_item_recipe[item]
-			if item_obj not in self.inventory or self.inventory[item_obj] < amount:
+		for req_item_name in desired_item_recipe:
+			for item in items:
+				if req_item_name == item.name:
+					req_item = item
+			amount = desired_item_recipe[req_item_name]
+			if req_item not in self.inventory or self.inventory[req_item] < amount:
 				print ("You cannot craft this item")
-				return
-			else: self.inventory [item_obj] -= amount
+				return #### Same as above
+			else: self.inventory [req_item] -= amount
 		
 		## Craft item:
-		desired_item_obj = eval("game." + desired_item)
 		try: self.inventory [desired_item_obj] += 1
 		except KeyError: self.inventory [desired_item_obj] = 1
 		print ("You crafted 1", desired_item_obj.name)
@@ -53,38 +57,42 @@ class Character:
 		
 	
 	
-	def look(self, game):
+	def look(self):
+		## Find Biome ahead
 		try:
 			if self.orientation  == "North":
-				biome_ahead = self.biome_map [self.location[0]-2][self.location[1]-1].name 
+				biome_ahead = self.biome_map [self.location[0]-1][self.location[1]] 
 			elif self.orientation  == "South":
-				biome_ahead = self.biome_map [self.location[0]][self.location[1]-1].name 
+				biome_ahead = self.biome_map [self.location[0]+1][self.location[1]]
 			elif self.orientation  == "West":
-				biome_ahead = self.biome_map [self.location[0]-1][self.location[1]-2].name 
+				biome_ahead = self.biome_map [self.location[0]][self.location[1]-1] 
 			elif self.orientation  == "East":
-				biome_ahead = self.biome_map [self.location[0]-1][self.location[1]].name 
+				biome_ahead = self.biome_map [self.location[0]][self.location[1]+1] 
+			print (biome_ahead.name) ####
 			for Index, Coord in enumerate(self.location):
 				if Coord < 0 or Coord > 50:
 					raise IndexError
-			article = eval("game." + biome_ahead).preposition[5:]
-			print("You look %s and see %s %s." %(self.orientation, article, biome_ahead))			
+					
+			## Print Biome ahead
+			article = biome_ahead.preposition[5:]
+			print("You look %s and see %s %s." %(self.orientation, article, biome_ahead.name))			
 		except IndexError:
 			print("You see the edge of the world.")
 
 		
-	def describe_spawnpoint(self, game):
-		current_biome = self.biome_map[26][26].name
-		alt_preposition = eval("game." + current_biome).preposition[:2] + eval("game." + current_biome).preposition[4:]
-		print("You spawn %s %s. You are facing North." % (alt_preposition, current_biome))
+	def describe_spawnpoint(self):
+		current_biome = self.biome_map[26][26]
+		alt_preposition = current_biome.preposition[:2] + current_biome.preposition[4:]
+		print("You spawn %s %s%s%s. You are facing North." % (alt_preposition, PRINT_COLORS[current_biome.rarity], current_biome.name, PRINT_COLORS["Reset"]))
 
 
 	def describe_surroundings(self):
-		current_biome = self.biome_map [self.location[0]-1][self.location[1]-1].name
-		current_env = self.map [self.location[0]-1][self.location[1]-1]
+		current_biome = self.biome_map [self.location[0]][self.location[1]] # Is an object
+		current_env = self.game_map [self.location[0]][self.location[1]] # Is a string
 		print("Current Location:")
 		print("\tCoordinates: " + str(self.location))
 		print("\tEnvironment: " + current_env)
-		print("\tBiome: " + current_biome)
+		print("\tBiome: " + PRINT_COLORS[current_biome.rarity] + current_biome.name + PRINT_COLORS["Reset"])
 
 	
 	def set_name(self, new_name):
@@ -98,7 +106,7 @@ class Character:
 		self.armor = new_armor
 
 	
-	def move(self, game):
+	def move(self):
 		if time() - self.last_move_time < MOVE_DELAY: return
 		try:
 			if self.orientation  == "North":
@@ -116,9 +124,10 @@ class Character:
 					self.location [index] = 50
 				else: continue
 				raise IndexError
-			current_biome = self.biome_map [self.location[0]-1][self.location[1]-1].name
+			current_biome = self.biome_map [self.location[0]][self.location[1]]
 			self.last_move_time = time()
-			print("You move %s %s %s." %(self.orientation, eval("game." + current_biome).preposition, current_biome))			
+			print("You move %s %s" %(self.orientation, current_biome.preposition), end=" ")
+			print (PRINT_COLORS[current_biome.rarity] + current_biome.name + PRINT_COLORS["Reset"], end=".\n")
 		except IndexError:
 			print("You have reached the edge of the world.")
 
@@ -129,9 +138,9 @@ class Character:
 
 
 	def collect(self):
-		if time() - self.collect_time_map [self.location [0]-1] [self.location [1]-1] < COLLECT_DELAY: return
-		NewResources = self.biome_map [self.location[0]-1][self.location[1]-1].gen_resources()
-		self.collect_time_map [self.location [0]-1] [self.location [1]-1] = time()
+		if time() - self.collect_time_map [self.location [0]] [self.location [1]] < COLLECT_DELAY: return
+		NewResources = self.biome_map [self.location[0]][self.location[1]].gen_resources()
+		self.collect_time_map [self.location [0]] [self.location [1]] = time()
 		print("You harvested new resources:")
 		displayed_resources = []
 		for NewResource in NewResources:

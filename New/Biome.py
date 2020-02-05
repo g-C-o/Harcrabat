@@ -8,7 +8,7 @@ from random import choices
 
 		
 class Biome:
-	def __init__(self, name, preposition, primary_resource, secondary_resource, tertiary_resource, primary_mob, secondary_mob, tertiary_mob, animal, primary_loot, secondary_loot):
+	def __init__(self, name, preposition, primary_resource, secondary_resource, tertiary_resource, primary_mob, secondary_mob, tertiary_mob, animal, primary_loot, secondary_loot, rarity):
 		self.name = name
 		self.preposition = preposition
 		self.pri_R = primary_resource
@@ -20,13 +20,7 @@ class Biome:
 		self.animal = animal
 		self.pri_L = primary_loot
 		self.sec_L = secondary_loot
-
-
-	def choose(game, Env):
-		EnvClass = eval("game." + Env)
-		BiomeChoice = choices([EnvClass.pri_B, EnvClass.sec_B, EnvClass.ter_B, EnvClass.structure], weights=BIOME_WEIGHTS)[0]
-		return BiomeChoice
-
+		self.rarity = rarity
 
 	def gen_resources(self):
 		new_resources = choices([self.pri_R, self.sec_R, self.ter_R], weights=RESOURCE_WEIGHTS, k = HARVEST_SIZE)

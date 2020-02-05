@@ -1,3 +1,5 @@
 getch
 Image
 msvcrt
+colorama
+cryptography

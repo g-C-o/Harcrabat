@@ -25,7 +25,9 @@ PRINT_SEPARATER = "print('-----------------------------------------------')"
 ### LISTS ###
 
 
-ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"]
+ITEMS = [] #### Fill in
+#### BIOMES = []
+ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"] #### Change to object in main
 BIOME_WEIGHTS = [60, 20, 5, 1]
 RESOURCE_WEIGHTS = [60, 35, 5]
 
@@ -44,18 +46,18 @@ KEY_BINDINGS = {
 	b"s": ("self.Player.turn('South')", "Turn to the south"),
 	b"a": ("self.Player.turn('West')", "Turn to the west"),
 	b"d": ("self.Player.turn('East')", "Turn to the east"),
-	b" ": ("self.Player.move(self)", "Move forward"),
+	b" ": ("self.Player.move()", "Move forward"),
 	b"j": ("self.Player.collect()", "Collect resources"),
 	b"k": ("self.Player.attack()", "Attack with current weapon"),
 	b"q": ("self.Player.describe_surroundings()", "Give detailed location information"),
-	b"e": ("self.Player.look(self)", "Reveal the square ahead"),
+	b"e": ("self.Player.look()", "Reveal the square ahead"),
 	b"h": ("self.Player.list_inv()", "View your inventory"),
 	b"`": ("self.command_input()", "Pause game"),
-	b"l": ("self.Player.craft(self)", "Craft an item")
+	b"l": ("self.Player.craft(self.items)", "Craft an item")
 	}
 PRINT_COLORS = {
 	"Critical": Fore.RED,
-	"Urgent": Fore.YELLOW,
+	"Legendary": Fore.BLUE,
 	"Rare": Fore.CYAN,
 	"Uncommon": Fore.GREEN,
 	"Common": "",
