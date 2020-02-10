@@ -25,8 +25,7 @@ PRINT_SEPARATER = "print('-----------------------------------------------')"
 ### LISTS ###
 
 
-ITEMS = [] #### Fill in
-#### BIOMES = []
+ITEMS = ["Soil", "Wood", "Vine", "Fruit", "Rock", "Water", "Sand", "Cacti", "Iron", "Bone", "Diamond", "Stone", "Gold", "Emerald", "Quartz", "Explosive", "HarvesterArmor", "Protector", "Strawman", "Coffin", "Ladder", "MobRepellent", "BottledWave", "BottledWind", "Glider", "Binoculars", "WoodenBall", "StoneBall", "IronBall", "DiamondBall", "WoodenArrow", "StoneArrow", "IronArrow", "DiamondArrow", "SoilClump", "SandClump", "CactusClump", "WoodSpike", "StoneSpike", "IronSpike", "DiamondSpike", "CannonBall", "Rocket", "Missile", "Bow", "Crossbow", "Slingshot", "Cannon", "RocketLauncher", "MissileLauncher", "BoneBlade", "BoneStriker", "WoodenSword", "StoneSword", "IronSword", "DiamondSword", "WoodenAxe", "StoneAxe", "IronAxe", "DiamondAxe", "WoodenSpear", "StoneSpear", "IronSpear", "DiamondSpear", "WoodenBoomerang", "StoneBoomerang", "IronBoomerang", "DiamondBoomerang", "Bomb", "Grenade", "Dynamite"]
 ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"] #### Change to object in main
 BIOME_WEIGHTS = [60, 20, 5, 1]
 RESOURCE_WEIGHTS = [60, 35, 5]
@@ -53,7 +52,7 @@ KEY_BINDINGS = {
 	b"e": ("self.Player.look()", "Reveal the square ahead"),
 	b"h": ("self.Player.list_inv()", "View your inventory"),
 	b"`": ("self.command_input()", "Pause game"),
-	b"l": ("self.Player.craft(self.items)", "Craft an item")
+	b"l": ("self.Player.craft()", "Craft an item")
 	}
 PRINT_COLORS = {
 	"Critical": Fore.RED,

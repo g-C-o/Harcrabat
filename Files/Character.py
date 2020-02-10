@@ -25,10 +25,10 @@ class Character:
 		self.last_move_time = last_move_time
 		
 	
-	def craft(self, items):
+	def craft(self):
 		## Check for item:
 		desired_item = input("Craft: ")
-		for item in items:
+		for item in self.inventory:
 			if item.name == desired_item:
 				desired_item_recipe = item.recipe
 				desired_item_obj = item
@@ -38,19 +38,15 @@ class Character:
 			return #### return print function?
 		
 		## Check for ingredients:
-		for req_item_name in desired_item_recipe:
-			for item in items:
-				if req_item_name == item.name:
-					req_item = item
-			amount = desired_item_recipe[req_item_name]
-			if req_item not in self.inventory or self.inventory[req_item] < amount:
+		for req_item in desired_item_recipe:
+			amount = desired_item_recipe[req_item]
+			if self.inventory[req_item] < amount:
 				print ("You cannot craft this item")
 				return #### Same as above
 			else: self.inventory [req_item] -= amount
 		
 		## Craft item:
-		try: self.inventory [desired_item_obj] += 1
-		except KeyError: self.inventory [desired_item_obj] = 1
+		self.inventory [desired_item_obj] += 1
 		print ("You crafted 1", desired_item_obj.name)
 			
 			
@@ -68,7 +64,6 @@ class Character:
 				biome_ahead = self.biome_map [self.location[0]][self.location[1]-1] 
 			elif self.orientation  == "East":
 				biome_ahead = self.biome_map [self.location[0]][self.location[1]+1] 
-			print (biome_ahead.name) ####
 			for Index, Coord in enumerate(self.location):
 				if Coord < 0 or Coord > 50:
 					raise IndexError
@@ -162,7 +157,9 @@ class Character:
 	def list_inv(self):
 		print("Inventory:")
 		for Resource in self.inventory:
-			if self.inventory [Resource] == 1:
+			if self.inventory [Resource] == 0:
+				continue
+			elif self.inventory [Resource] == 1:
 				resource_name = Resource.name
 			else: resource_name = Resource.plural
 			print("\t" + str(self.inventory[Resource]) + " " + PRINT_COLORS[Resource.rarity] + resource_name + PRINT_COLORS["Reset"])

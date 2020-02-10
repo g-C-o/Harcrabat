@@ -28,7 +28,7 @@ class Game:
 
 	
 	def __init__(self):
-
+	
 		## Resources:
 		self.Soil = Resource("Soil Pile", "Common")
 		self.Wood = Resource("Wood Block", "Common")
@@ -53,7 +53,7 @@ class Game:
 		self.Strawman = Item("Strawman", None, "Rare")
 		self.Coffin = Item("Coffin", None, "Legendary")
 		self.Ladder = Item("Ladder", None, "Rare")
-		MobRepellant = Item("Mob Repellent", None, "Legendary")
+		self.MobRepellent = Item("Mob Repellent", None, "Legendary")
 		self.BottledWave = Item("Bottled Wave", None, "Rare")
 		self.BottledWind = Item("Bottled Wind", None, "Legendary")
 		self.Glider = Item("Glider", None, "Rare")
@@ -92,7 +92,7 @@ class Game:
 		self.Fists = Weapon("Fists", None, "Melee", 0.5, 100, 5, 0, None, "Common")
 		self.BoneBlade = Weapon("Bone Blade", {"Bone": 3}, "Melee", 1.25, 90, 10, 0, None, "Common")
 		self.BoneStriker = Weapon("Bone Striker", {"Bone": 8}, "Melee", 1.25, 90, 25, 0, None, "Uncommon")
-		self.WoodenSword = Weapon("Wooden Sword", {"Wood": 8}, "Melee", 1, 80, 17, 0, None, "Common")
+		self.WoodenSword = Weapon("Wooden Sword", {self.Wood: 8}, "Melee", 1, 80, 17, 0, None, "Common")
 		self.StoneSword = Weapon("Stone Sword", {"Stone": 10, "Wood": 3},"Melee", 1, 80, 20, 0, None, "Common")
 		self.IronSword = Weapon("Iron Sword", {"IronIngot": 10, "Wood": 3}, "Melee", 1, 80, 23, 0, None, "Uncommon")
 		self.DiamondSword = Weapon("Diamond Sword", {"Diamond": 10, "Wood": 3}, "Melee", 1, 80, 26, 0, None, "Rare")
@@ -148,7 +148,7 @@ class Game:
 		self.Prairie = Biome("Prairie", "into a", self.Soil, self.Water, self.Water, self.Raider, self.Raider, self.Raider, self.Cow, None, None, "Common")
 		self.Meadow = Biome("Meadow", "into a", self.Soil, self.Water, self.Diamond, self.Raider, self.Raider, self.Minion, self.Cow, None, None, "Uncommon")
 		self.Swamp = Biome("Swamp", "into a", self.Soil, self.Vine, self.Diamond, self.Raider, self.Minion, self.Raider, self.Cow, None, None, "Rare")
-		self.Fort = Biome("Fort", "into a", self.Soil, self.Diamond, self.Quartz, self.Raider, self.Minion, self.Zombie, self.Cow, self.Ladder, MobRepellant, "Legendary")
+		self.Fort = Biome("Fort", "into a", self.Soil, self.Diamond, self.Quartz, self.Raider, self.Minion, self.Zombie, self.Cow, self.Ladder, self.MobRepellent, "Legendary")
 		self.Lake = Biome("Lake", "into a", self.Water, self.Sand, self.Water, self.Defender, self.Defender, self.Defender, self.Fish, None, None, "Common")
 		self.Beach = Biome("Beach", "into a", self.Water, self.Sand, self.Gold, self.Defender, self.Defender, self.Guardian, self.Fish, None, None, "Uncommon")
 		self.Island = Biome("Island", "onto an", self.Water, self.Bone, self.Gold, self.Defender, self.Guardian, self.Defender, self.Fish, None, None, "Rare")
@@ -168,10 +168,12 @@ class Game:
 		## Player:	
 		self.Player = Character("Player 1", 0, [], [], [[time() - COLLECT_DELAY for square in range(51)] for row in range(51)], 100, 100, {}, None, None, [26,26], "North", time())
 		
-		## Other:
-		self.items = [eval("self." + item) for item in ITEMS] #### Consider making this the inventory (0)
-		#### self.biomes = [eval("self." + item) for item in BIOMES]
-		
+		## Misc:
+		self.items = []
+		for item in ITEMS:
+			item_obj = eval("self." + item)
+			self.items.append(item_obj)
+			
 		## Startup:
 		self.startup()
 
@@ -183,6 +185,7 @@ class Game:
 		desired_name = input("Enter your name:\n| ")
 		eval(PRINT_SEPARATER)
 		self.Player.set_name(desired_name)
+		self.Player.inventory = {item: 0 for item in self.items}
 		
 	def choose_biome(self, env):
 		EnvClass = eval("self." + env)
