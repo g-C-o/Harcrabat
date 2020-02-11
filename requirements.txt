@@ -3,3 +3,4 @@ Image
 msvcrt
 colorama
 cryptography
+columnPrinter
