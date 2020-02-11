@@ -118,14 +118,14 @@ class Game:
 		self.Goblin = Mob("Goblin", 200, self.DiamondSword, 1, None, 1)
 		self.Destroyer = Mob("Destroyer", 50, self.WoodenAxe, 1, None, 3)
 		self.Annihilator = Mob("Annihilator", 50, self.IronSpear, 1, None, 2)
-		self.Troll = Mob("Troll", 200, self.DiamondSpikes, 1, None, 1) #### Slingshot
+		self.Troll = Mob("Troll", 200, self.DiamondSpike, 1, None, 1) #### Slingshot
 		self.Raider = Mob("Raider", 25, self.Fists, 3, None, 3)
 		self.Minion = Mob("Minion", 20, self.Fists, 5, None, 2)
-		self.Zombie = Mob("Zombie", 200, self.DirtBall, 3, None, 1)
+		self.Zombie = Mob("Zombie", 200, self.WoodenBall, 3, None, 1)
 		self.Defender = Mob("Defender", 100, self.BoneBlade, 1, None, 3)
 		self.Guardian = Mob("Guardian", 150, self.BoneBlade, 1, None, 2)
 		self.Skeleton = Mob("Skeleton", 200, self.BoneStriker, 1, None, 1)
-		self.Hunter = Mob("Hunter", 75, self.WoodArrow, 1, None, 3) #### Bow
+		self.Hunter = Mob("Hunter", 75, self.WoodenArrow, 1, None, 3) #### Bow
 		self.Assasin = Mob("Assassin", 100, self.IronArrow, 1, None, 2) #### Crossbow
 		self.Ghoul = Mob("Ghoul", 200, self.DiamondBoomerang, 1, None, 1)
 
@@ -173,7 +173,12 @@ class Game:
 		for item in ITEMS:
 			item_obj = eval("self." + item)
 			self.items.append(item_obj)
-			
+		
+		self.last_spawn_time = time()
+		
+		self.mob_map = [[None for square in range(51)] for row in range(51)]
+		self.initial_mobs_spawned = False
+		
 		## Startup:
 		self.startup()
 
@@ -232,7 +237,7 @@ class Game:
 		## Wait for keypress:
 		while True:
 			while not msvcrt.kbhit():
-				pass
+				self.update_game()
 				#### Update game
 			key_input = msvcrt.getch()
 			
@@ -242,10 +247,16 @@ class Game:
 
 
 	def update_game(self):
+		if not self.initial_mobs_spawned:
+			self.mob_map = Mob.spawn_initial_mobs(self.mob_map, self.Player.biome_map)
+			self.initial_mobs_spawned = True
+			self.last_spawn_time = time()
+		elif time() - self.last_spawn_time >= MOB_REPLACE_DELAY:
+			self.mob_map = Mob.replace_mobs(self.mob_map, self.Player.biome_map)
+			self.last_spawn_time = time()
 		#### Update health and energy
 		#### Regenerate resources in exhausted squares
-		#### Spawn stuff
-		pass
+		#### Spawn Animals
 
 
 	### COMMAND FUNCTIONS ###

@@ -16,7 +16,10 @@ ENV_INCONSISTENCY = 1.01
 ENV_CLUSTER_SIZE = 5
 COLLECT_DELAY = 60
 MOVE_DELAY = 5
+MOB_REPLACE_DELAY = 15
 HARVEST_SIZE = 4
+NUMBER_OF_MOBS = 50
+MOB_BATCH_SIZE = 10
 UNCOMMON_RESOURCE_THRESHOLD = 75
 RARE_RESOURCE_THRESHOLD = 16
 PRINT_SEPARATER = "print('-----------------------------------------------')"
@@ -29,6 +32,7 @@ ITEMS = ["Soil", "Wood", "Vine", "Fruit", "Rock", "Water","Sand", "Cacti", "Iron
 ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"] #### Change to object in main
 BIOME_WEIGHTS = [60, 20, 5, 1]
 RESOURCE_WEIGHTS = [60, 35, 5]
+MOB_TIER_WEIGHTS = [10, 20, 70]
 
 
 ### DICTS ###
