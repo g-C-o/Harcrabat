@@ -101,7 +101,7 @@ class Character:
 		self.armor = new_armor
 
 	
-	def move(self):
+	def move(self, mob_map):
 		if time() - self.last_move_time < MOVE_DELAY: return
 		try:
 			if self.orientation  == "North":

@@ -17,7 +17,7 @@ from Weapon import Weapon
 from Projectile import Projectile
 from random import choices
 from colorama import Fore, Back, init, Style
-from time import time
+from time import time, sleep
 import msvcrt
 
 
@@ -118,15 +118,15 @@ class Game:
 		self.Goblin = Mob("Goblin", 200, self.DiamondSword, 1, None, 1)
 		self.Destroyer = Mob("Destroyer", 50, self.WoodenAxe, 1, None, 3)
 		self.Annihilator = Mob("Annihilator", 50, self.IronSpear, 1, None, 2)
-		self.Troll = Mob("Troll", 200, self.DiamondSpike, 1, None, 1) #### Slingshot
+		self.Troll = Mob("Troll", 200, self.Slingshot, 1, None, 1) #### Slingshot
 		self.Raider = Mob("Raider", 25, self.Fists, 3, None, 3)
 		self.Minion = Mob("Minion", 20, self.Fists, 5, None, 2)
-		self.Zombie = Mob("Zombie", 200, self.WoodenBall, 3, None, 1)
+		self.Zombie = Mob("Zombie", 200, self.Arm, 3, None, 1)
 		self.Defender = Mob("Defender", 100, self.BoneBlade, 1, None, 3)
 		self.Guardian = Mob("Guardian", 150, self.BoneBlade, 1, None, 2)
 		self.Skeleton = Mob("Skeleton", 200, self.BoneStriker, 1, None, 1)
-		self.Hunter = Mob("Hunter", 75, self.WoodenArrow, 1, None, 3) #### Bow
-		self.Assasin = Mob("Assassin", 100, self.IronArrow, 1, None, 2) #### Crossbow
+		self.Hunter = Mob("Hunter", 75, self.Bow, 1, None, 3) #### Bow
+		self.Assasin = Mob("Assassin", 100, self.Crossbow, 1, None, 2) #### Crossbow
 		self.Ghoul = Mob("Ghoul", 200, self.DiamondBoomerang, 1, None, 1)
 
 		## Animals:
@@ -254,6 +254,19 @@ class Game:
 		elif time() - self.last_spawn_time >= MOB_REPLACE_DELAY:
 			self.mob_map = Mob.replace_mobs(self.mob_map, self.Player.biome_map)
 			self.last_spawn_time = time()
+		new_mob_map = Mob.move_mobs(Mob, self.mob_map, self.Player.location)
+		if new_mob_map: self.mob_map = new_mob_map
+		####print (self.mob_map[0])
+		for i, row in enumerate(self.mob_map):
+			for j, loc in enumerate(row):
+				####print ((i,j), self.Player.location)
+				if [i,j] == self.Player.location: print ("P", end="")
+				elif loc != None: print (loc.weapon.range, end="")
+				else: print ("_", end="")
+			print("")
+		print (self.mob_map[self.Player.location[0]][self.Player.location[1]])
+		print ("\n\n\n\n")
+		sleep (0.75)
 		#### Update health and energy
 		#### Regenerate resources in exhausted squares
 		#### Spawn Animals
