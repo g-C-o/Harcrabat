@@ -5,3 +5,5 @@ v0.3 - Command input menu and operation structure created
 v0.4 - Basic gameplay functionality added
 v0.5 - Full code reorganization and reformatting
 v0.6 - Extensive additional reorganization
+v0.7 - Basic file system
+v0.8 - Updates to textures, crafting, rarities, and more

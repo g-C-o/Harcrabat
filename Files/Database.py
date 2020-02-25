@@ -1,6 +1,6 @@
 """
 Database.py
-NewScript
+Harcrabat
 Contains all the data for the game
 """
 
@@ -18,9 +18,9 @@ COLLECT_DELAY = 0 #### 60
 MOVE_DELAY = 0 #### 5
 MOB_REPLACE_DELAY = 0 #### 15
 HARVEST_SIZE = 4
-NUMBER_OF_MOBS = 100 ####200
+NUMBER_OF_MOBS = 200
 MOB_BATCH_SIZE = 10
-MOB_MOVE_BATCH_SIZE = 10 
+MOB_MOVE_BATCH_SIZE = 100 
 UNCOMMON_RESOURCE_THRESHOLD = 75
 RARE_RESOURCE_THRESHOLD = 16
 PRINT_SEPARATER = "print('-----------------------------------------------')"

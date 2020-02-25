@@ -1,6 +1,6 @@
 """
 Biome.py
-NewScript
+Harcrabat
 """
 
 from Database import BIOME_WEIGHTS, RESOURCE_WEIGHTS, HARVEST_SIZE

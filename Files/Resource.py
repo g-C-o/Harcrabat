@@ -1,6 +1,6 @@
 """
 Resource.py
-NewScript
+Harcrabat
 """
 
 class Resource:

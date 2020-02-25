@@ -1,6 +1,6 @@
 """
 Character.py
-NewScript
+Harcrabat
 """
 
 from Database import MOVE_DELAY, COLLECT_DELAY, PRINT_COLORS

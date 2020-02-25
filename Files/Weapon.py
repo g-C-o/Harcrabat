@@ -1,6 +1,6 @@
 """
 Weapon.py
-NewScript
+Harcrabat
 """
 
 

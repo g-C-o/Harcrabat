@@ -1,5 +1,5 @@
 """
-NewScript Version 0.8
+Harcrabat Version 0.8
 A text-based game of collecting, crafting, and killing
 Made by Cameron White & Dallin Guisti
 Optimized for python 3.6 & 3.7
@@ -251,22 +251,23 @@ class Game:
 			self.mob_map = Mob.spawn_initial_mobs(self.mob_map, self.Player.biome_map)
 			self.initial_mobs_spawned = True
 			self.last_spawn_time = time()
-		elif time() - self.last_spawn_time >= MOB_REPLACE_DELAY:
-			self.mob_map = Mob.replace_mobs(self.mob_map, self.Player.biome_map)
-			self.last_spawn_time = time()
+		####elif time() - self.last_spawn_time >= MOB_REPLACE_DELAY:
+		####	self.mob_map = Mob.replace_mobs(self.mob_map, self.Player.biome_map)
+		####	self.last_spawn_time = time()
 		new_mob_map = Mob.move_mobs(Mob, self.mob_map, self.Player.location)
 		if new_mob_map: self.mob_map = new_mob_map
-		####print (self.mob_map[0])
 		for i, row in enumerate(self.mob_map):
 			for j, loc in enumerate(row):
-				####print ((i,j), self.Player.location)
-				if [i,j] == self.Player.location: print ("P", end="")
-				elif loc != None: print (loc.weapon.range, end="")
-				else: print ("_", end="")
+				if [i,j] == self.Player.location: print ("PP", end="")
+				elif loc != None:
+					if loc.hostile == True: sdf = "H"
+					else:
+						sdf = "N"
+					print (str(loc.weapon.range)+sdf, end="")
+				else: print ("--", end="")
 			print("")
 		print (self.mob_map[self.Player.location[0]][self.Player.location[1]])
-		print ("\n\n\n\n")
-		sleep (0.75)
+		sleep (5)
 		#### Update health and energy
 		#### Regenerate resources in exhausted squares
 		#### Spawn Animals
@@ -311,7 +312,7 @@ class Game:
 		
 	def startup(self):
 		init()
-		print("NewScript version 0.8")
+		print("Harcrabat version 0.8")
 		print("Type 'help' for the command list.")
 		while True:
 			self.command_input()
