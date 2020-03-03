@@ -56,22 +56,22 @@ class Weapon(Item):
 class Projectile(Item):
 
 
-	def __init__(self, type, recipe, rarity, speed, accuracy, damage, range):
+	def __init__(self, type, recipe, rarity, damage):
 		
 		self.condition = None
 
-		Item.__init__(*args, **kwargs)
+		Item.__init__(condition, *args, **kwargs)
 
 
 
 class Launcher(Weapon):
 	
-	def __init__(self, type, recipe, rarity, speed, accuracy, range, has_scope, condition)
+	def __init__(self, type, recipe, rarity, speed, accuracy, range, has_scope, condition):
 		
 		self.has_scope = has_scope
 		self.damage = None
 		
-		Weapon.__init__(*args, **kwargs)
+		Weapon.__init__(damage, *args, **kwargs)
 
 
 
@@ -610,3 +610,328 @@ class WoodenSword(Weapon):
 		self.range = 0
 		
 		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class StoneSword(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Stone Sword"
+		self.recipe = {Stone: 10, Wood: 3}
+		self.rarity = "Common"
+		self.speed = 1
+		self.accuracy = 0.8
+		self.damage = 20
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class IronSword(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Iron Sword"
+		self.recipe = {Iron: 10, Wood: 3}
+		self.rarity = "Uncommon"
+		self.speed = 1
+		self.accuracy = 0.8
+		self.damage = 23
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class DiamondSword(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Diamond Sword"
+		self.recipe = {Diamond: 10, Wood: 3}
+		self.rarity = "Rare"
+		self.speed = 1
+		self.accuracy = 0.8
+		self.damage = 26
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class WoodenAxe(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Wooden Axe"
+		self.recipe = {Wood: 9}
+		self.rarity = "Common"
+		self.speed = 1.5
+		self.accuracy = 0.7
+		self.damage = 26
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class StoneAxe(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Stone Axe"
+		self.recipe = {Stone: 10, Wood: 4}
+		self.rarity = "Common"
+		self.speed = 1.5
+		self.accuracy = 0.7
+		self.damage = 30
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class IronAxe(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Iron Axe"
+		self.recipe = {Iron: 10, Wood: 4}
+		self.rarity = "Uncommon"
+		self.speed = 1.5
+		self.accuracy = 0.7
+		self.damage = 34
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class DiamondAxe(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Diamond Axe"
+		self.recipe = {Diamond: 10, Wood: 4}
+		self.rarity = "Rare"
+		self.speed = 1.5
+		self.accuracy = 0.7
+		self.damage = 38
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class WoodenSpear(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Wooden Spear"
+		self.recipe = {Wood: 10}
+		self.rarity = "Common"
+		self.speed = 1.75
+		self.accuracy = 0.6
+		self.damage = 30
+		self.range = 1
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class StoneSpear(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Stone Spear"
+		self.recipe = {Stone: 10, Wood: 5}
+		self.rarity = "Common"
+		self.speed = 1.75
+		self.accuracy = 0.6
+		self.damage = 35
+		self.range = 1
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class IronSpear(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Iron Spear"
+		self.recipe = {Iron: 10, Wood: 5}
+		self.rarity = "Uncommon"
+		self.speed = 1.75
+		self.accuracy = 0.6
+		self.damage = 40
+		self.range = 1
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class DiamondSpear(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Diamond Spear"
+		self.recipe = {Diamond: 10, Wood: 5}
+		self.rarity = "Rare"
+		self.speed = 1.75
+		self.accuracy = 0.6
+		self.damage = 45
+		self.range = 1
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class WoodenBoomerang(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Wooden Boomerang"
+		self.recipe = {Wood: 12}
+		self.rarity = "Common"
+		self.speed = 3
+		self.accuracy = 0.9
+		self.damage = 40
+		self.range = 2
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class StoneBoomerang(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Stone Boomerang"
+		self.recipe = {Stone: 10, Wood: 6}
+		self.rarity = "Common"
+		self.speed = 3
+		self.accuracy = 0.9
+		self.damage = 50
+		self.range = 2
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class IronBoomerang(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Iron Boomerang"
+		self.recipe = {Iron: 10, Wood: 6}
+		self.rarity = "Uncommon"
+		self.speed = 3
+		self.accuracy = 0.9
+		self.damage = 60
+		self.range = 2
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class DiamondBoomerang(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Iron Sword"
+		self.recipe = {Diamond: 10, Wood: 6}
+		self.rarity = "Rare"
+		self.speed = 3
+		self.accuracy = 0.9
+		self.damage = 70
+		self.range = 2
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class Bomb(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Bomb"
+		self.recipe = {Stone: 25, Wood: 25, Explosive: 5}
+		self.rarity = "Common"
+		self.speed = 15
+		self.accuracy = 1
+		self.damage = 100
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class Grenade(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Grenade"
+		self.recipe = {Stone: 4, Wood: 4, Explosive: 2}
+		self.rarity = "Common"
+		self.speed = 1
+		self.accuracy = 1
+		self.damage = 65
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+class Dynamite(Weapon):
+
+
+	def __init__(self, condition):
+
+		self.type = "Dynamite"
+		self.recipe = {Explosive: 1}
+		self.rarity = "Common"
+		self.speed = 1
+		self.accuracy = 1
+		self.damage = 40
+		self.range = 0
+		
+		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+
+
+
+### WEAPONS ###
+
+
+
+class WoodenBall(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Wooden ball"
+		self.recipe = {Wood: 5}
+		self.rarity = "Common"
+		self.damage = 13
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		
