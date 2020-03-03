@@ -23,11 +23,11 @@ MOB_BATCH_SIZE = 10
 MOB_MOVE_BATCH_SIZE = 100 
 UNCOMMON_RESOURCE_THRESHOLD = 75
 RARE_RESOURCE_THRESHOLD = 16
+ANIMAL_HEALTH = 50
 PRINT_SEPARATER = "print('-----------------------------------------------')"
 
 
 ### LISTS ###
-
 
 ITEMS = ["Soil", "Wood", "Vine", "Fruit", "Rock", "Water", "Sand", "Cacti", "Iron", "Bone", "Diamond", "Stone", "Gold", "Emerald", "Quartz", "Explosive", "HarvesterArmor", "Protector", "Strawman", "Coffin", "Ladder", "MobRepellent", "BottledWave", "BottledWind", "Glider", "Binoculars", "WoodenBall", "StoneBall", "IronBall", "DiamondBall", "WoodenArrow", "StoneArrow", "IronArrow", "DiamondArrow", "SoilClump", "SandClump", "CactusClump", "WoodSpike", "StoneSpike", "IronSpike", "DiamondSpike", "CannonBall", "Rocket", "Missile", "Bow", "Crossbow", "Slingshot", "Cannon", "RocketLauncher", "MissileLauncher", "BoneBlade", "BoneStriker", "WoodenSword", "StoneSword", "IronSword", "DiamondSword", "WoodenAxe", "StoneAxe", "IronAxe", "DiamondAxe", "WoodenSpear", "StoneSpear", "IronSpear", "DiamondSpear", "WoodenBoomerang", "StoneBoomerang", "IronBoomerang", "DiamondBoomerang", "Bomb", "Grenade", "Dynamite"]
 ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"] #### Change to object in main
