@@ -36,7 +36,6 @@ class Chicken(Animal):
 	def __init__(self, name):
 		
 		self.type = "Chicken"
-		self.name = name
 
 		Animal.__init__(type, *args, **kwargs)
 
@@ -48,7 +47,6 @@ class Rabbit(Animal):
 	def __init__(self, name):
 		
 		self.type = "Rabbit"
-		self.name = name
 
 		Animal.__init__(type, *args, **kwargs)
 
@@ -60,7 +58,6 @@ class Cow(Animal):
 	def __init__(self, name):
 		
 		self.type = "Cow"
-		self.name = name
 
 		Animal.__init__(type, *args, **kwargs)
 
@@ -72,7 +69,6 @@ class Fish(Animal):
 	def __init__(self, name):
 		
 		self.type = "Fish"
-		self.name = name
 
 		Animal.__init__(type, *args, **kwargs)
 
@@ -84,6 +80,5 @@ class Sheep(Animal):
 	def __init__(self, name):
 		
 		self.type = "Sheep"
-		self.name = name
 
 		Animal.__init__(type, *args, **kwargs)
