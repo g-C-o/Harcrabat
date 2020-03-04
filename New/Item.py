@@ -940,6 +940,11 @@ class Dynamite(Weapon):
 
 
 
+#### Ball: Lost on kill
+#### Arrow: Lost on hit
+#### Clump: Lost always
+#### Spike: Lost on hit
+#### Cn, Rk, Ms: Lost always
 class WoodenBall(Projectile):
 
 
@@ -948,7 +953,7 @@ class WoodenBall(Projectile):
 		self.type = "Wooden ball"
 		self.recipe = {Wood: 5}
 		self.rarity = "Common"
-		self.damage = 13
+		self.damage = 15
 
 		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
 
@@ -962,7 +967,7 @@ class StoneBall(Projectile):
 		self.type = "Stone ball"
 		self.recipe = {Wood: 5, Stone: 2}
 		self.rarity = "Common"
-		self.damage = 15
+		self.damage = 18
 
 		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
 
@@ -976,7 +981,7 @@ class IronBall(Projectile):
 		self.type = "Iron ball"
 		self.recipe = {Wood: 5, Iron: 2}
 		self.rarity = "Common"
-		self.damage = 18
+		self.damage = 21
 
 		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
 
@@ -990,7 +995,7 @@ class DiamondBall(Projectile):
 		self.type = "Diamond ball"
 		self.recipe = {Wood: 5, Diamond: 2}
 		self.rarity = "Uncommon"
-		self.damage = 25
+		self.damage = 24
 
 		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
 
@@ -1128,7 +1133,7 @@ class IronSpike(Projectile):
 	def __init__(self):
 
 		self.type = "Iron Spike"
-		self.recipe = {Iron: 1, Wood: 1}
+		self.recipe = {Iron: 1, Wood: 2}
 		self.rarity = "Common"
 		self.damage = 21
 
@@ -1142,7 +1147,7 @@ class DiamondSpike(Projectile):
 	def __init__(self):
 
 		self.type = "Diamond Spike"
-		self.recipe = {Diamond: 1, Wood: 1}
+		self.recipe = {Diamond: 1, Wood: 2}
 		self.rarity = "Uncommon"
 		self.damage = 26
 
