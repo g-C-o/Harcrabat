@@ -501,8 +501,8 @@ class Cannon(Launcher):
 
 		self.type = "Cannon"
 		self.recipe = {Iron: 2, Wood: 200, Explosive: 2}
-		self.rarity = "Uncommon"
-		self.speed = 10
+		self.rarity = "Common"
+		self.speed = 5
 		self.accuracy = 1
 		self.range = 1
 		self.has_scope = False
@@ -517,9 +517,9 @@ class RocketLauncher(Launcher):
 	def __init__(self, condition):
 
 		self.type = "Rocket Launcher"
-		self.recipe = {Iron: 20, Stone: 200, Explosive: 6}
-		self.rarity = "Rare"
-		self.speed = 25
+		self.recipe = {Iron: 20, Stone: 100, Wood: 100, Explosive: 6}
+		self.rarity = "Uncommon"
+		self.speed = 10
 		self.accuracy = 1
 		self.range = 6
 		self.has_scope = True
@@ -535,10 +535,27 @@ class MissileLauncher(Launcher):
 
 		self.type = "Missile Launcher"
 		self.recipe = {Iron: 50, Stone: 200, Wood: 50, Explosive: 8}
-		self.rarity = "Legendary"
-		self.speed = 40
+		self.rarity = "Rare"
+		self.speed = 12
 		self.accuracy = 1
 		self.range = 8
+		self.has_scope = True
+		
+		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+
+
+
+class NukeLauncher(Launcher):
+
+
+	def __init__(self, condition):
+
+		self.type = "Nuke Launcher"
+		self.recipe = {Iron: 100, Stone: 300, Wood: 100, Explosive: 15}
+		self.rarity = "Legendary"
+		self.speed = 15
+		self.accuracy = 1
+		self.range = 15
 		self.has_scope = True
 		
 		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
@@ -932,6 +949,258 @@ class WoodenBall(Projectile):
 		self.recipe = {Wood: 5}
 		self.rarity = "Common"
 		self.damage = 13
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class StoneBall(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Stone ball"
+		self.recipe = {Wood: 5, Stone: 2}
+		self.rarity = "Common"
+		self.damage = 15
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class IronBall(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Iron ball"
+		self.recipe = {Wood: 5, Iron: 2}
+		self.rarity = "Common"
+		self.damage = 18
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class DiamondBall(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Diamond ball"
+		self.recipe = {Wood: 5, Diamond: 2}
+		self.rarity = "Uncommon"
+		self.damage = 25
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class WoodenArrow(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Wooden Arrow"
+		self.recipe = {Wood: 3}
+		self.rarity = "Common"
+		self.damage = 17
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class StoneArrow(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Stone Arrow"
+		self.recipe = {Wood: 3, Stone: 2}
+		self.rarity = "Common"
+		self.damage = 20
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class IronArrow(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Iron Arrow"
+		self.recipe = {Wood: 3, Iron: 3}
+		self.rarity = "Common"
+		self.damage = 23
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class DiamondArrow(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Diamond Arrow"
+		self.recipe = {Wood: 3, Diamond: 1}
+		self.rarity = "Uncommon"
+		self.damage = 26
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class SoilClump(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Soil Clump"
+		self.recipe = {Soil: 4}
+		self.rarity = "Common"
+		self.damage = 38
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class SandClump(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Sand Clump"
+		self.recipe = {Sand: 4}
+		self.rarity = "Common"
+		self.damage = 38
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class CactusClump(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Cactus Clump"
+		self.recipe = {Cactus: 3}
+		self.rarity = "Common"
+		self.damage = 55
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class WoodenSpike(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Wooden Spike"
+		self.recipe = {Wood: 2}
+		self.rarity = "Common"
+		self.damage = 17
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class StoneSpike(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Stone Spike"
+		self.recipe = {Stone: 3}
+		self.rarity = "Common"
+		self.damage = 19
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class IronSpike(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Iron Spike"
+		self.recipe = {Iron: 1, Wood: 1}
+		self.rarity = "Common"
+		self.damage = 21
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class DiamondSpike(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Diamond Spike"
+		self.recipe = {Diamond: 1, Wood: 1}
+		self.rarity = "Uncommon"
+		self.damage = 26
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class CannonBall(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Cannon Ball"
+		self.recipe = {Wood: 10, Stone: 15, Explosive: 2}
+		self.rarity = "Common"
+		self.damage = 125
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class Rocket(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Rocket"
+		self.recipe = {Iron: 10, Explosive: 5}
+		self.rarity = "Uncommon"
+		self.damage = 150
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class Missile(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Missile"
+		self.recipe = {Iron: 15, Explosive: 10}
+		self.rarity = "Rare"
+		self.damage = 200
+
+		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+
+
+
+class Nuke(Projectile):
+
+
+	def __init__(self):
+
+		self.type = "Nuke"
+		self.recipe = {Iron: 25, Explosive: 50}
+		self.rarity = "Legendary"
+		self.damage = 1000
 
 		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
 		

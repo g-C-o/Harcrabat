@@ -53,7 +53,7 @@ class Game:
 		self.Strawman = Item("Strawman", None, "Rare")
 		self.Coffin = Item("Coffin", None, "Legendary")
 		self.Ladder = Item("Ladder", None, "Rare")
-		self.MobRepellent = Item("Mob Repellent", None, "Legendary")
+		self.MobRepellent = Item("Mob Repellent", None, "Legendary")Soil
 		self.BottledWave = Item("Bottled Wave", None, "Rare")
 		self.BottledWind = Item("Bottled Wind", None, "Legendary")
 		self.Glider = Item("Glider", None, "Rare")
