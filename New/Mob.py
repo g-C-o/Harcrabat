@@ -12,19 +12,19 @@ import Item
 class Mob:
 
 
-	def __init__(self, name, health, weapon, group_count, location, tier):
+	def __init__(self, name, health, weapon, group_count, location, level):
 		self.name = name
 		self.health = health
 		self.weapon = weapon
 		self.group_count = group_count
 		self.location = location
 		self.hostile = False
-		self.tier = tier
-		if tier == 1:
+
+		if level == 1:
 			self.rarity = "Common"
-		elif tier == 2:
+		elif level == 2:
 			self.rarity = "Uncommon"
-		elif tier == 3:
+		elif level == 3:
 			self.rarity = "Rare"
 	
 	
@@ -165,28 +165,251 @@ class Mob:
 
 
 
-class Fighter(Mob):
+class Level1Mob(Mob):
+
+
+	def __init__(self, name, health, weapon, group_count, location)
+
+		self.level = 1
+
+		Mob.__init__(level, *args, **kwargs)
+
+
+
+class Level2Mob(Mob):
+
+
+	def __init__(self, name, health, weapon, group_count, location)
+
+		self.level = 2
+
+		Mob.__init__(level, *args, **kwargs)
+
+
+
+class Level3Mob(Mob):
+
+
+	def __init__(self, name, health, weapon, group_count, location)
+
+		self.level = 3
+		self.health = 200
+
+		Mob.__init__(level, health, *args, **kwargs)
+
+
+
+### LEVEL 1 MOBS ###
+
+
+
+class Fighter(Level1Mob):
 	
 	
-	def __init__(self, health):
+	def __init__(self, name, location):
 		
-		#self.name = name
 		self.type = "Fighter"
 		self.health = 75
 		self.weapon = Item.WoodenSword()
-		self.group_count = group_count
-		self.location = location
-		self.hostile = False
-		self.tier = tier
-		if tier == 1:
-			self.rarity = "Common"
-		elif tier == 2:
-			self.rarity = "Uncommon"
-		elif tier == 3:
-			self.rarity = "Rare"
+		self.group_count = 1
 		
-		super().__init__(type, health, weapon, hostile, *args, **kwargs)
+		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
 	
 	
 
-Fighter()
+class Destroyer(Level1Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Destroyer"
+		self.health = 50
+		self.weapon = Item.WoodenAxe()
+		self.group_count = 1
+		
+		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Raider(Level1Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Raider"
+		self.health = 25
+		self.weapon = Item.Fists()
+		self.group_count = 3
+		
+		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Defender(Level1Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Defender"
+		self.health = 100
+		self.weapon = Item.BoneBlade()
+		self.group_count = 1
+		
+		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Hunter(Level1Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Hunter"
+		self.health = 75
+		self.weapon = Item.Bow()
+		self.group_count = 1
+		
+		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+### LEVEL 2 MOBS ###
+
+
+
+class Predator(Level2Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Predator"
+		self.health = 100
+		self.weapon = Item.IronSword()
+		self.group_count = 1
+		
+		Level2Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Annihilator(Level2Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Annihilator"
+		self.health = 50
+		self.weapon = Item.IronSpear()
+		self.group_count = 1
+		
+		Level2Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Minion(Level2Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Minion"
+		self.health = 20
+		self.weapon = Item.Fists()
+		self.group_count = 5
+		
+		Level2Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Guardian(Level2Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Guardian"
+		self.health = 150
+		self.weapon = Item.BoneBlade()
+		self.group_count = 1
+		
+		Level2Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+class Assassin(Level2Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Assassin"
+		self.health = 100
+		self.weapon = Item.Crossbow()
+		self.group_count = 1
+		
+		Level2Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
+
+
+
+### LEVEL 3 MOBS ###
+
+
+
+class Goblin(Level3Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Goblin"
+		self.weapon = Item.DiamondSword()
+		self.group_count = 1
+		
+		Level3Mob.__init__(type, weapon, group_count, *args, **kwargs)
+
+
+
+class Troll(Level3Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Troll"
+		self.weapon = Item.Slingshot()
+		self.group_count = 1
+		
+		Level3Mob.__init__(type, weapon, group_count, *args, **kwargs)
+
+
+
+class Zombie(Level3Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Zombie"
+		self.weapon = Item.Arm()
+		self.group_count = 3
+		
+		Level3Mob.__init__(type, weapon, group_count, *args, **kwargs)
+
+
+
+class Skeleton(Level3Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Skeleton"
+		self.weapon = Item.BoneStriker()
+		self.group_count = 1
+		
+		Level3Mob.__init__(type, weapon, group_count, *args, **kwargs)
+
+
+
+class Ghost(Level3Mob):
+	
+	
+	def __init__(self, name, location):
+		
+		self.type = "Ghost"
+		self.weapon = Item.DiamondBoomerang()
+		self.group_count = 1
+		
+		Level3Mob.__init__(type, weapon, group_count, *args, **kwargs)
