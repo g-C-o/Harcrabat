@@ -8,7 +8,7 @@ from time import time
 from colorama import Style
 
 
-class Character:
+class Player:
 	def __init__(self, name, score, game_map, biome_map, collect_time_map, health, energy, inventory, hand_item, armor, location, orientation, last_move_time):
 		self.name = name
 		self.score = score
@@ -75,8 +75,8 @@ class Character:
 			print("You see the edge of the world.")
 
 		
-	def describe_spawnpoint(self):
-		current_biome = self.biome_map[26][26]
+	def describe_spawnpoint(self, biome_map):
+		current_biome = biome_map[26][26]
 		alt_preposition = current_biome.preposition[:2] + current_biome.preposition[4:]
 		print("You spawn %s %s%s%s. You are facing North." % (alt_preposition, PRINT_COLORS[current_biome.rarity], current_biome.name, PRINT_COLORS["Reset"]))
 
@@ -89,9 +89,6 @@ class Character:
 		print("\tEnvironment: " + current_env)
 		print("\tBiome: " + PRINT_COLORS[current_biome.rarity] + current_biome.name + PRINT_COLORS["Reset"])
 
-	
-	def set_name(self, new_name):
-		self.name = new_name
 
 	def switch_hand_item(self, new_item):
 		self.hand_item = new_item

@@ -168,7 +168,7 @@ class Mob:
 class Level1Mob(Mob):
 
 
-	def __init__(self, name, health, weapon, group_count, location)
+	def __init__(self, name, health, weapon, group_count, location):
 
 		self.level = 1
 
@@ -179,7 +179,7 @@ class Level1Mob(Mob):
 class Level2Mob(Mob):
 
 
-	def __init__(self, name, health, weapon, group_count, location)
+	def __init__(self, name, health, weapon, group_count, location):
 
 		self.level = 2
 
@@ -190,7 +190,7 @@ class Level2Mob(Mob):
 class Level3Mob(Mob):
 
 
-	def __init__(self, name, health, weapon, group_count, location)
+	def __init__(self, name, health, weapon, group_count, location):
 
 		self.level = 3
 		self.health = 200

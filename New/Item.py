@@ -84,7 +84,7 @@ class SoilPile(Resource):
 
 	def __init__(self):
 		
-		self.type = "Soil Pile"
+		self.type = "SoilPile Pile"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -1057,13 +1057,13 @@ class DiamondArrow(Projectile):
 
 
 
-class SoilClump(Projectile):
+class SoilPileClump(Projectile):
 
 
 	def __init__(self):
 
-		self.type = "Soil Clump"
-		self.recipe = {Soil: 4}
+		self.type = "SoilPile Clump"
+		self.recipe = {SoilPile: 4}
 		self.rarity = "Common"
 		self.damage = 38
 

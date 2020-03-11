@@ -8,9 +8,10 @@ Contains all the data for the game
 from colorama import Fore, Back, init, Style
 
 
-### CONSTANTS ###
+### VALUES ###
 
 
+HARCRABAT_VERSION = 0.9
 ENV_CLEANUP_FACTOR = 50
 ENV_INCONSISTENCY = 1.01
 ENV_CLUSTER_SIZE = 5
@@ -24,13 +25,20 @@ MOB_MOVE_BATCH_SIZE = 100
 UNCOMMON_RESOURCE_THRESHOLD = 75
 RARE_RESOURCE_THRESHOLD = 16
 ANIMAL_HEALTH = 50
+
+
+### STRINGS ###
+
+
 PRINT_SEPARATER = "print('-----------------------------------------------')"
+STARTUP_MESSAGE = "Harcrabat version " + str(HARCRABAT_VERSION)
 
 
 ### LISTS ###
 
-ITEMS = ["Soil", "Wood", "Vine", "Fruit", "Rock", "Water", "Sand", "Cacti", "Iron", "Bone", "Diamond", "Stone", "Gold", "Emerald", "Quartz", "Explosive", "HarvesterArmor", "Protector", "Strawman", "Coffin", "Ladder", "MobRepellent", "BottledWave", "BottledWind", "Glider", "Binoculars", "WoodenBall", "StoneBall", "IronBall", "DiamondBall", "WoodenArrow", "StoneArrow", "IronArrow", "DiamondArrow", "SoilClump", "SandClump", "CactusClump", "WoodSpike", "StoneSpike", "IronSpike", "DiamondSpike", "CannonBall", "Rocket", "Missile", "Nuke", "Bow", "Crossbow", "Slingshot", "Cannon", "RocketLauncher", "MissileLauncher", "NukeLauncher", "BoneBlade", "BoneStriker", "WoodenSword", "StoneSword", "IronSword", "DiamondSword", "WoodenAxe", "StoneAxe", "IronAxe", "DiamondAxe", "WoodenSpear", "StoneSpear", "IronSpear", "DiamondSpear", "WoodenBoomerang", "StoneBoomerang", "IronBoomerang", "DiamondBoomerang", "Bomb", "Grenade", "Dynamite"]
-ENVIRONMENTS = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"] #### Change to object in main
+
+ITEM_NAMES = ["SoilPile", "Wood", "Vine", "Fruit", "Rock", "Water", "Sand", "Cacti", "Iron", "Bone", "Diamond", "Stone", "Gold", "Emerald", "Quartz", "Explosive", "HarvesterArmor", "Protector", "Strawman", "Coffin", "Ladder", "MobRepellent", "BottledWave", "BottledWind", "Glider", "Binoculars", "WoodenBall", "StoneBall", "IronBall", "DiamondBall", "WoodenArrow", "StoneArrow", "IronArrow", "DiamondArrow", "SoilPileClump", "SandClump", "CactusClump", "WoodSpike", "StoneSpike", "IronSpike", "DiamondSpike", "CannonBall", "Rocket", "Missile", "Nuke", "Bow", "Crossbow", "Slingshot", "Cannon", "RocketLauncher", "MissileLauncher", "NukeLauncher", "BoneBlade", "BoneStriker", "WoodenSword", "StoneSword", "IronSword", "DiamondSword", "WoodenAxe", "StoneAxe", "IronAxe", "DiamondAxe", "WoodenSpear", "StoneSpear", "IronSpear", "DiamondSpear", "WoodenBoomerang", "StoneBoomerang", "IronBoomerang", "DiamondBoomerang", "Bomb", "Grenade", "Dynamite"]
+ENVIRONMENT_NAMES = ["Woodlands", "Plains", "Grasslands", "Waterlands", "Rockylands"]
 BIOME_WEIGHTS = [60, 20, 5, 1]
 RESOURCE_WEIGHTS = [60, 35, 5]
 MOB_TIER_WEIGHTS = [10, 20, 70]
