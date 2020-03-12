@@ -168,7 +168,7 @@ class Mob:
 class Level1Mob(Mob):
 
 
-	def __init__(self, name, health, weapon, group_count, location):
+	def __init__(self, name, health, weapon, group_count, location, *args, **kwargs):
 
 		self.level = 1
 
@@ -179,7 +179,7 @@ class Level1Mob(Mob):
 class Level2Mob(Mob):
 
 
-	def __init__(self, name, health, weapon, group_count, location):
+	def __init__(self, name, health, weapon, group_count, location, *args, **kwargs):
 
 		self.level = 2
 
@@ -190,7 +190,7 @@ class Level2Mob(Mob):
 class Level3Mob(Mob):
 
 
-	def __init__(self, name, health, weapon, group_count, location):
+	def __init__(self, name, health, weapon, group_count, location, *args, **kwargs):
 
 		self.level = 3
 		self.health = 200
@@ -206,7 +206,7 @@ class Level3Mob(Mob):
 class Fighter(Level1Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Fighter"
 		self.health = 75
@@ -220,7 +220,7 @@ class Fighter(Level1Mob):
 class Destroyer(Level1Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Destroyer"
 		self.health = 50
@@ -234,7 +234,7 @@ class Destroyer(Level1Mob):
 class Raider(Level1Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Raider"
 		self.health = 25
@@ -248,7 +248,7 @@ class Raider(Level1Mob):
 class Defender(Level1Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Defender"
 		self.health = 100
@@ -262,7 +262,7 @@ class Defender(Level1Mob):
 class Hunter(Level1Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Hunter"
 		self.health = 75
@@ -280,7 +280,7 @@ class Hunter(Level1Mob):
 class Predator(Level2Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Predator"
 		self.health = 100
@@ -294,7 +294,7 @@ class Predator(Level2Mob):
 class Annihilator(Level2Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Annihilator"
 		self.health = 50
@@ -308,7 +308,7 @@ class Annihilator(Level2Mob):
 class Minion(Level2Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Minion"
 		self.health = 20
@@ -322,7 +322,7 @@ class Minion(Level2Mob):
 class Guardian(Level2Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Guardian"
 		self.health = 150
@@ -336,7 +336,7 @@ class Guardian(Level2Mob):
 class Assassin(Level2Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Assassin"
 		self.health = 100
@@ -354,7 +354,7 @@ class Assassin(Level2Mob):
 class Goblin(Level3Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Goblin"
 		self.weapon = Item.DiamondSword()
@@ -367,7 +367,7 @@ class Goblin(Level3Mob):
 class Troll(Level3Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Troll"
 		self.weapon = Item.Slingshot()
@@ -380,7 +380,7 @@ class Troll(Level3Mob):
 class Zombie(Level3Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Zombie"
 		self.weapon = Item.Arm()
@@ -393,7 +393,7 @@ class Zombie(Level3Mob):
 class Skeleton(Level3Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Skeleton"
 		self.weapon = Item.BoneStriker()
@@ -406,7 +406,7 @@ class Skeleton(Level3Mob):
 class Ghost(Level3Mob):
 	
 	
-	def __init__(self, name, location):
+	def __init__(self, name, location, *args, **kwargs):
 		
 		self.type = "Ghost"
 		self.weapon = Item.DiamondBoomerang()

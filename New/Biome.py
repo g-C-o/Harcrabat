@@ -32,7 +32,7 @@ class Biome:
 class Forest(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Forest"
 		self.preposition = "into a"
@@ -52,7 +52,7 @@ class Forest(Biome):
 class Jungle(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Jungle"
 		self.preposition = "into a"
@@ -72,7 +72,7 @@ class Jungle(Biome):
 class Grove(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Grove"
 		self.preposition = "into a"
@@ -92,7 +92,7 @@ class Grove(Biome):
 class Garden(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Garden"
 		self.preposition = "into a"
@@ -112,7 +112,7 @@ class Garden(Biome):
 class Desert(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Desert"
 		self.preposition = "into a"
@@ -132,7 +132,7 @@ class Desert(Biome):
 class Tundra(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Tundra"
 		self.preposition = "into a"
@@ -152,7 +152,7 @@ class Tundra(Biome):
 class Badland(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Badland"
 		self.preposition = "into a"
@@ -172,7 +172,7 @@ class Badland(Biome):
 class Temple(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Temple"
 		self.preposition = "into a"
@@ -192,7 +192,7 @@ class Temple(Biome):
 class Prairie(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Prairie"
 		self.preposition = "into a"
@@ -212,7 +212,7 @@ class Prairie(Biome):
 class Meadow(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Meadow"
 		self.preposition = "into a"
@@ -232,7 +232,7 @@ class Meadow(Biome):
 class Swamp(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Swamp"
 		self.preposition = "into a"
@@ -252,7 +252,7 @@ class Swamp(Biome):
 class Fort(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Fort"
 		self.preposition = "into a"
@@ -272,7 +272,7 @@ class Fort(Biome):
 class Lake(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Lake"
 		self.preposition = "into a"
@@ -292,7 +292,7 @@ class Lake(Biome):
 class Beach(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Beach"
 		self.preposition = "into a"
@@ -312,7 +312,7 @@ class Beach(Biome):
 class Island(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Island"
 		self.preposition = "onto an"
@@ -332,7 +332,7 @@ class Island(Biome):
 class Shipwreck(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Shipwreck"
 		self.preposition = "onto a"
@@ -352,7 +352,7 @@ class Shipwreck(Biome):
 class Mountain(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Mountain"
 		self.preposition = "onto a"
@@ -372,7 +372,7 @@ class Mountain(Biome):
 class Canyon(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Canyon"
 		self.preposition = "into a"
@@ -392,7 +392,7 @@ class Canyon(Biome):
 class Cave(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Cave"
 		self.preposition = "into a"
@@ -412,7 +412,7 @@ class Cave(Biome):
 class Monument(Biome):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Monument"
 		self.preposition = "into a"

@@ -28,7 +28,7 @@ class Item:
 class Resource(Item):
 
 
-	def __init__(self, type, rarity):
+	def __init__(self, type, rarity, *args, **kwargs):
 		
 		self.recipe = None
 
@@ -39,7 +39,7 @@ class Resource(Item):
 class Weapon(Item):
 
 
-	def __init__(self, type, recipe, rarity, speed, accuracy, damage, range, condition):
+	def __init__(self, type, recipe, rarity, speed, accuracy, damage, range, condition, *args, **kwargs):
 		
 		self.recipe = recipe
 		self.rarity = rarity
@@ -56,7 +56,7 @@ class Weapon(Item):
 class Projectile(Item):
 
 
-	def __init__(self, type, recipe, rarity, damage):
+	def __init__(self, type, recipe, rarity, damage, *args, **kwargs):
 		
 		self.condition = None
 
@@ -66,7 +66,7 @@ class Projectile(Item):
 
 class Launcher(Weapon):
 	
-	def __init__(self, type, recipe, rarity, speed, accuracy, range, has_scope, condition):
+	def __init__(self, type, recipe, rarity, speed, accuracy, range, has_scope, condition, *args, **kwargs):
 		
 		self.has_scope = has_scope
 		self.damage = None
@@ -82,7 +82,7 @@ class Launcher(Weapon):
 class SoilPile(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Soil Pile"
 		self.rarity = "Common"
@@ -94,7 +94,7 @@ class SoilPile(Resource):
 class WoodChunk(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Wood Chunk"
 		self.rarity = "Common"
@@ -106,7 +106,7 @@ class WoodChunk(Resource):
 class Vine(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Vine"
 		self.rarity = "Common"
@@ -118,7 +118,7 @@ class Vine(Resource):
 class Fruit(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Fruit"
 		self.rarity = "Common"
@@ -130,7 +130,7 @@ class Fruit(Resource):
 class Rock(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Rock"
 		self.rarity = "Common"
@@ -142,7 +142,7 @@ class Rock(Resource):
 class WaterSupply(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Water Supply"
 		self.rarity = "Common"
@@ -154,7 +154,7 @@ class WaterSupply(Resource):
 class SandPile(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Sand Pile"
 		self.rarity = "Common"
@@ -166,7 +166,7 @@ class SandPile(Resource):
 class CactiChunk(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Cacti Chunk"
 		self.rarity = "Common"
@@ -178,7 +178,7 @@ class CactiChunk(Resource):
 class IronChunk(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Iron Chunk"
 		self.rarity = "Uncommon"
@@ -190,7 +190,7 @@ class IronChunk(Resource):
 class Bone(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Bone"
 		self.rarity = "Common"
@@ -202,7 +202,7 @@ class Bone(Resource):
 class Diamond(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Diamond"
 		self.rarity = "Uncommon"
@@ -214,7 +214,7 @@ class Diamond(Resource):
 class StoneChunk(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Stone Chunk"
 		self.rarity = "Common"
@@ -226,7 +226,7 @@ class StoneChunk(Resource):
 class GoldNugget(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Gold Nugget"
 		self.rarity = "Uncommon"
@@ -238,7 +238,7 @@ class GoldNugget(Resource):
 class Emerald(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Emerald"
 		self.rarity = "Uncommon"
@@ -250,7 +250,7 @@ class Emerald(Resource):
 class QuartzShard(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Quartz Shard"
 		self.rarity = "Uncommon"
@@ -262,7 +262,7 @@ class QuartzShard(Resource):
 class Explosive(Resource):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 		
 		self.type = "Explosive"
 		self.rarity = "Common"
@@ -278,7 +278,7 @@ class Explosive(Resource):
 class HarvestersArmor(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Harvester's Armor"
 			self.rarity = "Rare"
@@ -291,7 +291,7 @@ class HarvestersArmor(Item):
 class Protector(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Protector"
 			self.rarity = "Legendary"
@@ -304,7 +304,7 @@ class Protector(Item):
 class Strawman(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Strawman"
 			self.rarity = "Rare"
@@ -317,7 +317,7 @@ class Strawman(Item):
 class Coffin(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Coffin"
 			self.rarity = "Legendary"
@@ -330,7 +330,7 @@ class Coffin(Item):
 class Ladder(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Ladder"
 			self.rarity = "Rare"
@@ -343,7 +343,7 @@ class Ladder(Item):
 class MobRepellent(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Mob Repellent"
 			self.rarity = "Legendary"
@@ -356,7 +356,7 @@ class MobRepellent(Item):
 class BottledWave(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Bottled Wave"
 			self.rarity = "Rare"
@@ -369,7 +369,7 @@ class BottledWave(Item):
 class BottledWind(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Bottled Wind"
 			self.rarity = "Legendary"
@@ -382,7 +382,7 @@ class BottledWind(Item):
 class Glider(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Glider"
 			self.rarity = "Rare"
@@ -395,7 +395,7 @@ class Glider(Item):
 class Binoculars(Item):
 
 
-		def __init__(self):
+		def __init__(self, *args, **kwargs):
 
 			self.type = "Binoculars"
 			self.rarity = "Legendary"
@@ -948,7 +948,7 @@ class Dynamite(Weapon):
 class WoodenBall(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Wooden ball"
 		self.recipe = {WoodChunk: 5}
@@ -962,7 +962,7 @@ class WoodenBall(Projectile):
 class StoneBall(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Stone ball"
 		self.recipe = {WoodChunk: 5, StoneChunk: 2}
@@ -976,7 +976,7 @@ class StoneBall(Projectile):
 class IronBall(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Iron ball"
 		self.recipe = {WoodChunk: 5, IronNugget: 2}
@@ -990,7 +990,7 @@ class IronBall(Projectile):
 class DiamondBall(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Diamond ball"
 		self.recipe = {WoodChunk: 5, Diamond: 2}
@@ -1004,7 +1004,7 @@ class DiamondBall(Projectile):
 class WoodenArrow(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Wooden Arrow"
 		self.recipe = {WoodChunk: 3}
@@ -1018,7 +1018,7 @@ class WoodenArrow(Projectile):
 class StoneArrow(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Stone Arrow"
 		self.recipe = {WoodChunk: 3, StoneChunk: 2}
@@ -1032,7 +1032,7 @@ class StoneArrow(Projectile):
 class IronArrow(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Iron Arrow"
 		self.recipe = {WoodChunk: 3, IronNugget: 3}
@@ -1046,7 +1046,7 @@ class IronArrow(Projectile):
 class DiamondArrow(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Diamond Arrow"
 		self.recipe = {WoodChunk: 3, Diamond: 1}
@@ -1060,7 +1060,7 @@ class DiamondArrow(Projectile):
 class SoilClump(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Soil Clump"
 		self.recipe = {SoilPile: 4}
@@ -1074,7 +1074,7 @@ class SoilClump(Projectile):
 class SandClump(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Sand Clump"
 		self.recipe = {SandPile: 4}
@@ -1088,7 +1088,7 @@ class SandClump(Projectile):
 class CactusClump(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Cactus Clump"
 		self.recipe = {CactusChunk: 3}
@@ -1102,7 +1102,7 @@ class CactusClump(Projectile):
 class WoodenSpike(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Wooden Spike"
 		self.recipe = {WoodChunk: 2}
@@ -1116,7 +1116,7 @@ class WoodenSpike(Projectile):
 class StoneSpike(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Stone Spike"
 		self.recipe = {StoneChunk: 3}
@@ -1130,7 +1130,7 @@ class StoneSpike(Projectile):
 class IronSpike(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Iron Spike"
 		self.recipe = {IronNugget: 1, WoodChunk: 2}
@@ -1144,7 +1144,7 @@ class IronSpike(Projectile):
 class DiamondSpike(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Diamond Spike"
 		self.recipe = {Diamond: 1, WoodChunk: 2}
@@ -1158,7 +1158,7 @@ class DiamondSpike(Projectile):
 class CannonBall(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Cannon Ball"
 		self.recipe = {WoodChunk: 10, StoneChunk: 15, Explosive: 2}
@@ -1172,7 +1172,7 @@ class CannonBall(Projectile):
 class Rocket(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Rocket"
 		self.recipe = {IronNugget: 10, Explosive: 5}
@@ -1186,7 +1186,7 @@ class Rocket(Projectile):
 class Missile(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Missile"
 		self.recipe = {IronNugget: 15, Explosive: 10}
@@ -1200,7 +1200,7 @@ class Missile(Projectile):
 class Nuke(Projectile):
 
 
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Nuke"
 		self.recipe = {IronNugget: 25, Explosive: 50}
