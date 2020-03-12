@@ -11,6 +11,7 @@ from random import choices
 
 class Environment:
 	def __init__(self, type, primary_biome, secondary_biome, tertiary_biome, abandoned_structure):
+		self.type = type
 		self.pri_B = primary_biome
 		self.sec_B = secondary_biome
 		self.ter_B = tertiary_biome
@@ -21,7 +22,7 @@ class Environment:
 class Woodlands(Environment):
 
 	
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Woodlands"
 		self.pri_B = Biome.Forest
@@ -29,14 +30,14 @@ class Woodlands(Environment):
 		self.ter_B = Biome.Grove
 		self.structure = Biome.Garden
 
-		Environment.__init__(type, pri_B, sec_B, ter_B, structure)
+		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
 class Plains(Environment):
 
 	
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Plains"
 		self.pri_B = Biome.Desert
@@ -44,14 +45,14 @@ class Plains(Environment):
 		self.ter_B = Biome.Badland
 		self.structure = Biome.Temple
 
-		Environment.__init__(type, pri_B, sec_B, ter_B, structure, *args, **kwargs)
+		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
 class Grasslands(Environment):
 
 	
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Grasslands"
 		self.pri_B = Biome.Prairie
@@ -59,14 +60,14 @@ class Grasslands(Environment):
 		self.ter_B = Biome.Swamp
 		self.structure = Biome.Fort
 
-		Environment.__init__(type, pri_B, sec_B, ter_B, structure, *args, **kwargs)
+		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
 class Waterlands(Environment):
 
 	
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Waterlands"
 		self.pri_B = Biome.Lake
@@ -74,14 +75,14 @@ class Waterlands(Environment):
 		self.ter_B = Biome.Island
 		self.structure = Biome.Shipwreck
 
-		Environment.__init__(type, pri_B, sec_B, ter_B, structure, *args, **kwargs)
+		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
 class Rockylands(Environment):
 
 	
-	def __init__(self):
+	def __init__(self, *args, **kwargs):
 
 		self.type = "Rockylands"
 		self.pri_B = Biome.Mountain
@@ -89,4 +90,4 @@ class Rockylands(Environment):
 		self.ter_B = Biome.Cave
 		self.structure = Biome.Monument
 
-		Environment.__init__(type, pri_B, sec_B, ter_B, structure, *args, **kwargs)
+		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)

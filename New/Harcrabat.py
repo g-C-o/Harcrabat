@@ -8,6 +8,7 @@ Optimized for python 3.6 & 3.7
 from Database import *
 from Player import Player
 import Item
+import Environment
 from random import choices
 from colorama import Fore, Back, init, Style
 from time import time, sleep
@@ -33,7 +34,7 @@ class Game:
 		
 		self.environments = []
 		for environment in ENVIRONMENT_NAMES:
-			environment_obj = eval("self." + environment)
+			environment_obj = eval("Environment." + environment)
 			self.environments.append(environment_obj)
 		self.startup()
 
@@ -46,13 +47,14 @@ class Game:
 		inventory = {item: 0 for item in self.items}
 		self.User = Player("Player1", 0, [], [], collect_map, 100, 100, inventory, None, None, [26,26], "North", time())
 		
-	def choose_environment(surroundings):
+	def choose_environment(self, surroundings):
 		surroundings = [Square for Square in surroundings if Square] 
-		env_probs = {Env: ENV_INCONSISTENCY for Env in self.environments}
+		env_probs = {Env().type: ENV_INCONSISTENCY for Env in self.environments}
 		for Square in surroundings:
-			env_probs [Square] = env_probs [Square] * ENV_CLUSTER_SIZE
+			square_type = Square.type
+			env_probs [square_type] = env_probs [square_type] * ENV_CLUSTER_SIZE
 		env_weights = [prob for prob in list(env_probs.values())]
-		EnvChoice = choices(ENVIRONMENTS, weights=env_weights) [0]
+		EnvChoice = choices(self.environments, weights=env_weights)[0]()
 		return EnvChoice
 
 
@@ -66,7 +68,7 @@ class Game:
 
 		## Preload self.game_map:
 		print("\tCreating Seed")
-		self.self.game_map = [[None 
+		self.game_map = [[None 
 				if col_index in [0,52]
 				or row_index in [0,52]
 				else choices(self.environments)[0]()
@@ -76,7 +78,7 @@ class Game:
 		## Choose Environments:
 		print("\tGenerating Chunks")
 		for rep in range(ENV_CLEANUP_FACTOR):
-			self.self.game_map = [[None
+			self.game_map = [[None
 					if col_index in [0,52]
 					or row_index in [0,52]
 					else self.choose_environment([self.game_map[row_index-1][col_index-1], self.game_map[row_index-1][col_index], self.game_map[row_index-1][col_index+1], self.game_map[row_index][col_index-1], self.game_map[row_index][col_index+1], self.game_map[row_index+1][col_index-1], self.game_map[row_index+1][col_index], self.game_map[row_index+1][col_index+1]])
@@ -141,7 +143,7 @@ class Game:
 		self.create_player()
 		self.load_game_map()
 		eval(PRINT_SEPARATER)
-		self.Player.describe_spawnpoint(biome_map)
+		Player.describe_spawnpoint(self.biome_map)
 		self.run_game()
 		
 	
@@ -167,7 +169,7 @@ class Game:
 		else: print("Invalid Command")
 
 	
-	def run_program():
+	def run_program(self):
 		while True:
 			self.command_input()
 

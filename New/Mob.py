@@ -210,7 +210,7 @@ class Fighter(Level1Mob):
 		
 		self.type = "Fighter"
 		self.health = 75
-		self.weapon = Item.WoodenSword()
+		self.weapon = Item.WoodChunkenSword()
 		self.group_count = 1
 		
 		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
@@ -224,7 +224,7 @@ class Destroyer(Level1Mob):
 		
 		self.type = "Destroyer"
 		self.health = 50
-		self.weapon = Item.WoodenAxe()
+		self.weapon = Item.WoodChunkenAxe()
 		self.group_count = 1
 		
 		Level1Mob.__init__(type, health, weapon, group_count, *args, **kwargs)
