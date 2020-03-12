@@ -84,7 +84,7 @@ class SoilPile(Resource):
 
 	def __init__(self):
 		
-		self.type = "SoilPile Pile"
+		self.type = "Soil Pile"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -96,7 +96,7 @@ class WoodChunk(Resource):
 
 	def __init__(self):
 		
-		self.type = "WoodChunk Chunk"
+		self.type = "Wood Chunk"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -144,7 +144,7 @@ class WaterSupply(Resource):
 
 	def __init__(self):
 		
-		self.type = "WaterSupply Supply"
+		self.type = "Water Supply"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -156,7 +156,7 @@ class SandPile(Resource):
 
 	def __init__(self):
 		
-		self.type = "SandPile Pile"
+		self.type = "Sand Pile"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -168,7 +168,7 @@ class CactiChunk(Resource):
 
 	def __init__(self):
 		
-		self.type = "CactiChunk Chunk"
+		self.type = "Cacti Chunk"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -216,7 +216,7 @@ class StoneChunk(Resource):
 
 	def __init__(self):
 		
-		self.type = "StoneChunk Chunk"
+		self.type = "Stone Chunk"
 		self.rarity = "Common"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -228,7 +228,7 @@ class GoldNugget(Resource):
 
 	def __init__(self):
 		
-		self.type = "GoldNugget Nugget"
+		self.type = "Gold Nugget"
 		self.rarity = "Uncommon"
 
 		Resource.__init__(type, rarity, *args, **kwargs)
@@ -384,7 +384,7 @@ class Glider(Item):
 
 		def __init__(self):
 
-			self.type = "Harvester's Armor"
+			self.type = "Glider"
 			self.rarity = "Rare"
 			self.recipe = None
 
@@ -466,7 +466,7 @@ class CombatBucket(Launcher):
 	def __init__(self, condition):
 
 		self.type = "Combat Bucket"
-		self.recipe = {Iron: 12}
+		self.recipe = {IronNugget: 12}
 		self.rarity = "Common"
 		self.speed = 1.75
 		self.accuracy = 1
@@ -500,7 +500,7 @@ class Cannon(Launcher):
 	def __init__(self, condition):
 
 		self.type = "Cannon"
-		self.recipe = {Iron: 2, WoodChunk: 200, Explosive: 2}
+		self.recipe = {IronNugget: 2, WoodChunk: 200, Explosive: 2}
 		self.rarity = "Common"
 		self.speed = 5
 		self.accuracy = 1
@@ -517,7 +517,7 @@ class RocketLauncher(Launcher):
 	def __init__(self, condition):
 
 		self.type = "Rocket Launcher"
-		self.recipe = {Iron: 20, StoneChunk: 100, WoodChunk: 100, Explosive: 6}
+		self.recipe = {IronNugget: 20, StoneChunk: 100, WoodChunk: 100, Explosive: 6}
 		self.rarity = "Uncommon"
 		self.speed = 10
 		self.accuracy = 1
@@ -534,7 +534,7 @@ class MissileLauncher(Launcher):
 	def __init__(self, condition):
 
 		self.type = "Missile Launcher"
-		self.recipe = {Iron: 50, StoneChunk: 200, WoodChunk: 50, Explosive: 8}
+		self.recipe = {IronNugget: 50, StoneChunk: 200, WoodChunk: 50, Explosive: 8}
 		self.rarity = "Rare"
 		self.speed = 12
 		self.accuracy = 1
@@ -551,7 +551,7 @@ class NukeLauncher(Launcher):
 	def __init__(self, condition):
 
 		self.type = "Nuke Launcher"
-		self.recipe = {Iron: 100, StoneChunk: 300, WoodChunk: 100, Explosive: 15}
+		self.recipe = {IronNugget: 100, StoneChunk: 300, WoodChunk: 100, Explosive: 15}
 		self.rarity = "Legendary"
 		self.speed = 15
 		self.accuracy = 1
@@ -635,7 +635,7 @@ class StoneSword(Weapon):
 
 	def __init__(self, condition):
 
-		self.type = "StoneChunk Sword"
+		self.type = "Stone Sword"
 		self.recipe = {StoneChunk: 10, WoodChunk: 3}
 		self.rarity = "Common"
 		self.speed = 1
@@ -653,7 +653,7 @@ class IronSword(Weapon):
 	def __init__(self, condition):
 
 		self.type = "Iron Sword"
-		self.recipe = {Iron: 10, WoodChunk: 3}
+		self.recipe = {IronNugget: 10, WoodChunk: 3}
 		self.rarity = "Uncommon"
 		self.speed = 1
 		self.accuracy = 0.8
@@ -703,7 +703,7 @@ class StoneAxe(Weapon):
 
 	def __init__(self, condition):
 
-		self.type = "StoneChunk Axe"
+		self.type = "Stone Axe"
 		self.recipe = {StoneChunk: 10, WoodChunk: 4}
 		self.rarity = "Common"
 		self.speed = 1.5
@@ -721,7 +721,7 @@ class IronAxe(Weapon):
 	def __init__(self, condition):
 
 		self.type = "Iron Axe"
-		self.recipe = {Iron: 10, WoodChunk: 4}
+		self.recipe = {IronNugget: 10, WoodChunk: 4}
 		self.rarity = "Uncommon"
 		self.speed = 1.5
 		self.accuracy = 0.7
@@ -771,7 +771,7 @@ class StoneSpear(Weapon):
 
 	def __init__(self, condition):
 
-		self.type = "StoneChunk Spear"
+		self.type = "Stone Spear"
 		self.recipe = {StoneChunk: 10, WoodChunk: 5}
 		self.rarity = "Common"
 		self.speed = 1.75
@@ -789,7 +789,7 @@ class IronSpear(Weapon):
 	def __init__(self, condition):
 
 		self.type = "Iron Spear"
-		self.recipe = {Iron: 10, WoodChunk: 5}
+		self.recipe = {IronNugget: 10, WoodChunk: 5}
 		self.rarity = "Uncommon"
 		self.speed = 1.75
 		self.accuracy = 0.6
@@ -839,7 +839,7 @@ class StoneBoomerang(Weapon):
 
 	def __init__(self, condition):
 
-		self.type = "StoneChunk Boomerang"
+		self.type = "Stone Boomerang"
 		self.recipe = {StoneChunk: 10, WoodChunk: 6}
 		self.rarity = "Common"
 		self.speed = 3
@@ -857,7 +857,7 @@ class IronBoomerang(Weapon):
 	def __init__(self, condition):
 
 		self.type = "Iron Boomerang"
-		self.recipe = {Iron: 10, WoodChunk: 6}
+		self.recipe = {IronNugget: 10, WoodChunk: 6}
 		self.rarity = "Uncommon"
 		self.speed = 3
 		self.accuracy = 0.9
@@ -873,7 +873,7 @@ class DiamondBoomerang(Weapon):
 
 	def __init__(self, condition):
 
-		self.type = "Iron Sword"
+		self.type = "Diamond Boomerang"
 		self.recipe = {Diamond: 10, WoodChunk: 6}
 		self.rarity = "Rare"
 		self.speed = 3
@@ -936,7 +936,7 @@ class Dynamite(Weapon):
 
 
 
-### WEAPONS ###
+### PROJECTILES ###
 
 
 
@@ -964,7 +964,7 @@ class StoneBall(Projectile):
 
 	def __init__(self):
 
-		self.type = "StoneChunk ball"
+		self.type = "Stone ball"
 		self.recipe = {WoodChunk: 5, StoneChunk: 2}
 		self.rarity = "Common"
 		self.damage = 18
@@ -979,7 +979,7 @@ class IronBall(Projectile):
 	def __init__(self):
 
 		self.type = "Iron ball"
-		self.recipe = {WoodChunk: 5, Iron: 2}
+		self.recipe = {WoodChunk: 5, IronNugget: 2}
 		self.rarity = "Common"
 		self.damage = 21
 
@@ -1020,7 +1020,7 @@ class StoneArrow(Projectile):
 
 	def __init__(self):
 
-		self.type = "StoneChunk Arrow"
+		self.type = "Stone Arrow"
 		self.recipe = {WoodChunk: 3, StoneChunk: 2}
 		self.rarity = "Common"
 		self.damage = 20
@@ -1035,7 +1035,7 @@ class IronArrow(Projectile):
 	def __init__(self):
 
 		self.type = "Iron Arrow"
-		self.recipe = {WoodChunk: 3, Iron: 3}
+		self.recipe = {WoodChunk: 3, IronNugget: 3}
 		self.rarity = "Common"
 		self.damage = 23
 
@@ -1062,7 +1062,7 @@ class SoilClump(Projectile):
 
 	def __init__(self):
 
-		self.type = "SoilPile Clump"
+		self.type = "Soil Clump"
 		self.recipe = {SoilPile: 4}
 		self.rarity = "Common"
 		self.damage = 38
@@ -1076,7 +1076,7 @@ class SandClump(Projectile):
 
 	def __init__(self):
 
-		self.type = "SandPile Clump"
+		self.type = "Sand Clump"
 		self.recipe = {SandPile: 4}
 		self.rarity = "Common"
 		self.damage = 38
@@ -1091,7 +1091,7 @@ class CactusClump(Projectile):
 	def __init__(self):
 
 		self.type = "Cactus Clump"
-		self.recipe = {Cactus: 3}
+		self.recipe = {CactusChunk: 3}
 		self.rarity = "Common"
 		self.damage = 55
 
@@ -1118,7 +1118,7 @@ class StoneSpike(Projectile):
 
 	def __init__(self):
 
-		self.type = "StoneChunk Spike"
+		self.type = "Stone Spike"
 		self.recipe = {StoneChunk: 3}
 		self.rarity = "Common"
 		self.damage = 19
@@ -1133,7 +1133,7 @@ class IronSpike(Projectile):
 	def __init__(self):
 
 		self.type = "Iron Spike"
-		self.recipe = {Iron: 1, WoodChunk: 2}
+		self.recipe = {IronNugget: 1, WoodChunk: 2}
 		self.rarity = "Common"
 		self.damage = 21
 
@@ -1175,7 +1175,7 @@ class Rocket(Projectile):
 	def __init__(self):
 
 		self.type = "Rocket"
-		self.recipe = {Iron: 10, Explosive: 5}
+		self.recipe = {IronNugget: 10, Explosive: 5}
 		self.rarity = "Uncommon"
 		self.damage = 150
 
@@ -1189,7 +1189,7 @@ class Missile(Projectile):
 	def __init__(self):
 
 		self.type = "Missile"
-		self.recipe = {Iron: 15, Explosive: 10}
+		self.recipe = {IronNugget: 15, Explosive: 10}
 		self.rarity = "Rare"
 		self.damage = 200
 
@@ -1203,7 +1203,7 @@ class Nuke(Projectile):
 	def __init__(self):
 
 		self.type = "Nuke"
-		self.recipe = {Iron: 25, Explosive: 50}
+		self.recipe = {IronNugget: 25, Explosive: 50}
 		self.rarity = "Legendary"
 		self.damage = 1000
 

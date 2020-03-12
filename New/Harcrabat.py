@@ -143,7 +143,7 @@ class Game:
 		self.create_player()
 		self.load_game_map()
 		eval(PRINT_SEPARATER)
-		Player.describe_spawnpoint(self.biome_map)
+		self.User.describe_spawnpoint(self.biome_map)
 		self.run_game()
 		
 	
