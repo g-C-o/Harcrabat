@@ -30,7 +30,7 @@ class Woodlands(Environment):
 		self.ter_B = Biome.Grove
 		self.structure = Biome.Garden
 
-		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
+		super().__init__(self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
@@ -45,7 +45,7 @@ class Plains(Environment):
 		self.ter_B = Biome.Badland
 		self.structure = Biome.Temple
 
-		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
+		super().__init__(self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
@@ -60,7 +60,7 @@ class Grasslands(Environment):
 		self.ter_B = Biome.Swamp
 		self.structure = Biome.Fort
 
-		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
+		super().__init__(self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
@@ -75,7 +75,7 @@ class Waterlands(Environment):
 		self.ter_B = Biome.Island
 		self.structure = Biome.Shipwreck
 
-		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
+		super().__init__(self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
 
 
 
@@ -90,4 +90,4 @@ class Rockylands(Environment):
 		self.ter_B = Biome.Cave
 		self.structure = Biome.Monument
 
-		Environment.__init__(self, self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)
+		super().__init__(self.type, self.pri_B, self.sec_B, self.ter_B, self.structure, *args, **kwargs)

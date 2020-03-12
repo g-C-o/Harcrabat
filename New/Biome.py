@@ -45,7 +45,7 @@ class Forest(Biome):
 		self.animal = Animal.Chicken
 		self.rarity = "Common"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -65,7 +65,7 @@ class Jungle(Biome):
 		self.animal = Animal.Chicken
 		self.rarity = "Uncommon"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -85,7 +85,7 @@ class Grove(Biome):
 		self.animal = Animal.Chicken
 		self.rarity = "Rare"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -105,7 +105,7 @@ class Garden(Biome):
 		self.animal = Animal.Chicken
 		self.rarity = "Legendary"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -125,7 +125,7 @@ class Desert(Biome):
 		self.animal = Animal.Rabbit
 		self.rarity = "Common"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -145,7 +145,7 @@ class Tundra(Biome):
 		self.animal = Animal.Rabbit
 		self.rarity = "Uncommon"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -165,7 +165,7 @@ class Badland(Biome):
 		self.animal = Animal.Rabbit
 		self.rarity = "Rare"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -185,7 +185,7 @@ class Temple(Biome):
 		self.animal = Animal.Rabbit
 		self.rarity = "Legendary"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -205,7 +205,7 @@ class Prairie(Biome):
 		self.animal = Animal.Cow
 		self.rarity = "Common"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -225,7 +225,7 @@ class Meadow(Biome):
 		self.animal = Animal.Cow
 		self.rarity = "Uncommon"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -245,7 +245,7 @@ class Swamp(Biome):
 		self.animal = Animal.Cow
 		self.rarity = "Rare"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -265,7 +265,7 @@ class Fort(Biome):
 		self.animal = Animal.Cow
 		self.rarity = "Legendary"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -285,7 +285,7 @@ class Lake(Biome):
 		self.animal = Animal.Fish
 		self.rarity = "Common"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -305,7 +305,7 @@ class Beach(Biome):
 		self.animal = Animal.Fish
 		self.rarity = "Uncommon"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -325,7 +325,7 @@ class Island(Biome):
 		self.animal = Animal.Fish
 		self.rarity = "Rare"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -345,7 +345,7 @@ class Shipwreck(Biome):
 		self.animal = Animal.Fish
 		self.rarity = "Legendary"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -365,7 +365,7 @@ class Mountain(Biome):
 		self.animal = Animal.Sheep
 		self.rarity = "Common"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -385,7 +385,7 @@ class Canyon(Biome):
 		self.animal = Animal.Sheep
 		self.rarity = "Uncommon"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -405,7 +405,7 @@ class Cave(Biome):
 		self.animal = Animal.Sheep
 		self.rarity = "Rare"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)
 
 
 
@@ -425,4 +425,4 @@ class Monument(Biome):
 		self.animal = Animal.Chicken
 		self.rarity = "Legendary"
 
-		Biome.__init__(type, preposition, pri_R, sec_R, ter_R, pri_M, sec_M, ter_M, animal, rarity, *args, **kwargs)
+		Biome.__init__(self.type, self.preposition, self.pri_R, self.sec_R, self.ter_R, self.pri_M, self.sec_M, self.ter_M, self.animal, self.rarity, *args, **kwargs)

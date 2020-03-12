@@ -37,7 +37,7 @@ class Chicken(Animal):
 		
 		self.type = "Chicken"
 
-		Animal.__init__(type, *args, **kwargs)
+		Animal.__init__(self.type, *args, **kwargs)
 
 
 
@@ -48,7 +48,7 @@ class Rabbit(Animal):
 		
 		self.type = "Rabbit"
 
-		Animal.__init__(type, *args, **kwargs)
+		Animal.__init__(self.type, *args, **kwargs)
 
 
 
@@ -59,7 +59,7 @@ class Cow(Animal):
 		
 		self.type = "Cow"
 
-		Animal.__init__(type, *args, **kwargs)
+		Animal.__init__(self.type, *args, **kwargs)
 
 
 
@@ -70,7 +70,7 @@ class Fish(Animal):
 		
 		self.type = "Fish"
 
-		Animal.__init__(type, *args, **kwargs)
+		Animal.__init__(self.type, *args, **kwargs)
 
 
 
@@ -81,4 +81,4 @@ class Sheep(Animal):
 		
 		self.type = "Sheep"
 
-		Animal.__init__(type, *args, **kwargs)
+		Animal.__init__(self.type, *args, **kwargs)

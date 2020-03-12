@@ -57,10 +57,8 @@ class Projectile(Item):
 
 
 	def __init__(self, type, recipe, rarity, damage, *args, **kwargs):
-		
-		self.condition = None
 
-		Item.__init__(condition, *args, **kwargs)
+		Item.__init__(*args, **kwargs)
 
 
 
@@ -71,7 +69,7 @@ class Launcher(Weapon):
 		self.has_scope = has_scope
 		self.damage = None
 		
-		Weapon.__init__(damage, *args, **kwargs)
+		Weapon.__init__(self.damage, *args, **kwargs)
 
 
 
@@ -87,7 +85,7 @@ class SoilPile(Resource):
 		self.type = "Soil Pile"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -99,7 +97,7 @@ class WoodChunk(Resource):
 		self.type = "Wood Chunk"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -111,7 +109,7 @@ class Vine(Resource):
 		self.type = "Vine"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -123,7 +121,7 @@ class Fruit(Resource):
 		self.type = "Fruit"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -135,7 +133,7 @@ class Rock(Resource):
 		self.type = "Rock"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -147,7 +145,7 @@ class WaterSupply(Resource):
 		self.type = "Water Supply"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -159,7 +157,7 @@ class SandPile(Resource):
 		self.type = "Sand Pile"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -171,7 +169,7 @@ class CactiChunk(Resource):
 		self.type = "Cacti Chunk"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -183,7 +181,7 @@ class IronChunk(Resource):
 		self.type = "Iron Chunk"
 		self.rarity = "Uncommon"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -195,7 +193,7 @@ class Bone(Resource):
 		self.type = "Bone"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -207,7 +205,7 @@ class Diamond(Resource):
 		self.type = "Diamond"
 		self.rarity = "Uncommon"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -219,7 +217,7 @@ class StoneChunk(Resource):
 		self.type = "Stone Chunk"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -231,7 +229,7 @@ class GoldNugget(Resource):
 		self.type = "Gold Nugget"
 		self.rarity = "Uncommon"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -243,7 +241,7 @@ class Emerald(Resource):
 		self.type = "Emerald"
 		self.rarity = "Uncommon"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -255,7 +253,7 @@ class QuartzShard(Resource):
 		self.type = "Quartz Shard"
 		self.rarity = "Uncommon"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -267,7 +265,7 @@ class Explosive(Resource):
 		self.type = "Explosive"
 		self.rarity = "Common"
 
-		Resource.__init__(type, rarity, *args, **kwargs)
+		Resource.__init__(self.type, self.rarity, *args, **kwargs)
 
 
 
@@ -284,7 +282,7 @@ class HarvestersArmor(Item):
 			self.rarity = "Rare"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -297,7 +295,7 @@ class Protector(Item):
 			self.rarity = "Legendary"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -310,7 +308,7 @@ class Strawman(Item):
 			self.rarity = "Rare"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -323,7 +321,7 @@ class Coffin(Item):
 			self.rarity = "Legendary"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -336,7 +334,7 @@ class Ladder(Item):
 			self.rarity = "Rare"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -349,7 +347,7 @@ class MobRepellent(Item):
 			self.rarity = "Legendary"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -362,7 +360,7 @@ class BottledWave(Item):
 			self.rarity = "Rare"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -375,7 +373,7 @@ class BottledWind(Item):
 			self.rarity = "Legendary"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -388,7 +386,7 @@ class Glider(Item):
 			self.rarity = "Rare"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -401,7 +399,7 @@ class Binoculars(Item):
 			self.rarity = "Legendary"
 			self.recipe = None
 
-			Item.__init__(type, recipe, rarity, *args, **kwargs)
+			Item.__init__(self.type, self.recipe, self.rarity, *args, **kwargs)
 
 
 
@@ -422,7 +420,7 @@ class Arm(Launcher):
 		self.range = 2
 		self.has_scope = False
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -439,7 +437,7 @@ class Bow(Launcher):
 		self.range = 3
 		self.has_scope = False
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -456,7 +454,7 @@ class Crossbow(Launcher):
 		self.range = 3
 		self.has_scope = True
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -473,7 +471,7 @@ class CombatBucket(Launcher):
 		self.range = 0
 		self.has_scope = False
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -490,7 +488,7 @@ class Slingshot(Launcher):
 		self.range = 1
 		self.has_scope = False
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -507,7 +505,7 @@ class Cannon(Launcher):
 		self.range = 1
 		self.has_scope = False
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -524,7 +522,7 @@ class RocketLauncher(Launcher):
 		self.range = 6
 		self.has_scope = True
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -541,7 +539,7 @@ class MissileLauncher(Launcher):
 		self.range = 8
 		self.has_scope = True
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -558,7 +556,7 @@ class NukeLauncher(Launcher):
 		self.range = 15
 		self.has_scope = True
 		
-		Launcher.__init__(type, recipe, rarity, speed, accuracy, range, has_scope, *args, **kwargs)
+		Launcher.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.range, self.has_scope, *args, **kwargs)
 
 
 
@@ -575,7 +573,7 @@ class Fists(Weapon):
 		self.damage = 5
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -592,7 +590,7 @@ class BoneBlade(Weapon):
 		self.damage = 10
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -609,7 +607,7 @@ class BoneStriker(Weapon):
 		self.damage = 25
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -626,7 +624,7 @@ class WoodenSword(Weapon):
 		self.damage = 17
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -643,7 +641,7 @@ class StoneSword(Weapon):
 		self.damage = 20
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -660,7 +658,7 @@ class IronSword(Weapon):
 		self.damage = 23
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -677,7 +675,7 @@ class DiamondSword(Weapon):
 		self.damage = 26
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -694,7 +692,7 @@ class WoodenAxe(Weapon):
 		self.damage = 26
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -711,7 +709,7 @@ class StoneAxe(Weapon):
 		self.damage = 30
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -728,7 +726,7 @@ class IronAxe(Weapon):
 		self.damage = 34
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -745,7 +743,7 @@ class DiamondAxe(Weapon):
 		self.damage = 38
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -762,7 +760,7 @@ class WoodenSpear(Weapon):
 		self.damage = 30
 		self.range = 1
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -779,7 +777,7 @@ class StoneSpear(Weapon):
 		self.damage = 35
 		self.range = 1
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -796,7 +794,7 @@ class IronSpear(Weapon):
 		self.damage = 40
 		self.range = 1
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -813,7 +811,7 @@ class DiamondSpear(Weapon):
 		self.damage = 45
 		self.range = 1
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -830,7 +828,7 @@ class WoodenBoomerang(Weapon):
 		self.damage = 40
 		self.range = 2
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -847,7 +845,7 @@ class StoneBoomerang(Weapon):
 		self.damage = 50
 		self.range = 2
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -864,7 +862,7 @@ class IronBoomerang(Weapon):
 		self.damage = 60
 		self.range = 2
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -881,7 +879,7 @@ class DiamondBoomerang(Weapon):
 		self.damage = 70
 		self.range = 2
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -898,7 +896,7 @@ class Bomb(Weapon):
 		self.damage = 100
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -915,7 +913,7 @@ class Grenade(Weapon):
 		self.damage = 65
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -932,7 +930,7 @@ class Dynamite(Weapon):
 		self.damage = 40
 		self.range = 0
 		
-		Weapon.__init__(type, recipe, rarity, speed, accuracy, damage, range, *args, **kwargs)
+		Weapon.__init__(self.type, self.recipe, self.rarity, self.speed, self.accuracy, self.damage, self.range, *args, **kwargs)
 
 
 
@@ -955,7 +953,7 @@ class WoodenBall(Projectile):
 		self.rarity = "Common"
 		self.damage = 15
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -969,7 +967,7 @@ class StoneBall(Projectile):
 		self.rarity = "Common"
 		self.damage = 18
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -983,7 +981,7 @@ class IronBall(Projectile):
 		self.rarity = "Common"
 		self.damage = 21
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -997,7 +995,7 @@ class DiamondBall(Projectile):
 		self.rarity = "Uncommon"
 		self.damage = 24
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1011,7 +1009,7 @@ class WoodenArrow(Projectile):
 		self.rarity = "Common"
 		self.damage = 17
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1025,7 +1023,7 @@ class StoneArrow(Projectile):
 		self.rarity = "Common"
 		self.damage = 20
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1039,7 +1037,7 @@ class IronArrow(Projectile):
 		self.rarity = "Common"
 		self.damage = 23
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1053,7 +1051,7 @@ class DiamondArrow(Projectile):
 		self.rarity = "Uncommon"
 		self.damage = 26
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1067,7 +1065,7 @@ class SoilClump(Projectile):
 		self.rarity = "Common"
 		self.damage = 38
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1081,7 +1079,7 @@ class SandClump(Projectile):
 		self.rarity = "Common"
 		self.damage = 38
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1095,7 +1093,7 @@ class CactusClump(Projectile):
 		self.rarity = "Common"
 		self.damage = 55
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1109,7 +1107,7 @@ class WoodenSpike(Projectile):
 		self.rarity = "Common"
 		self.damage = 17
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1123,7 +1121,7 @@ class StoneSpike(Projectile):
 		self.rarity = "Common"
 		self.damage = 19
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1137,7 +1135,7 @@ class IronSpike(Projectile):
 		self.rarity = "Common"
 		self.damage = 21
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1151,7 +1149,7 @@ class DiamondSpike(Projectile):
 		self.rarity = "Uncommon"
 		self.damage = 26
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1165,7 +1163,7 @@ class CannonBall(Projectile):
 		self.rarity = "Common"
 		self.damage = 125
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1179,7 +1177,7 @@ class Rocket(Projectile):
 		self.rarity = "Uncommon"
 		self.damage = 150
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1193,7 +1191,7 @@ class Missile(Projectile):
 		self.rarity = "Rare"
 		self.damage = 200
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 
 
 
@@ -1207,5 +1205,5 @@ class Nuke(Projectile):
 		self.rarity = "Legendary"
 		self.damage = 1000
 
-		Projectile.__init__(type, recipe, rarity, damage, *args, **kwargs)
+		Projectile.__init__(self.type, self.recipe, self.rarity, self.damage, *args, **kwargs)
 		
