@@ -172,7 +172,7 @@ class Level1Mob(Mob):
 
 		self.level = 1
 
-		Mob.__init__(self.level, *args, **kwargs)
+		super().__init__(self.level, *args, **kwargs)
 
 
 
@@ -183,7 +183,7 @@ class Level2Mob(Mob):
 
 		self.level = 2
 
-		Mob.__init__(self.level, *args, **kwargs)
+		super().__init__(self.level, *args, **kwargs)
 
 
 
@@ -195,7 +195,7 @@ class Level3Mob(Mob):
 		self.level = 3
 		self.health = 200
 
-		Mob.__init__(self.level, self.health, *args, **kwargs)
+		super().__init__(self.level, self.health, *args, **kwargs)
 
 
 
@@ -213,7 +213,7 @@ class Fighter(Level1Mob):
 		self.weapon = Item.WoodChunkenSword()
 		self.group_count = 1
 		
-		Level1Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 	
 	
 
@@ -227,7 +227,7 @@ class Destroyer(Level1Mob):
 		self.weapon = Item.WoodChunkenAxe()
 		self.group_count = 1
 		
-		Level1Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -241,7 +241,7 @@ class Raider(Level1Mob):
 		self.weapon = Item.Fists()
 		self.group_count = 3
 		
-		Level1Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -255,7 +255,7 @@ class Defender(Level1Mob):
 		self.weapon = Item.BoneBlade()
 		self.group_count = 1
 		
-		Level1Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -269,7 +269,7 @@ class Hunter(Level1Mob):
 		self.weapon = Item.Bow()
 		self.group_count = 1
 		
-		Level1Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -287,7 +287,7 @@ class Predator(Level2Mob):
 		self.weapon = Item.IronSword()
 		self.group_count = 1
 		
-		Level2Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -301,7 +301,7 @@ class Annihilator(Level2Mob):
 		self.weapon = Item.IronSpear()
 		self.group_count = 1
 		
-		Level2Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -315,7 +315,7 @@ class Minion(Level2Mob):
 		self.weapon = Item.Fists()
 		self.group_count = 5
 		
-		Level2Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -329,7 +329,7 @@ class Guardian(Level2Mob):
 		self.weapon = Item.BoneBlade()
 		self.group_count = 1
 		
-		Level2Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -343,7 +343,7 @@ class Assassin(Level2Mob):
 		self.weapon = Item.Crossbow()
 		self.group_count = 1
 		
-		Level2Mob.__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.health, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -360,7 +360,7 @@ class Goblin(Level3Mob):
 		self.weapon = Item.DiamondSword()
 		self.group_count = 1
 		
-		Level3Mob.__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -373,7 +373,7 @@ class Troll(Level3Mob):
 		self.weapon = Item.Slingshot()
 		self.group_count = 1
 		
-		Level3Mob.__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -386,7 +386,7 @@ class Zombie(Level3Mob):
 		self.weapon = Item.Arm()
 		self.group_count = 3
 		
-		Level3Mob.__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -399,7 +399,7 @@ class Skeleton(Level3Mob):
 		self.weapon = Item.BoneStriker()
 		self.group_count = 1
 		
-		Level3Mob.__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
 
 
 
@@ -412,4 +412,4 @@ class Ghost(Level3Mob):
 		self.weapon = Item.DiamondBoomerang()
 		self.group_count = 1
 		
-		Level3Mob.__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
+		super().__init__(self.type, self.weapon, self.group_count, *args, **kwargs)
