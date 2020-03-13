@@ -36,9 +36,9 @@ class Forest(Biome):
 		
 		self.type = "Forest"
 		self.preposition = "into a"
-		self.pri_R = Item.Wood
-		self.sec_R = Item.Soil
-		self.ter_R = Item.Soil
+		self.pri_R = Item.WoodChunk
+		self.sec_R = Item.SoilPile
+		self.ter_R = Item.SoilPile
 		self.pri_M = Mob.Fighter
 		self.sec_M = Mob.Fighter
 		self.ter_M = Mob.Fighter
@@ -56,8 +56,8 @@ class Jungle(Biome):
 		
 		self.type = "Jungle"
 		self.preposition = "into a"
-		self.pri_R = Item.Wood
-		self.sec_R = Item.Soil
+		self.pri_R = Item.WoodChunk
+		self.sec_R = Item.SoilPile
 		self.ter_R = Item.Emerald
 		self.pri_M = Mob.Fighter
 		self.sec_M = Mob.Fighter
@@ -76,7 +76,7 @@ class Grove(Biome):
 		
 		self.type = "Grove"
 		self.preposition = "into a"
-		self.pri_R = Item.Wood
+		self.pri_R = Item.WoodChunk
 		self.sec_R = Item.Fruit
 		self.ter_R = Item.Emerald
 		self.pri_M = Mob.Fighter
@@ -96,9 +96,9 @@ class Garden(Biome):
 		
 		self.type = "Garden"
 		self.preposition = "into a"
-		self.pri_R = Item.Wood
+		self.pri_R = Item.WoodChunk
 		self.sec_R = Item.Emerald
-		self.ter_R = Item.Gold
+		self.ter_R = Item.GoldNugget
 		self.pri_M = Mob.Fighter
 		self.sec_M = Mob.Predator
 		self.ter_M = Mob.Goblin
@@ -116,9 +116,9 @@ class Desert(Biome):
 		
 		self.type = "Desert"
 		self.preposition = "into a"
-		self.pri_R = Item.Sand
-		self.sec_R = Item.Stone
-		self.ter_R = Item.Stone
+		self.pri_R = Item.SandPile
+		self.sec_R = Item.StoneChunk
+		self.ter_R = Item.StoneChunk
 		self.pri_M = Mob.Destroyer
 		self.sec_M = Mob.Destroyer
 		self.ter_M = Mob.Destroyer
@@ -136,9 +136,9 @@ class Tundra(Biome):
 		
 		self.type = "Tundra"
 		self.preposition = "into a"
-		self.pri_R = Item.Sand
-		self.sec_R = Item.Stone
-		self.ter_R = Item.Iron
+		self.pri_R = Item.SandPile
+		self.sec_R = Item.StoneChunk
+		self.ter_R = Item.IronChunk
 		self.pri_M = Mob.Destroyer
 		self.sec_M = Mob.Destroyer
 		self.ter_M = Mob.Annihilator
@@ -156,9 +156,9 @@ class Badland(Biome):
 		
 		self.type = "Badland"
 		self.preposition = "into a"
-		self.pri_R = Item.Sand
-		self.sec_R = Item.Cacti
-		self.ter_R = Item.Iron
+		self.pri_R = Item.SandPile
+		self.sec_R = Item.CactiChunk
+		self.ter_R = Item.IronChunk
 		self.pri_M = Mob.Destroyer
 		self.sec_M = Mob.Annihilator
 		self.ter_M = Mob.Destroyer
@@ -176,8 +176,8 @@ class Temple(Biome):
 		
 		self.type = "Temple"
 		self.preposition = "into a"
-		self.pri_R = Item.Sand
-		self.sec_R = Item.Iron
+		self.pri_R = Item.SandPile
+		self.sec_R = Item.IronChunk
 		self.ter_R = Item.Diamond
 		self.pri_M = Mob.Destroyer
 		self.ter_M = Mob.Annihilator
@@ -196,9 +196,9 @@ class Prairie(Biome):
 		
 		self.type = "Prairie"
 		self.preposition = "into a"
-		self.pri_R = Item.Soil
-		self.sec_R = Item.Water
-		self.ter_R = Item.Water
+		self.pri_R = Item.SoilPile
+		self.sec_R = Item.WaterSupply
+		self.ter_R = Item.WaterSupply
 		self.pri_M = Mob.Raider
 		self.sec_M = Mob.Raider
 		self.ter_M = Mob.Raider
@@ -216,8 +216,8 @@ class Meadow(Biome):
 		
 		self.type = "Meadow"
 		self.preposition = "into a"
-		self.pri_R = Item.Soil
-		self.sec_R = Item.Water
+		self.pri_R = Item.SoilPile
+		self.sec_R = Item.WaterSupply
 		self.ter_R = Item.Diamond
 		self.pri_M = Mob.Raider
 		self.sec_M = Mob.Raider
@@ -236,7 +236,7 @@ class Swamp(Biome):
 		
 		self.type = "Swamp"
 		self.preposition = "into a"
-		self.pri_R = Item.Soil
+		self.pri_R = Item.SoilPile
 		self.sec_R = Item.Vine
 		self.ter_R = Item.Diamond
 		self.pri_M = Mob.Raider
@@ -256,9 +256,9 @@ class Fort(Biome):
 		
 		self.type = "Fort"
 		self.preposition = "into a"
-		self.pri_R = Item.Soil
+		self.pri_R = Item.SoilPile
 		self.sec_R = Item.Diamond
-		self.ter_R = Item.Quartz
+		self.ter_R = Item.QuartzShard
 		self.pri_M = Mob.Raider
 		self.sec_M = Mob.Minion
 		self.ter_M = Mob.Zombie
@@ -276,9 +276,9 @@ class Lake(Biome):
 		
 		self.type = "Lake"
 		self.preposition = "into a"
-		self.pri_R = Item.Water
-		self.sec_R = Item.Sand
-		self.ter_R = Item.Sand
+		self.pri_R = Item.WaterSupply
+		self.sec_R = Item.SandPile
+		self.ter_R = Item.SandPile
 		self.pri_M = Mob.Defender
 		self.sec_M = Mob.Defender
 		self.ter_M = Mob.Defender
@@ -296,9 +296,9 @@ class Beach(Biome):
 		
 		self.type = "Beach"
 		self.preposition = "into a"
-		self.pri_R = Item.Water
-		self.sec_R = Item.Sand
-		self.ter_R = Item.Gold
+		self.pri_R = Item.WaterSupply
+		self.sec_R = Item.SandPile
+		self.ter_R = Item.GoldNugget
 		self.pri_M = Mob.Defender
 		self.sec_M = Mob.Defender
 		self.ter_M = Mob.Guardian
@@ -316,9 +316,9 @@ class Island(Biome):
 		
 		self.type = "Island"
 		self.preposition = "onto an"
-		self.pri_R = Item.Water
+		self.pri_R = Item.WaterSupply
 		self.sec_R = Item.Bone
-		self.ter_R = Item.Gold
+		self.ter_R = Item.GoldNugget
 		self.pri_M = Mob.Defender
 		self.sec_M = Mob.Guardian
 		self.ter_M = Mob.Defender
@@ -336,8 +336,8 @@ class Shipwreck(Biome):
 		
 		self.type = "Shipwreck"
 		self.preposition = "onto a"
-		self.pri_R = Item.Water
-		self.sec_R = Item.Gold
+		self.pri_R = Item.WaterSupply
+		self.sec_R = Item.GoldNugget
 		self.ter_R = Item.Emerald
 		self.pri_M = Mob.Defender
 		self.sec_M = Mob.Guardian
@@ -356,9 +356,9 @@ class Mountain(Biome):
 		
 		self.type = "Mountain"
 		self.preposition = "onto a"
-		self.pri_R = Item.Stone
-		self.sec_R = Item.Wood
-		self.ter_R = Item.Wood
+		self.pri_R = Item.StoneChunk
+		self.sec_R = Item.WoodChunk
+		self.ter_R = Item.WoodChunk
 		self.pri_M = Mob.Hunter
 		self.sec_M = Mob.Hunter
 		self.ter_M = Mob.Hunter
@@ -376,9 +376,9 @@ class Canyon(Biome):
 		
 		self.type = "Canyon"
 		self.preposition = "into a"
-		self.pri_R = Item.Stone
-		self.sec_R = Item.Wood
-		self.ter_R = Item.Quartz
+		self.pri_R = Item.StoneChunk
+		self.sec_R = Item.WoodChunk
+		self.ter_R = Item.QuartzShard
 		self.pri_M = Mob.Hunter
 		self.sec_M = Mob.Hunter
 		self.ter_M = Mob.Assassin
@@ -396,9 +396,9 @@ class Cave(Biome):
 		
 		self.type = "Cave"
 		self.preposition = "into a"
-		self.pri_R = Item.Stone
+		self.pri_R = Item.StoneChunk
 		self.sec_R = Item.Explosive
-		self.ter_R = Item.Quartz
+		self.ter_R = Item.QuartzShard
 		self.pri_M = Mob.Hunter
 		self.sec_M = Mob.Assassin
 		self.ter_M = Mob.Hunter
@@ -416,9 +416,9 @@ class Monument(Biome):
 		
 		self.type = "Monument"
 		self.preposition = "into a"
-		self.pri_R = Item.Stone
-		self.sec_R = Item.Quartz
-		self.ter_R = Item.Iron
+		self.pri_R = Item.StoneChunk
+		self.sec_R = Item.QuartzShard
+		self.ter_R = Item.IronChunk
 		self.pri_M = Mob.Hunter
 		self.sec_M = Mob.Assassin
 		self.ter_M = Mob.Ghost
