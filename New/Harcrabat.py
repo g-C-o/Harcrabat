@@ -60,7 +60,8 @@ class Game:
 
 	def choose_biome(self, Env):
 		BiomeChoice = choices([Env.pri_B, Env.sec_B, Env.ter_B, Env.structure], weights=BIOME_WEIGHTS)[0]
-		return BiomeChoice
+		NewBiome = BiomeChoice()
+		return NewBiome
 
 	
 	def load_game_map(self):
